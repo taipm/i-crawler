@@ -1,0 +1,12 @@
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\bin\Debug\NCrawler.SitemapProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\bin\Debug\NCrawler.SitemapProcessor.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\bin\Debug\NCrawler.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\bin\Debug\NCrawler.HtmlProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\bin\Debug\HtmlAgilityPack.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\bin\Debug\Autofac.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\bin\Debug\NCrawler.HtmlProcessor.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\bin\Debug\NCrawler.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\bin\Debug\HtmlAgilityPack.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\obj\Debug\NCrawler.SitemapProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\obj\Debug\NCrawler.SitemapProcessor.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\obj\Debug\NCrawler.SitemapProcessor.csprojResolveAssemblyReference.cache

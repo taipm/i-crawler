@@ -1,0 +1,44 @@
+﻿@model iCrawlerMvc.Models.UrlOfUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UrlOfUser</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UrlId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UrlId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Times)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Times)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Keywords)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Keywords)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { urlId = Model.UrlId }) |
+    @Html.ActionLink("Email To", "AddEmail", new { urlId = Model.UrlId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

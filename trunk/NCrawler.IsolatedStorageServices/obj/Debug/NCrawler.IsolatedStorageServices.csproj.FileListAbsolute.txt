@@ -1,0 +1,8 @@
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\bin\Debug\NCrawler.IsolatedStorageServices.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\bin\Debug\NCrawler.IsolatedStorageServices.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\bin\Debug\Autofac.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\bin\Debug\NCrawler.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\bin\Debug\NCrawler.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\obj\Debug\NCrawler.IsolatedStorageServices.csprojResolveAssemblyReference.cache
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\obj\Debug\NCrawler.IsolatedStorageServices.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\obj\Debug\NCrawler.IsolatedStorageServices.pdb

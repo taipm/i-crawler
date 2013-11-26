@@ -1,0 +1,13 @@
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\NCrawler.GeckoProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\NCrawler.GeckoProcessor.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\NCrawler.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\NCrawler.HtmlProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\Skybound.Gecko.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\HtmlAgilityPack.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\Autofac.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\NCrawler.HtmlProcessor.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\NCrawler.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\bin\Debug\HtmlAgilityPack.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\obj\Debug\NCrawler.GeckoProcessor.csprojResolveAssemblyReference.cache
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\obj\Debug\NCrawler.GeckoProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.GeckoProcessor\obj\Debug\NCrawler.GeckoProcessor.pdb

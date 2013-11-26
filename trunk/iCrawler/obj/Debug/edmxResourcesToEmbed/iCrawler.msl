@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="iCrawlerModelStoreContainer" CdmEntityContainer="iCrawlerEntities">
+    <EntitySetMapping Name="Urls">
+      <EntityTypeMapping TypeName="iCrawlerModel.Url">
+        <MappingFragment StoreEntitySet="Url">
+          <ScalarProperty Name="HelpText" ColumnName="HelpText" />
+          <ScalarProperty Name="Times" ColumnName="Times" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url1" ColumnName="Url" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebContents">
+      <EntityTypeMapping TypeName="iCrawlerModel.WebContent">
+        <MappingFragment StoreEntitySet="WebContent">
+          <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="TimeDownloaded" ColumnName="TimeDownloaded" />
+          <ScalarProperty Name="IsNotify" ColumnName="IsNotify" />
+          <ScalarProperty Name="TimeNotify" ColumnName="TimeNotify" />
+          <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
+          <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentLinks">
+      <EntityTypeMapping TypeName="iCrawlerModel.CurrentLink">
+        <MappingFragment StoreEntitySet="CurrentLink">
+          <ScalarProperty Name="WebAuthors" ColumnName="WebAuthors" />
+          <ScalarProperty Name="WebLastUpdate" ColumnName="WebLastUpdate" />
+          <ScalarProperty Name="IsFromCache" ColumnName="IsFromCache" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="CharacterSet" ColumnName="CharacterSet" />
+          <ScalarProperty Name="Headers" ColumnName="Headers" />
+          <ScalarProperty Name="ContentEncoding" ColumnName="ContentEncoding" />
+          <ScalarProperty Name="Server" ColumnName="Server" />
+          <ScalarProperty Name="StatusDescription" ColumnName="StatusDescription" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DownloadTime" ColumnName="DownloadTime" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="Depth" ColumnName="Depth" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TextContent" ColumnName="TextContent" />
+          <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="iCrawlerModel.Document">
+        <MappingFragment StoreEntitySet="Document">
+          <ScalarProperty Name="UrlId" ColumnName="UrlId" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="DownloadTime" ColumnName="DownloadTime" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="iCrawlerModel.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryLinks">
+      <EntityTypeMapping TypeName="iCrawlerModel.HistoryLink">
+        <MappingFragment StoreEntitySet="HistoryLink">
+          <ScalarProperty Name="WebAuthors" ColumnName="WebAuthors" />
+          <ScalarProperty Name="WebLastUpdate" ColumnName="WebLastUpdate" />
+          <ScalarProperty Name="IsFromCache" ColumnName="IsFromCache" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="CharacterSet" ColumnName="CharacterSet" />
+          <ScalarProperty Name="Headers" ColumnName="Headers" />
+          <ScalarProperty Name="ContentEncoding" ColumnName="ContentEncoding" />
+          <ScalarProperty Name="Server" ColumnName="Server" />
+          <ScalarProperty Name="StatusDescription" ColumnName="StatusDescription" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DownloadTime" ColumnName="DownloadTime" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="Depth" ColumnName="Depth" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TextContent" ColumnName="TextContent" />
+          <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UrlOfUsers">
+      <EntityTypeMapping TypeName="iCrawlerModel.UrlOfUser">
+        <MappingFragment StoreEntitySet="UrlOfUser">
+          <ScalarProperty Name="OutKeywords" ColumnName="OutKeywords" />
+          <ScalarProperty Name="Emails" ColumnName="Emails" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="UrlId" ColumnName="UrlId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,9 @@
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.DbServices.Db\sql\debug\NCrawler.DbServices.Db.dacpac
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.DbServices.Db\sql\debug\NCrawler.DbServices.Db.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.DbServices.Db\sql\debug\NCrawler.DbServices.Db.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.DbServices.Db\obj\Debug\Model.xml
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.DbServices.Db\obj\Debug\refactor.xml
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.DbServices.Db\obj\Debug\postdeploy.sql
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.DbServices.Db\obj\Debug\predeploy.sql
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.DbServices.Db\obj\Debug\NCrawler.DbServices.Db.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.DbServices.Db\obj\Debug\NCrawler.DbServices.Db.pdb

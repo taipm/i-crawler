@@ -1,0 +1,13 @@
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\NGet.exe.config
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\NGet.exe
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\NGet.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\NCrawler.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\NCrawler.HtmlProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\HtmlAgilityPack.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\Autofac.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\NCrawler.HtmlProcessor.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\NCrawler.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\HtmlAgilityPack.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\obj\x86\Debug\NGet.exe
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\obj\x86\Debug\NGet.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\obj\x86\Debug\NGet.csprojResolveAssemblyReference.cache

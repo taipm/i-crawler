@@ -1,0 +1,8 @@
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.LanguageDetection.Google\bin\Debug\NCrawler.LanguageDetection.Google.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.LanguageDetection.Google\bin\Debug\NCrawler.LanguageDetection.Google.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.LanguageDetection.Google\bin\Debug\Autofac.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.LanguageDetection.Google\bin\Debug\NCrawler.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.LanguageDetection.Google\bin\Debug\NCrawler.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.LanguageDetection.Google\obj\Debug\NCrawler.LanguageDetection.Google.csprojResolveAssemblyReference.cache
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.LanguageDetection.Google\obj\Debug\NCrawler.LanguageDetection.Google.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.LanguageDetection.Google\obj\Debug\NCrawler.LanguageDetection.Google.pdb

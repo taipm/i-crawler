@@ -1,0 +1,59 @@
+﻿@model iCrawlerMvc.Models.UrlOfUser
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UrlOfUser</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserId)
+            @Html.ValidationMessageFor(model => model.UserId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UrlId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UrlId)
+            @Html.ValidationMessageFor(model => model.UrlId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Times)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Times)
+            @Html.ValidationMessageFor(model => model.Times)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Keywords)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Keywords)
+            @Html.ValidationMessageFor(model => model.Keywords)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
