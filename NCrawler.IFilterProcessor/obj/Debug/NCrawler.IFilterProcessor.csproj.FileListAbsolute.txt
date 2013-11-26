@@ -1,0 +1,10 @@
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\bin\Debug\NCrawler.IFilterProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\bin\Debug\NCrawler.IFilterProcessor.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\bin\Debug\EPocalipse.IFilter.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\bin\Debug\NCrawler.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\bin\Debug\Autofac.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\bin\Debug\NCrawler.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\bin\Debug\EPocalipse.IFilter.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\obj\Debug\NCrawler.IFilterProcessor.csprojResolveAssemblyReference.cache
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\obj\Debug\NCrawler.IFilterProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\obj\Debug\NCrawler.IFilterProcessor.pdb

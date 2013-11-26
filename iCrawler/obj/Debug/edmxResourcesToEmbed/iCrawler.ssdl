@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iCrawlerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="iCrawlerModelStoreContainer">
+    <EntitySet Name="CurrentLink" EntityType="iCrawlerModel.Store.CurrentLink" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Document" EntityType="iCrawlerModel.Store.Document" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HistoryLink" EntityType="iCrawlerModel.Store.HistoryLink" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Url" EntityType="iCrawlerModel.Store.Url" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UrlOfUser" EntityType="iCrawlerModel.Store.UrlOfUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserProfile" EntityType="iCrawlerModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WebContent" EntityType="iCrawlerModel.Store.WebContent" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="CurrentLink">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="450" />
+    <Property Name="HtmlContent" Type="nvarchar(max)" />
+    <Property Name="TextContent" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="Depth" Type="int" />
+    <Property Name="ContentType" Type="nvarchar" MaxLength="50" />
+    <Property Name="DownloadTime" Type="time" />
+    <Property Name="Title" Type="nvarchar" MaxLength="450" />
+    <Property Name="StatusDescription" Type="nvarchar" MaxLength="350" />
+    <Property Name="Server" Type="nvarchar" MaxLength="350" />
+    <Property Name="ContentEncoding" Type="nvarchar" MaxLength="50" />
+    <Property Name="Headers" Type="nvarchar(max)" />
+    <Property Name="CharacterSet" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Method" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastModified" Type="datetime" />
+    <Property Name="IsFromCache" Type="bit" />
+    <Property Name="WebLastUpdate" Type="datetime" />
+    <Property Name="WebAuthors" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="350" />
+    <Property Name="FilePath" Type="nvarchar" MaxLength="450" />
+    <Property Name="FileSize" Type="decimal" Scale="2" />
+    <Property Name="DownloadTime" Type="datetime" />
+    <Property Name="Url" Type="nvarchar" MaxLength="450" />
+    <Property Name="UrlId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="HistoryLink">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="450" />
+    <Property Name="HtmlContent" Type="nvarchar(max)" />
+    <Property Name="TextContent" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="Depth" Type="int" />
+    <Property Name="ContentType" Type="nvarchar" MaxLength="50" />
+    <Property Name="DownloadTime" Type="time" />
+    <Property Name="Title" Type="nvarchar" MaxLength="450" />
+    <Property Name="StatusDescription" Type="nvarchar" MaxLength="350" />
+    <Property Name="Server" Type="nvarchar" MaxLength="350" />
+    <Property Name="ContentEncoding" Type="nvarchar" MaxLength="50" />
+    <Property Name="Headers" Type="nvarchar(max)" />
+    <Property Name="CharacterSet" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Method" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastModified" Type="datetime" />
+    <Property Name="IsFromCache" Type="bit" />
+    <Property Name="WebLastUpdate" Type="datetime" />
+    <Property Name="WebAuthors" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Url">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Times" Type="nvarchar" MaxLength="1000" />
+    <Property Name="HelpText" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UrlOfUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="UrlId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UrlId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Keywords" Type="nvarchar" MaxLength="500" />
+    <Property Name="Emails" Type="nvarchar" MaxLength="250" />
+    <Property Name="OutKeywords" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+  </EntityType>
+  <EntityType Name="WebContent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="TimeDownloaded" Type="datetime" />
+    <Property Name="IsNotify" Type="bit" />
+    <Property Name="TimeNotify" Type="datetime" />
+    <Property Name="NotifyStatus" Type="bit" />
+    <Property Name="KeyWords" Type="nvarchar" MaxLength="500" />
+    <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+    <Property Name="HtmlContent" Type="nvarchar(max)" />
+  </EntityType>
+</Schema>

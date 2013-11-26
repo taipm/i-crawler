@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="iCrawlerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="iCrawlerModelStoreContainer">
+          <EntitySet Name="CurrentLink" EntityType="iCrawlerModel.Store.CurrentLink" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Document" EntityType="iCrawlerModel.Store.Document" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HistoryLink" EntityType="iCrawlerModel.Store.HistoryLink" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Url" EntityType="iCrawlerModel.Store.Url" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UrlOfUser" EntityType="iCrawlerModel.Store.UrlOfUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="iCrawlerModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WebContent" EntityType="iCrawlerModel.Store.WebContent" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="CurrentLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="450" />
+          <Property Name="HtmlContent" Type="nvarchar(max)" />
+          <Property Name="TextContent" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Depth" Type="int" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DownloadTime" Type="time" />
+          <Property Name="Title" Type="nvarchar" MaxLength="450" />
+          <Property Name="StatusDescription" Type="nvarchar" MaxLength="350" />
+          <Property Name="Server" Type="nvarchar" MaxLength="350" />
+          <Property Name="ContentEncoding" Type="nvarchar" MaxLength="50" />
+          <Property Name="Headers" Type="nvarchar(max)" />
+          <Property Name="CharacterSet" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Method" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="IsFromCache" Type="bit" />
+          <Property Name="WebLastUpdate" Type="datetime" />
+          <Property Name="WebAuthors" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="350" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="450" />
+          <Property Name="FileSize" Type="decimal" Scale="2" />
+          <Property Name="DownloadTime" Type="datetime" />
+          <Property Name="Url" Type="nvarchar" MaxLength="450" />
+          <Property Name="UrlId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="HistoryLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="450" />
+          <Property Name="HtmlContent" Type="nvarchar(max)" />
+          <Property Name="TextContent" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Depth" Type="int" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DownloadTime" Type="time" />
+          <Property Name="Title" Type="nvarchar" MaxLength="450" />
+          <Property Name="StatusDescription" Type="nvarchar" MaxLength="350" />
+          <Property Name="Server" Type="nvarchar" MaxLength="350" />
+          <Property Name="ContentEncoding" Type="nvarchar" MaxLength="50" />
+          <Property Name="Headers" Type="nvarchar(max)" />
+          <Property Name="CharacterSet" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Method" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="IsFromCache" Type="bit" />
+          <Property Name="WebLastUpdate" Type="datetime" />
+          <Property Name="WebAuthors" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Url">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Times" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HelpText" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UrlOfUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UrlId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UrlId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Keywords" Type="nvarchar" MaxLength="500" />
+          <Property Name="Emails" Type="nvarchar" MaxLength="250" />
+          <Property Name="OutKeywords" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+        </EntityType>
+        <EntityType Name="WebContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="TimeDownloaded" Type="datetime" />
+          <Property Name="IsNotify" Type="bit" />
+          <Property Name="TimeNotify" Type="datetime" />
+          <Property Name="NotifyStatus" Type="bit" />
+          <Property Name="KeyWords" Type="nvarchar" MaxLength="500" />
+          <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HtmlContent" Type="nvarchar(max)" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="iCrawlerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="iCrawlerEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Urls" EntityType="iCrawlerModel.Url" />
+          <EntitySet Name="WebContents" EntityType="iCrawlerModel.WebContent" />
+          <EntitySet Name="CurrentLinks" EntityType="iCrawlerModel.CurrentLink" />
+          <EntitySet Name="Documents" EntityType="iCrawlerModel.Document" />
+          <EntitySet Name="UserProfiles" EntityType="iCrawlerModel.UserProfile" />
+          <EntitySet Name="HistoryLinks" EntityType="iCrawlerModel.HistoryLink" />
+          <EntitySet Name="UrlOfUsers" EntityType="iCrawlerModel.UrlOfUser" />
+        </EntityContainer>
+        <EntityType Name="Url">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Url1" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Times" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HelpText" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WebContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TimeDownloaded" Type="DateTime" Precision="3" />
+          <Property Name="IsNotify" Type="Boolean" />
+          <Property Name="TimeNotify" Type="DateTime" Precision="3" />
+          <Property Name="NotifyStatus" Type="Boolean" />
+          <Property Name="KeyWords" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Title" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="HtmlContent" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CurrentLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Url" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HtmlContent" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TextContent" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Precision="3" />
+          <Property Type="String" Name="CreateBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Depth" />
+          <Property Type="String" Name="ContentType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Time" Name="DownloadTime" Precision="7" />
+          <Property Type="String" Name="Title" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StatusDescription" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Server" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ContentEncoding" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Headers" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CharacterSet" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StatusCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Method" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="3" />
+          <Property Type="Boolean" Name="IsFromCache" />
+          <Property Type="DateTime" Name="WebLastUpdate" Precision="3" />
+          <Property Type="String" Name="WebAuthors" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FileName" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FilePath" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="FileSize" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="DownloadTime" Precision="3" />
+          <Property Type="String" Name="Url" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="UrlId" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HistoryLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Url" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HtmlContent" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TextContent" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Precision="3" />
+          <Property Type="String" Name="CreateBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Depth" />
+          <Property Type="String" Name="ContentType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Time" Name="DownloadTime" Precision="7" />
+          <Property Type="String" Name="Title" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StatusDescription" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Server" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ContentEncoding" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Headers" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CharacterSet" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StatusCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Method" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="3" />
+          <Property Type="Boolean" Name="IsFromCache" />
+          <Property Type="DateTime" Name="WebLastUpdate" Precision="3" />
+          <Property Type="String" Name="WebAuthors" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UrlOfUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UrlId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Guid" Name="UrlId" Nullable="false" />
+          <Property Type="String" Name="Keywords" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Emails" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OutKeywords" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="iCrawlerModelStoreContainer" CdmEntityContainer="iCrawlerEntities">
+          <EntitySetMapping Name="Urls">
+            <EntityTypeMapping TypeName="iCrawlerModel.Url">
+              <MappingFragment StoreEntitySet="Url">
+                <ScalarProperty Name="HelpText" ColumnName="HelpText" />
+                <ScalarProperty Name="Times" ColumnName="Times" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Url1" ColumnName="Url" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebContents">
+            <EntityTypeMapping TypeName="iCrawlerModel.WebContent">
+              <MappingFragment StoreEntitySet="WebContent">
+                <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="TimeDownloaded" ColumnName="TimeDownloaded" />
+                <ScalarProperty Name="IsNotify" ColumnName="IsNotify" />
+                <ScalarProperty Name="TimeNotify" ColumnName="TimeNotify" />
+                <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
+                <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrentLinks">
+            <EntityTypeMapping TypeName="iCrawlerModel.CurrentLink">
+              <MappingFragment StoreEntitySet="CurrentLink">
+                <ScalarProperty Name="WebAuthors" ColumnName="WebAuthors" />
+                <ScalarProperty Name="WebLastUpdate" ColumnName="WebLastUpdate" />
+                <ScalarProperty Name="IsFromCache" ColumnName="IsFromCache" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="CharacterSet" ColumnName="CharacterSet" />
+                <ScalarProperty Name="Headers" ColumnName="Headers" />
+                <ScalarProperty Name="ContentEncoding" ColumnName="ContentEncoding" />
+                <ScalarProperty Name="Server" ColumnName="Server" />
+                <ScalarProperty Name="StatusDescription" ColumnName="StatusDescription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DownloadTime" ColumnName="DownloadTime" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TextContent" ColumnName="TextContent" />
+                <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="iCrawlerModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="UrlId" ColumnName="UrlId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="DownloadTime" ColumnName="DownloadTime" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="iCrawlerModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryLinks">
+            <EntityTypeMapping TypeName="iCrawlerModel.HistoryLink">
+              <MappingFragment StoreEntitySet="HistoryLink">
+                <ScalarProperty Name="WebAuthors" ColumnName="WebAuthors" />
+                <ScalarProperty Name="WebLastUpdate" ColumnName="WebLastUpdate" />
+                <ScalarProperty Name="IsFromCache" ColumnName="IsFromCache" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="CharacterSet" ColumnName="CharacterSet" />
+                <ScalarProperty Name="Headers" ColumnName="Headers" />
+                <ScalarProperty Name="ContentEncoding" ColumnName="ContentEncoding" />
+                <ScalarProperty Name="Server" ColumnName="Server" />
+                <ScalarProperty Name="StatusDescription" ColumnName="StatusDescription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DownloadTime" ColumnName="DownloadTime" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TextContent" ColumnName="TextContent" />
+                <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrlOfUsers">
+            <EntityTypeMapping TypeName="iCrawlerModel.UrlOfUser">
+              <MappingFragment StoreEntitySet="UrlOfUser">
+                <ScalarProperty Name="OutKeywords" ColumnName="OutKeywords" />
+                <ScalarProperty Name="Emails" ColumnName="Emails" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="UrlId" ColumnName="UrlId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

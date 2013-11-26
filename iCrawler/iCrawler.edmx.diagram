@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="530f2c70b09f4583900862afe3b99962" Name="Diagram1">
+        <EntityTypeShape EntityType="iCrawlerModel.Url" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCrawlerModel.WebContent" Width="1.5" PointX="7.625" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCrawlerModel.CurrentLink" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="iCrawlerModel.Document" Width="1.5" PointX="11.026743320295001" PointY="22.853876020225638" />
+        <EntityTypeShape EntityType="iCrawlerModel.UserProfile" Width="1.5" PointX="7.5" PointY="4.375" />
+        <EntityTypeShape EntityType="iCrawlerModel.HistoryLink" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="iCrawlerModel.UrlOfUser" Width="1.5" PointX="4.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

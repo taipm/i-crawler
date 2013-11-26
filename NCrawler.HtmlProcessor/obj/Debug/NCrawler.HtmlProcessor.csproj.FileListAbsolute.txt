@@ -1,0 +1,12 @@
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\bin\Debug\NCrawler.HtmlProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\bin\Debug\NCrawler.HtmlProcessor.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\bin\Debug\HtmlAgilityPack.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\bin\Debug\NCrawler.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\bin\Debug\Autofac.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\bin\Debug\NCrawler.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\bin\Debug\HtmlAgilityPack.pdb
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\obj\Debug\NCrawler.HtmlProcessor.csprojResolveAssemblyReference.cache
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\obj\Debug\NCrawler.HtmlProcessor.Properties.Resources.resources
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\obj\Debug\NCrawler.HtmlProcessor.csproj.GenerateResource.Cache
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\obj\Debug\NCrawler.HtmlProcessor.dll
+D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.HtmlProcessor\obj\Debug\NCrawler.HtmlProcessor.pdb

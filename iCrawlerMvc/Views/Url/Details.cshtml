@@ -1,0 +1,30 @@
+﻿@model iCrawlerMvc.Models.Url
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Url</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Url1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Url1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Like", "Like", "Url", new { urlId=Model.Id }, null) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
