@@ -15,7 +15,7 @@ using System.Threading;
 using System.IO;
 
 
-namespace Helper
+namespace iCrawler.ServiceLayer
 {
 	public class StringHelper
 	{
@@ -24,6 +24,12 @@ namespace Helper
             int first = text.IndexOf(fromString);
             int last = text.IndexOf(toString);
             return text.Substring(first, last);
+        }
+
+        public string RemoveToEnd(string text, string fromString)
+        {
+            int first = text.IndexOf(fromString);            
+            return text.Remove(first);
         }        
 	}
 }

@@ -5,53 +5,69 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using iCrawler.Models;
+using System.IO;
+using iCrawler.ServiceLayer;
 
 public class Email
 {
     public string Sender;
-    public string SenderName;    
+    public string SenderName;
     public string Subject;
     public string Body;
     public Dictionary<string, string> Recipients;
     public List<Attachment> Attachments;
 }
 
-public class Attachment
-{
-    public string FileName;
-    public string FilePath;
-}
 
 public static class EmailHelper
-{ 
-        ///
-        /// Sends an Email.
-        ///
-        public static bool Send(string sender, string senderName, string recipient, string recipientName, string subject, string body)
+{
+    public static void SendArticleToEmail(VMFArticleView article)
+    {
+        Email _email = new Email();
+        _email.Sender = "taipm.bidv@gmail.com";
+        _email.SenderName = "Phan Minh Tài";
+        _email.Subject = article.Title;
+        _email.Body = article.Content + "<br />" + article.Tags;
+
+
+        Dictionary<string, string> _recipients = new Dictionary<string, string>();
+        _recipients = new DbHelper().GetContacts(article.MasterUrl, article.Content);
+        if (_recipients.Count < 1) return;
+
+        List<string> _files = new List<string>();
+        //_files = db.Documents.Where(c => c.UrlId == link.Id).Select(c => c.FileName).ToList();
+
+        EmailHelper.Send(_email, _recipients, _files);
+
+        foreach (string file in _files)
         {
-            var message = new MailMessage()
-            {
-                From = new MailAddress(sender, senderName),
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = true
-            };
-
-            message.To.Add(new MailAddress(recipient, recipientName));
-
-            try
-            {
-                var client = new SmtpClient();
-                client.Send(message);
-            }
-            catch (Exception ex)
-            {
-                //handle exeption
-                return false;
-            }
-
-            return true;
+            File.Delete(file);
         }
+    }
+
+    public static void SendArticleToEmail(ArticleView article)
+    {
+        Email _email = new Email();
+        _email.Sender = "taipm.bidv@gmail.com";
+        _email.SenderName = "Phan Minh Tài";
+        _email.Subject = article.Title;
+        _email.Body = article.Content + "<br />" + article.Tags;
+
+
+        Dictionary<string, string> _recipients = new Dictionary<string, string>();
+        _recipients = new DbHelper().GetContacts(article.MasterUrl, article.Content);
+
+        List<string> _files = new List<string>();
+        //_files = db.Documents.Where(c => c.UrlId == link.Id).Select(c => c.FileName).ToList();
+
+        EmailHelper.Send(_email, _recipients, _files);
+
+        foreach (string file in _files)
+        {
+            File.Delete(file);
+        }
+    }        
 
         public static bool Send(Email email, Dictionary<string, string> recipients, List<string> attachments)
         {

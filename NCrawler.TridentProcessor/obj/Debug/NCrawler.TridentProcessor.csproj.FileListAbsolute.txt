@@ -12,3 +12,17 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.TridentProce
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.TridentProcessor\obj\Debug\NCrawler.TridentProcessor.csproj.GenerateResource.Cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.TridentProcessor\obj\Debug\NCrawler.IEProcessor.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.TridentProcessor\obj\Debug\NCrawler.IEProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\bin\Debug\NCrawler.IEProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\bin\Debug\NCrawler.IEProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\bin\Debug\NCrawler.HtmlProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\bin\Debug\HtmlAgilityPack.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\bin\Debug\NCrawler.HtmlProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\obj\Debug\NCrawler.TridentProcessor.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\obj\Debug\NCrawler.IEProcessor.TridentBrowserForm.resources
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\obj\Debug\NCrawler.TridentProcessor.csproj.GenerateResource.Cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\obj\Debug\NCrawler.IEProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.TridentProcessor\obj\Debug\NCrawler.IEProcessor.pdb

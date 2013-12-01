@@ -13,8 +13,7 @@ using iCrawler.Models;
 namespace iCrawler
 {        
     public interface IBidvCrawler
-    {                                                  
-        Article GetArticleFrom(string url);                       
+    {                                                          
         void ProcessBIDVPortal(PropertyBag propertyBag);       
     }
 }

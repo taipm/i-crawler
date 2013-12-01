@@ -28,3 +28,33 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.Demo\bin\Deb
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.Demo\obj\Debug\NCrawler.Demo.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.Demo\obj\Debug\NCrawler.Demo.exe
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.Demo\obj\Debug\NCrawler.Demo.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.Demo.exe.config
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.Demo.exe
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.Demo.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.EsentServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.HtmlProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.IFilterProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.IsolatedStorageServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.iTextSharpPdfProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.LanguageDetection.Google.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.MP3Processor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\Esent.Interop.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\HtmlAgilityPack.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\EPocalipse.IFilter.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\itextsharp.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\UltraID3Lib.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.EsentServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.HtmlProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.IFilterProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.IsolatedStorageServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.iTextSharpPdfProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.LanguageDetection.Google.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.MP3Processor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\bin\Debug\EPocalipse.IFilter.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\obj\Debug\NCrawler.Demo.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\obj\Debug\NCrawler.Demo.exe
+D:\Projects\GoogleCode\iCrawler\NCrawler.Demo\obj\Debug\NCrawler.Demo.pdb

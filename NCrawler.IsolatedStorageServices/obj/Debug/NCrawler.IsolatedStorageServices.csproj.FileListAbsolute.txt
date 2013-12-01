@@ -6,3 +6,11 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStor
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\obj\Debug\NCrawler.IsolatedStorageServices.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\obj\Debug\NCrawler.IsolatedStorageServices.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IsolatedStorageServices\obj\Debug\NCrawler.IsolatedStorageServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.IsolatedStorageServices\bin\Debug\NCrawler.IsolatedStorageServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.IsolatedStorageServices\bin\Debug\NCrawler.IsolatedStorageServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.IsolatedStorageServices\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.IsolatedStorageServices\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.IsolatedStorageServices\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.IsolatedStorageServices\obj\Debug\NCrawler.IsolatedStorageServices.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.IsolatedStorageServices\obj\Debug\NCrawler.IsolatedStorageServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.IsolatedStorageServices\obj\Debug\NCrawler.IsolatedStorageServices.pdb

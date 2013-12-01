@@ -11,3 +11,16 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\bin\Debug\HtmlAg
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\obj\x86\Debug\NGet.exe
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\obj\x86\Debug\NGet.pdb
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NGet\obj\x86\Debug\NGet.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NGet.exe.config
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NGet.exe
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NGet.pdb
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NCrawler.HtmlProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\HtmlAgilityPack.dll
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NCrawler.HtmlProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\GoogleCode\iCrawler\NGet\obj\x86\Debug\NGet.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NGet\obj\x86\Debug\NGet.exe
+D:\Projects\GoogleCode\iCrawler\NGet\obj\x86\Debug\NGet.pdb

@@ -14,3 +14,19 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.RedisService
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.RedisServices\obj\Debug\NCrawler.RedisServices.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.RedisServices\obj\Debug\NCrawler.RedisServices.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.RedisServices\obj\Debug\NCrawler.RedisServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\NCrawler.RedisServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\NCrawler.RedisServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\ServiceStack.Common.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\ServiceStack.Interfaces.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\ServiceStack.Redis.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\ServiceStack.Text.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\ServiceStack.Common.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\ServiceStack.Interfaces.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\ServiceStack.Redis.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\bin\Debug\ServiceStack.Text.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\obj\Debug\NCrawler.RedisServices.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\obj\Debug\NCrawler.RedisServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.RedisServices\obj\Debug\NCrawler.RedisServices.pdb

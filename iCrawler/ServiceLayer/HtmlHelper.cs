@@ -6,12 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.IO;
+using System.Text.RegularExpressions;
 
-namespace HtmlHelper
-{
     public static class HtmlHelper
-    {        
-        public static List<HtmlNode> GetNodes(string className, string html)
+    {
+        public static bool IsValidUrl(string text)
+        {            
+            Regex rx = new Regex(@"http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?", RegexOptions.Compiled);
+            return rx.IsMatch(text);
+        }
+
+        public static string RemoveHTMLTagsFromString(string Text)
+        {
+            Text = Text.Replace("\r", " ");
+            Text = Text.Replace("\n", " ");
+            // Remove sTabs
+            Text = Text.Replace("\t", string.Empty);
+            Text = Text.Trim();
+
+            return Regex.Replace(Text, "<[^>]*>", String.Empty);
+        }
+        
+        public static List<HtmlNode> GetNodesByDiv(string className, string html)
         {            
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(html);
@@ -21,9 +37,18 @@ namespace HtmlHelper
             return links;
             
         }
-        public static List<HtmlNode> GetLinks(string html)
+        public static List<HtmlNode> GetNodesByClass(string className, string html)
         {
-            //List<string> links = new List<string>();
+            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(html);
+
+            List<HtmlNode> links = doc.DocumentNode.SelectNodes("//h2[@class='" + className + "']").ToList<HtmlNode>();
+
+            return links;
+
+        }
+        public static List<HtmlNode> GetLinks(string html)
+        {            
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(html);
 
@@ -56,4 +81,4 @@ namespace HtmlHelper
             return responseFromServer;
         }
     }
-}
+

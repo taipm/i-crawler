@@ -7,3 +7,12 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.EsentService
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.EsentServices\obj\Debug\NCrawler.EsentServices.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.EsentServices\obj\Debug\NCrawler.EsentServices.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.EsentServices\obj\Debug\NCrawler.EsentServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.EsentServices\bin\Debug\NCrawler.EsentServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.EsentServices\bin\Debug\NCrawler.EsentServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.EsentServices\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.EsentServices\bin\Debug\Esent.Interop.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.EsentServices\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.EsentServices\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.EsentServices\obj\Debug\NCrawler.EsentServices.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.EsentServices\obj\Debug\NCrawler.EsentServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.EsentServices\obj\Debug\NCrawler.EsentServices.pdb

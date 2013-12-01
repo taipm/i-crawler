@@ -7,3 +7,12 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.iTextSharpPd
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.iTextSharpPdfProcessor\obj\Debug\NCrawler.iTextSharpPdfProcessor.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.iTextSharpPdfProcessor\obj\Debug\NCrawler.iTextSharpPdfProcessor.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.iTextSharpPdfProcessor\obj\Debug\NCrawler.iTextSharpPdfProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.iTextSharpPdfProcessor\bin\Debug\NCrawler.iTextSharpPdfProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.iTextSharpPdfProcessor\bin\Debug\NCrawler.iTextSharpPdfProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.iTextSharpPdfProcessor\bin\Debug\itextsharp.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.iTextSharpPdfProcessor\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.iTextSharpPdfProcessor\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.iTextSharpPdfProcessor\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.iTextSharpPdfProcessor\obj\Debug\NCrawler.iTextSharpPdfProcessor.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.iTextSharpPdfProcessor\obj\Debug\NCrawler.iTextSharpPdfProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.iTextSharpPdfProcessor\obj\Debug\NCrawler.iTextSharpPdfProcessor.pdb
