@@ -12,6 +12,7 @@ using NCrawler;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using iCrawler.ServiceLayer;
+using iCrawler.Models;
 
 namespace iCrawler.Demo
 {
@@ -51,11 +52,11 @@ namespace iCrawler.Demo
                 }
                 else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("thuvienvatly.com"))
                 {
-                    new TVVLHelper().ProcessTVVL(propertyBag.ResponseUri.AbsoluteUri);
+                    new TVVLCrawler().ProcessTVVL(propertyBag.ResponseUri.AbsoluteUri);
                 }                
                 else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("diendantoanhoc"))
                 {
-                    new VMFHelper().ProcessVMF(propertyBag.ResponseUri.AbsoluteUri);
+                    new VMFCrawler().ProcessVMF(propertyBag.ResponseUri.AbsoluteUri);
                 }
                 else
                 {

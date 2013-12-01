@@ -13,28 +13,7 @@ using iCrawler.ServiceLayer;
 
 namespace iCrawler
 {
-    public class TimerHelper
-    {
-        public bool IsInTimes(string times, bool isSkip)
-        {
-            if (isSkip == true) return true;
-            if (times == null) return false;
-
-            string[] strSplits = new string[] { ";"};
-            string[] arrEs = times.Split(strSplits, StringSplitOptions.None);
-            if(arrEs != null && arrEs.Count() > 0)
-            {
-                foreach(string arr in arrEs)
-                {
-                    if(DateTime.Now.ToString().ToLower().Contains(arr)) return true;
-                }
-            }
-            return false;
-        }
-    }
     
-   
-
     public class BidvCrawler : ICrawlerServices, IBidvCrawler
     {
         private iCrawlerEntities db = new iCrawlerEntities();

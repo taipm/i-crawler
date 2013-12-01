@@ -12,7 +12,7 @@ using iCrawler.Mappers;
 
 namespace iCrawler
 {
-    public class VMFHelper
+    public class VMFCrawler
     {        
         private iCrawlerEntities db = new iCrawlerEntities();
                               
