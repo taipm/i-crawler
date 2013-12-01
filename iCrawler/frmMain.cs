@@ -16,6 +16,7 @@ using iCrawler.Demo;
 using Microsoft.Win32;
 using System.Threading;
 using iCrawler.ServiceLayer;
+using iCrawler.Models;
 
 namespace iCrawler
 {

@@ -50,7 +50,12 @@ namespace iCrawler.Models
     }
 
     public class VMFArticleView : ArticleView
-    {
+    {        
+        public void ProcessContent()
+        {
+            this.Content = new StringHelper().RemoveToEnd(this.Content, "Stickies");
+        }
+
         new public void ProcessImg()
         {            
         }
@@ -58,6 +63,7 @@ namespace iCrawler.Models
         new public VMFArticleView Process()
         {
             ProcessImg();
+            ProcessContent();
             return this;
         }
     }
