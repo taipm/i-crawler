@@ -7,3 +7,12 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.MP3Processor
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.MP3Processor\obj\Debug\NCrawler.MP3Processor.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.MP3Processor\obj\Debug\NCrawler.MP3Processor.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.MP3Processor\obj\Debug\NCrawler.MP3Processor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.MP3Processor\bin\Debug\NCrawler.MP3Processor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.MP3Processor\bin\Debug\NCrawler.MP3Processor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.MP3Processor\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.MP3Processor\bin\Debug\UltraID3Lib.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.MP3Processor\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.MP3Processor\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.MP3Processor\obj\Debug\NCrawler.MP3Processor.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.MP3Processor\obj\Debug\NCrawler.MP3Processor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.MP3Processor\obj\Debug\NCrawler.MP3Processor.pdb

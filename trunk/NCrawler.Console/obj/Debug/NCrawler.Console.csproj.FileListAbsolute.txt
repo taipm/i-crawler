@@ -11,3 +11,16 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.Console\bin\
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.Console\obj\Debug\NCrawler.Console.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.Console\obj\Debug\NCrawl.exe
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.Console\obj\Debug\NCrawl.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\NCrawl.exe.config
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\NCrawl.exe
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\NCrawl.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\NCrawler.HtmlProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\HtmlAgilityPack.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\NCrawler.HtmlProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\obj\Debug\NCrawler.Console.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\obj\Debug\NCrawl.exe
+D:\Projects\GoogleCode\iCrawler\NCrawler.Console\obj\Debug\NCrawl.pdb

@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using iCrawler.Demo;
 using Microsoft.Win32;
 using System.Threading;
+using iCrawler.ServiceLayer;
 
 namespace iCrawler
 {
@@ -57,7 +58,10 @@ namespace iCrawler
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
             ServicePointManager.CheckCertificateRevocationList = true;
             ServicePointManager.EnableDnsRoundRobin = true;
-
+            if (!NetworkService.IsConnectedToDBServer())
+            {
+                return;
+            }
             List<string> urls = new List<string>();
             iCrawlerEntities _db = new iCrawlerEntities();
             foreach (var item in _db.Urls)
@@ -69,10 +73,7 @@ namespace iCrawler
                     AdvancedCrawlDemo.Run(item.Url1);                    
                 }
             }
-
             
-            //// Run demo 8
-            //AdvancedCrawlDemo.Run();
         }
 
         private void btnAutoStart_Click(object sender, EventArgs e)

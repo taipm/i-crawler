@@ -10,3 +10,15 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProce
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\obj\Debug\NCrawler.SitemapProcessor.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\obj\Debug\NCrawler.SitemapProcessor.pdb
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.SitemapProcessor\obj\Debug\NCrawler.SitemapProcessor.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\bin\Debug\NCrawler.SitemapProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\bin\Debug\NCrawler.SitemapProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\bin\Debug\NCrawler.HtmlProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\bin\Debug\HtmlAgilityPack.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\bin\Debug\NCrawler.HtmlProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\obj\Debug\NCrawler.SitemapProcessor.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\obj\Debug\NCrawler.SitemapProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.SitemapProcessor\obj\Debug\NCrawler.SitemapProcessor.pdb

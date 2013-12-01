@@ -4,3 +4,9 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler\bin\Debug\Au
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler\obj\Debug\NCrawler.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler\obj\Debug\NCrawler.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler\obj\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler\obj\Debug\NCrawler.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler\obj\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler\obj\Debug\NCrawler.pdb

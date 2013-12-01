@@ -6,3 +6,11 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.FileStorageS
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.FileStorageServices\obj\Debug\NCrawler.FileStorageServices.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.FileStorageServices\obj\Debug\NCrawler.FileStorageServices.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.FileStorageServices\obj\Debug\NCrawler.FileStorageServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.FileStorageServices\bin\Debug\NCrawler.FileStorageServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.FileStorageServices\bin\Debug\NCrawler.FileStorageServices.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.FileStorageServices\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.FileStorageServices\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.FileStorageServices\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.FileStorageServices\obj\Debug\NCrawler.FileStorageServices.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.FileStorageServices\obj\Debug\NCrawler.FileStorageServices.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.FileStorageServices\obj\Debug\NCrawler.FileStorageServices.pdb

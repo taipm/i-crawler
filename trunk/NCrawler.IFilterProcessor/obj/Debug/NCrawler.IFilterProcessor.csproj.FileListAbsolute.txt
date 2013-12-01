@@ -8,3 +8,13 @@ D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProce
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\obj\Debug\NCrawler.IFilterProcessor.csprojResolveAssemblyReference.cache
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\obj\Debug\NCrawler.IFilterProcessor.dll
 D:\Dopbox\Dropbox\Projects\iCrawler\ncrawler-79962\Net 4.0\NCrawler.IFilterProcessor\obj\Debug\NCrawler.IFilterProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\bin\Debug\NCrawler.IFilterProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\bin\Debug\NCrawler.IFilterProcessor.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\bin\Debug\EPocalipse.IFilter.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\bin\Debug\NCrawler.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\bin\Debug\Autofac.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\bin\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\bin\Debug\EPocalipse.IFilter.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\obj\Debug\NCrawler.IFilterProcessor.csprojResolveAssemblyReference.cache
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\obj\Debug\NCrawler.IFilterProcessor.dll
+D:\Projects\GoogleCode\iCrawler\NCrawler.IFilterProcessor\obj\Debug\NCrawler.IFilterProcessor.pdb

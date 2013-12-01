@@ -11,6 +11,7 @@ using System.Globalization;
 using NCrawler;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using iCrawler.ServiceLayer;
 
 namespace iCrawler.Demo
 {
@@ -43,23 +44,15 @@ namespace iCrawler.Demo
             }
 
             lock (this)
-            {
-                //if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("diendantoanhoc"))
-                //{
-                //    new VMFHelper().ProcessVMF(propertyBag.ResponseUri.AbsoluteUri);
-                //}
-                if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("bidv"))
+            {                
+                if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("bidv") && NetworkService.IsConnectedToBIDV())
                 {
                     new BidvCrawler().ProcessBIDVPortal(propertyBag);
                 }
                 else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("thuvienvatly.com"))
                 {
                     new TVVLHelper().ProcessTVVL(propertyBag.ResponseUri.AbsoluteUri);
-                }
-                //else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("tinhte"))
-                //{
-                //    new BIDVHelper().ProcessBIDVPortal(propertyBag);                    
-                //}
+                }                
                 else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("diendantoanhoc"))
                 {
                     new VMFHelper().ProcessVMF(propertyBag.ResponseUri.AbsoluteUri);
