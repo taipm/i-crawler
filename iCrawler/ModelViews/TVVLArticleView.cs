@@ -29,8 +29,8 @@ namespace iCrawler.Models
                 //this.Summary = _fullNode.InnerText.Substring(0, 200);
                 string text = HtmlHelper.RemoveHTMLTagsFromString(this.Content).Replace("//document.write('');", "").Trim();
                 string strToRemove = new StringHelper().GetFirstWords(text, 30);
-                string summary = new StringHelper().GetFirstWords(text, 200).Replace(strToRemove,"");
-                this.Summary = summary;
+                string summary = new StringHelper().GetFirstWords(text, 200);
+                this.Summary = summary.Replace(strToRemove,"");
             }
             catch
             {
