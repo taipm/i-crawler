@@ -3,6 +3,9 @@
   <Profiles />
   <Settings>
     <Setting Name="iCrawler_iTrackingMvc4Services_iTrackingServices" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://khosachcu.vn:8080/iTrackingServices.asmx</Value>
+    </Setting>
+    <Setting Name="iCrawler_localhost_iTrackingServices" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:46428/iTrackingServices.asmx</Value>
     </Setting>
   </Settings>

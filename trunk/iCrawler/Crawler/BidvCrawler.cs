@@ -126,8 +126,8 @@ namespace iCrawler
                 //SET URL TO INITIAL START CRAW
                 string tmp = url;
                 tmp = url + i.ToString();
-                
-                Article _article = new Article();
+
+                BIDVArticleView _article = new BIDVArticleView();
                 _article = Mappers.Mapper.UrlToArticle(tmp);                                
                                 
                 if (_article != null)
@@ -176,7 +176,7 @@ namespace iCrawler
                         try
                         {                            
                             db.SaveChanges();
-                            _service.CreateArticle(link.Title, link.HtmlContent.Substring(0, 100), link.HtmlContent, "BidvCrawler");
+                            //_service.CreateArticle(link.Title, link.HtmlContent.Substring(0, 100), link.HtmlContent, "BidvCrawler", "BidvCrawler");
                         }
                         catch (DbEntityValidationException e)
                         {

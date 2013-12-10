@@ -26,10 +26,20 @@ namespace iCrawler.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:46428/iTrackingServices.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://khosachcu.vn:8080/iTrackingServices.asmx")]
         public string iCrawler_iTrackingMvc4Services_iTrackingServices {
             get {
                 return ((string)(this["iCrawler_iTrackingMvc4Services_iTrackingServices"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:46428/iTrackingServices.asmx")]
+        public string iCrawler_localhost_iTrackingServices {
+            get {
+                return ((string)(this["iCrawler_localhost_iTrackingServices"]));
             }
         }
     }
