@@ -19,9 +19,7 @@ namespace iCrawler
         private ChuyenToan.ChuyenToanEntities _dbToan = new ChuyenToan.ChuyenToanEntities();
         private iTrackingMvc4Services.iTrackingServices _service = new iTrackingMvc4Services.iTrackingServices();
         public string crawlerName = "vmf";
-
         
-
         public void ProcessVMF(string url)
         {
             string content = HtmlHelper.GetHtmlPage(url);
@@ -57,45 +55,28 @@ namespace iCrawler
                             VMFArticleView _article = new VMFArticleView();
                             _article.MasterUrl = "http://diendantoanhoc.net/";
                             _article.Url = _url;
-                            _article.Content = _nodeFullArticle.OuterHtml;
-                            _article.DownloadTime = DateTime.Now;
-                            _article.Tags = "";
+                            _article.PageContent = _pageContent;                            
 
                             try
                             {
                                 _nodeFullArticle = HtmlHelper.GetNodesByClass("contentheading", _pageContent).FirstOrDefault();
-                                link.Title = _nodeFullArticle.OuterHtml;
-                                _article.Title = HtmlHelper.RemoveHTMLTagsFromString(_nodeFullArticle.OuterHtml);
-
+                                link.Title = _nodeFullArticle.OuterHtml;                                
                             }
                             catch
                             {
                                 _article.Title = "";
                             }
 
+                            _article = Mapper.ArticleViewToVMF(_article.Process());  
 
                             if (_article.Title.Length >= 2)
-                            {
-                                _article = Mapper.ArticleViewToVMF(_article.Process());                                    
-
+                            {                                                                 
                                 db.CurrentLinks.Add(link);
-
-                                iTrackingMvc4Services.Article _object = new iTrackingMvc4Services.Article();
-                                _object.Id = Guid.NewGuid();
-                                _object.Title = _article.Title;
-                                _object.Summary = _article.Content.Substring(0,50);
-                                _object.Content = _article.Content;
-                                _object.Tags = _article.Tags;
-                                _object.CreateBy = crawlerName;
-                                _object.UpdateBy = crawlerName;
-                                _object.LastUpdate = DateTime.Now;
-                                _object.CreateDate = DateTime.Now;
-                                _object.IsPublished = true;
-
+                             
                                 try
                                 {
-                                    db.SaveChanges();                                    
-                                    WebserviceHelper.PostArticle(crawlerName, _object);      
+                                    db.SaveChanges();
+                                    WebserviceHelper.PostArticle(crawlerName, WebserviceHelper.CrawlerArticleToObject(_article));      
                                     EmailHelper.SendArticleToEmail(_article);
                                 }
                                 catch (Exception ex)

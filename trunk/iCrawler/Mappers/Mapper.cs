@@ -12,57 +12,55 @@ namespace iCrawler.Mappers
 {
     public static class Mapper
     {
-        public static ChuyenToan.Article ArticleViewToArticle(VMFArticleView article)
-        {
-            ChuyenToan.Article _article = new ChuyenToan.Article();
-            _article.Id = Guid.NewGuid();
-            _article.Title = article.Title;
-            _article.Content = article.Content;
-            _article.CountViews = 0;
-            _article.CreateDate = DateTime.Now;
-            _article.LastUpdate = DateTime.Now;
-            _article.CreateBy = "VMFCrawler";
-            _article.UpdateBy = "VMFCrawler";
-            _article.IsApproved = false;
-            _article.IsPublished = false;
-            _article.IsReviewed = false;
-            _article.IsSent = false;
-            _article.CategoryId = Guid.Empty;
-
-            
-            return _article;
-        }
-
+      
         public static VMFArticleView ArticleViewToVMF(ArticleView article)
-        {           
-            return new VMFArticleView(){
-                MasterUrl = article.MasterUrl,
-                Url = article.Url,
-                Title = "VMFCrawler : " + article.Title,
-                Content = article.Content,
-                DownloadTime = article.DownloadTime,
-                Tags = article.Tags,
-                Authors = article.Authors
-            };
+        {
+            VMFArticleView _view = new VMFArticleView();
+            _view.MasterUrl = article.MasterUrl;
+            _view.Url = article.Url;
+            _view.Title = article.Title;
+            _view.Summary = article.Summary;
+            _view.Content = article.Content;
+            _view.Tags = article.Tags;
+
+            _view.CreateDate = article.CreateDate;
+            _view.CreateBy = article.CreateBy;
+            _view.UpdateDate = article.UpdateDate;
+            _view.UpdateBy = article.UpdateBy;
+
+            _view.isPublished = article.isPublished;
+            _view.IsReviewed = article.IsReviewed;
+
+            _view.DownloadTime = article.DownloadTime;
+            if (article.CountViews == null) _view.CountViews = 0;
+            _view.CountViews = article.CountViews;
+
+            return _view;                  
         }
 
-        public static ChuyenLy.Article ArticleViewToObject(TVVLArticleView article)
+        public static BIDVArticleView ArticleViewToBIDV(ArticleView article)
         {
-            ChuyenLy.Article _article = new ChuyenLy.Article();
-            _article.CreateDate = DateTime.Now;
-            _article.Content = article.Content;
-            _article.CountViews = 0;
-            _article.CreateBy = "TVVLCrawler";
-            _article.Title = article.Title;
-            _article.Tags = article.Tags;
-            _article.UpdateBy = "TVVLCrawler";
-            _article.CategoryId = Guid.Empty;
-            _article.IsReviewed = false;
-            _article.IsApproved = false;
-            _article.IsPublished = false;
-            _article.LastUpdate = DateTime.Now;
+            BIDVArticleView _view = new BIDVArticleView();
+            _view.MasterUrl = article.MasterUrl;
+            _view.Url = article.Url;
+            _view.Title = article.Title;
+            _view.Summary = article.Summary;
+            _view.Content = article.Content;
+            _view.Tags = article.Tags;
 
-            return _article;            
+            _view.CreateDate = article.CreateDate;
+            _view.CreateBy = article.CreateBy;
+            _view.UpdateDate = article.UpdateDate;
+            _view.UpdateBy = article.UpdateBy;
+
+            _view.isPublished = article.isPublished;
+            _view.IsReviewed = article.IsReviewed;
+
+            _view.DownloadTime = article.DownloadTime;
+            if (article.CountViews == null) _view.CountViews = 0;
+            _view.CountViews = article.CountViews;
+
+            return _view;    
         }
 
         public static TVVLArticleView ArticleViewToTVVL(ArticleView article)
@@ -80,8 +78,13 @@ namespace iCrawler.Mappers
             _view.UpdateDate = article.UpdateDate;
             _view.UpdateBy = article.UpdateBy;
 
+            _view.isPublished = article.isPublished;
+            _view.IsReviewed = article.IsReviewed;
+
             _view.DownloadTime = article.DownloadTime;
-            
+
+            if (article.CountViews == null) _view.CountViews = 0;
+            _view.CountViews = article.CountViews;
             return _view;            
         }
 

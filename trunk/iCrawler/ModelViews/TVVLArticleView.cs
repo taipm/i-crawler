@@ -12,64 +12,73 @@ namespace iCrawler.Models
     {
         public string ImageSource = "http://360.thuvienvatly.com/images/";
         public string PageContent;
-        public string Url;
-
-        new public void GetContent()
-        {
-            HtmlNode _nodeFullArticle;
-            _nodeFullArticle = HtmlHelper.GetNodesByDiv("full-article", PageContent).FirstOrDefault();            
-
-            this.Content = _nodeFullArticle.OuterHtml;            
-        }
         
-        public void ProcessContent()
-        {
-            this.Content = new StringHelper().RemoveToEnd(this.Content, "Nếu thấy thích, hãy Đăng kí để nhận bài viết mới qua email");
+        HtmlNode _fullNode;
+
+        public void GetTitle()
+        {            
+            _fullNode = HtmlHelper.GetNodesByDiv("article-rel-wrapper", PageContent).FirstOrDefault();
+            this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml).Trim();
         }
 
-        public string GetSummary()
-        {
-            //leading
-            string summary = this.Title;
-            return summary;
-        }
-
-        new public void GetTitle()
-        {
-            var _nodeFullArticle = HtmlHelper.GetNodesByDiv("article-rel-wrapper", PageContent).FirstOrDefault();            
-            this.Title = HtmlHelper.RemoveHTMLTagsFromString(_nodeFullArticle.OuterHtml).Trim();
-        }
-
-        new public void GetTags()
-        {
+        public void GetSummary()
+        {            
             try
             {
-                var _nodeFullArticle = HtmlHelper.GetNodesByDiv("tag", PageContent).FirstOrDefault();
-                this.Tags = HtmlHelper.RemoveHTMLTagsFromString(_nodeFullArticle.OuterHtml).Trim();
+                //_fullNode = HtmlHelper.GetNodesByDiv("full-article", PageContent).FirstOrDefault();
+                //this.Summary = _fullNode.InnerText.Substring(0, 200);
+                string text = HtmlHelper.RemoveHTMLTagsFromString(this.Content).Replace("//document.write('');", "").Trim();
+                string strToRemove = new StringHelper().GetFirstWords(text, 30);
+                string summary = new StringHelper().GetFirstWords(text, 200).Replace(strToRemove,"");
+                this.Summary = summary;
             }
             catch
             {
-                this.Tags = "";
+                this.Summary = "";
             }
-        }
-        
 
-        new public void ProcessImg()
+        }
+
+        public void GetContent()
+        {  
+            _fullNode = HtmlHelper.GetNodesByDiv("full-article", PageContent).FirstOrDefault();
+            this.Content = new StringHelper().RemoveToEnd(_fullNode.OuterHtml, "Nếu thấy thích, hãy Đăng kí để nhận bài viết mới qua email"); 
+        }
+
+        public void GetTags()
+        {
+            try
+            {
+                var _fullNode = HtmlHelper.GetNodesByDiv("tag", PageContent).FirstOrDefault();
+                this.Tags = "thuvienvatly.com, tvvlcrawler," + HtmlHelper.RemoveHTMLTagsFromString(_fullNode.InnerText).Trim();
+            }
+            catch
+            {
+                this.Tags = "thuvienvatly.com, tvvlcrawler,";
+            }
+        }     
+       
+        public void ProcessImg()
         {
             this.Content = Content.Replace("/images/", ImageSource);
         }
 
-        new public TVVLArticleView Process()
+        public TVVLArticleView Process()
         {
+            GetTitle();                        
             GetContent();
-            ProcessContent();
-            GetTitle();
-            GetSummary();
+            GetSummary();  
             GetTags();
             ProcessImg();
-            
-            this.DownloadTime = DateTime.Now;            
-            
+
+            this.DownloadTime = DateTime.Now;
+            this.CreateBy = "TVVLCrawler";
+            this.UpdateBy = "TVVLCrawler";
+            this.CreateDate = DateTime.Now;
+            this.UpdateDate = DateTime.Now;
+
+            this.isPublished = true;
+            this.IsReviewed = true;
             return this;
         }
     }
