@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ChuyenLyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ChuyenLyModelStoreContainer">
+    <EntitySet Name="Article" EntityType="ChuyenLyModel.Store.Article" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="450" />
+    <Property Name="Summary" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CategoryId" Type="uniqueidentifier" />
+    <Property Name="CountViews" Type="int" />
+    <Property Name="IsSent" Type="bit" />
+    <Property Name="SentDate" Type="datetime" />
+    <Property Name="IsReviewed" Type="bit" />
+    <Property Name="ReviewedDate" Type="datetime" />
+    <Property Name="IsApproved" Type="bit" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="IsPublished" Type="bit" />
+    <Property Name="PublishedDate" Type="datetime" />
+    <Property Name="IsReturned" Type="bit" />
+    <Property Name="ReturnedDate" Type="datetime" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="350" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="AvatarPath" Type="nvarchar" MaxLength="350" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetPublishedArticles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPublish" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublishedArticlesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPublishedArticlesResult" type="tns:ArrayOfArticle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfArticle">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Article" nillable="true" type="tns:Article" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Article">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountViews" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSent" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReviewed" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReviewedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsApproved" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApprovedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPublished" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PublishedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReturned" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tags" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApprovedBy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AvatarPath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="articleId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArticleResult" type="tns:Article" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="crawlerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="article" type="tns:Article" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostArticleResult" type="tns:Article" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="crawlerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="summary" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createby" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tags" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateArticleResult" type="tns:Article" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPublishedArticlesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPublishedArticles" />
+  </wsdl:message>
+  <wsdl:message name="GetPublishedArticlesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPublishedArticlesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:PostArticle" />
+  </wsdl:message>
+  <wsdl:message name="PostArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:PostArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateArticle" />
+  </wsdl:message>
+  <wsdl:message name="CreateArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:portType name="iTrackingServicesSoap">
+    <wsdl:operation name="GetPublishedArticles">
+      <wsdl:input message="tns:GetPublishedArticlesSoapIn" />
+      <wsdl:output message="tns:GetPublishedArticlesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <wsdl:input message="tns:GetArticleSoapIn" />
+      <wsdl:output message="tns:GetArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostArticle">
+      <wsdl:input message="tns:PostArticleSoapIn" />
+      <wsdl:output message="tns:PostArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateArticle">
+      <wsdl:input message="tns:CreateArticleSoapIn" />
+      <wsdl:output message="tns:CreateArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="iTrackingServicesSoap" type="tns:iTrackingServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPublishedArticles">
+      <soap:operation soapAction="http://tempuri.org/GetPublishedArticles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <soap:operation soapAction="http://tempuri.org/GetArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostArticle">
+      <soap:operation soapAction="http://tempuri.org/PostArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateArticle">
+      <soap:operation soapAction="http://tempuri.org/CreateArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="iTrackingServicesSoap12" type="tns:iTrackingServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPublishedArticles">
+      <soap12:operation soapAction="http://tempuri.org/GetPublishedArticles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <soap12:operation soapAction="http://tempuri.org/GetArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostArticle">
+      <soap12:operation soapAction="http://tempuri.org/PostArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateArticle">
+      <soap12:operation soapAction="http://tempuri.org/CreateArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="iTrackingServices">
+    <wsdl:port name="iTrackingServicesSoap" binding="tns:iTrackingServicesSoap">
+      <soap:address location="http://localhost:46428/iTrackingServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="iTrackingServicesSoap12" binding="tns:iTrackingServicesSoap12">
+      <soap12:address location="http://localhost:46428/iTrackingServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
