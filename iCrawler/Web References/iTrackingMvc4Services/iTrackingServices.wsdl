@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
-      <s:element name="GetArticle">
+      <s:element name="GetPublishedArticles">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="articleId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPublish" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetArticleResponse">
+      <s:element name="GetPublishedArticlesResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetArticleResult" type="tns:Article" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetPublishedArticlesResult" type="tns:ArrayOfArticle" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfArticle">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Article" nillable="true" type="tns:Article" />
+        </s:sequence>
+      </s:complexType>
       <s:complexType name="Article">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
@@ -44,13 +50,33 @@
           <s:element minOccurs="0" maxOccurs="1" name="AvatarPath" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetViewArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetViewArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetViewArticleResult" type="tns:Article" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="CreateArticle">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="crawlerName" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="summary" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createby" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tags" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPublished" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="countViews" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -80,11 +106,17 @@
       </s:simpleType>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetArticleSoapIn">
-    <wsdl:part name="parameters" element="tns:GetArticle" />
+  <wsdl:message name="GetPublishedArticlesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPublishedArticles" />
   </wsdl:message>
-  <wsdl:message name="GetArticleSoapOut">
-    <wsdl:part name="parameters" element="tns:GetArticleResponse" />
+  <wsdl:message name="GetPublishedArticlesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPublishedArticlesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetViewArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetViewArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetViewArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetViewArticleResponse" />
   </wsdl:message>
   <wsdl:message name="CreateArticleSoapIn">
     <wsdl:part name="parameters" element="tns:CreateArticle" />
@@ -99,9 +131,13 @@
     <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
   </wsdl:message>
   <wsdl:portType name="iTrackingServicesSoap">
-    <wsdl:operation name="GetArticle">
-      <wsdl:input message="tns:GetArticleSoapIn" />
-      <wsdl:output message="tns:GetArticleSoapOut" />
+    <wsdl:operation name="GetPublishedArticles">
+      <wsdl:input message="tns:GetPublishedArticlesSoapIn" />
+      <wsdl:output message="tns:GetPublishedArticlesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViewArticle">
+      <wsdl:input message="tns:GetViewArticleSoapIn" />
+      <wsdl:output message="tns:GetViewArticleSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="CreateArticle">
       <wsdl:input message="tns:CreateArticleSoapIn" />
@@ -114,8 +150,17 @@
   </wsdl:portType>
   <wsdl:binding name="iTrackingServicesSoap" type="tns:iTrackingServicesSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetArticle">
-      <soap:operation soapAction="http://tempuri.org/GetArticle" style="document" />
+    <wsdl:operation name="GetPublishedArticles">
+      <soap:operation soapAction="http://tempuri.org/GetPublishedArticles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewArticle">
+      <soap:operation soapAction="http://tempuri.org/GetViewArticle" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -144,8 +189,17 @@
   </wsdl:binding>
   <wsdl:binding name="iTrackingServicesSoap12" type="tns:iTrackingServicesSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetArticle">
-      <soap12:operation soapAction="http://tempuri.org/GetArticle" style="document" />
+    <wsdl:operation name="GetPublishedArticles">
+      <soap12:operation soapAction="http://tempuri.org/GetPublishedArticles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewArticle">
+      <soap12:operation soapAction="http://tempuri.org/GetViewArticle" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -174,10 +228,10 @@
   </wsdl:binding>
   <wsdl:service name="iTrackingServices">
     <wsdl:port name="iTrackingServicesSoap" binding="tns:iTrackingServicesSoap">
-      <soap:address location="http://localhost:46428/iTrackingServices.asmx" />
+      <soap:address location="http://khosachcu.vn:8080/iTrackingServices.asmx" />
     </wsdl:port>
     <wsdl:port name="iTrackingServicesSoap12" binding="tns:iTrackingServicesSoap12">
-      <soap12:address location="http://localhost:46428/iTrackingServices.asmx" />
+      <soap12:address location="http://khosachcu.vn:8080/iTrackingServices.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

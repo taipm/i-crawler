@@ -56,3 +56,5 @@ D:\Projects\GoogleCode\iCrawler\iCrawler\obj\Debug\iCrawler.csprojResolveAssembl
 D:\Projects\GoogleCode\iCrawler\iCrawler\obj\Debug\iCrawler.frmMain.resources
 D:\Projects\GoogleCode\iCrawler\iCrawler\obj\Debug\iCrawler.Properties.Resources.resources
 D:\Projects\GoogleCode\iCrawler\iCrawler\obj\Debug\iCrawler.csproj.GenerateResource.Cache
+D:\Projects\GoogleCode\iCrawler\iCrawler\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\GoogleCode\iCrawler\iCrawler\bin\Debug\EntityFramework.SqlServer.xml

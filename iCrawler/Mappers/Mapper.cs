@@ -4,33 +4,88 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using iCrawler.Models;
+using ChuyenToan = iCrawler.Models.ChuyenToan;
+using ChuyenLy = iCrawler.Models.ChuyenLy;
+using HtmlAgilityPack;
 
 namespace iCrawler.Mappers
 {
     public static class Mapper
     {
-        public static VMFArticleView ArticleViewToVMF(ArticleView article)
+        public static ChuyenToan.Article ArticleViewToArticle(VMFArticleView article)
         {
+            ChuyenToan.Article _article = new ChuyenToan.Article();
+            _article.Id = Guid.NewGuid();
+            _article.Title = article.Title;
+            _article.Content = article.Content;
+            _article.CountViews = 0;
+            _article.CreateDate = DateTime.Now;
+            _article.LastUpdate = DateTime.Now;
+            _article.CreateBy = "VMFCrawler";
+            _article.UpdateBy = "VMFCrawler";
+            _article.IsApproved = false;
+            _article.IsPublished = false;
+            _article.IsReviewed = false;
+            _article.IsSent = false;
+            _article.CategoryId = Guid.Empty;
+
+            
+            return _article;
+        }
+
+        public static VMFArticleView ArticleViewToVMF(ArticleView article)
+        {           
             return new VMFArticleView(){
                 MasterUrl = article.MasterUrl,
                 Url = article.Url,
                 Title = "VMFCrawler : " + article.Title,
-                Content = article.Content
+                Content = article.Content,
+                DownloadTime = article.DownloadTime,
+                Tags = article.Tags,
+                Authors = article.Authors
             };
+        }
+
+        public static ChuyenLy.Article ArticleViewToObject(TVVLArticleView article)
+        {
+            ChuyenLy.Article _article = new ChuyenLy.Article();
+            _article.CreateDate = DateTime.Now;
+            _article.Content = article.Content;
+            _article.CountViews = 0;
+            _article.CreateBy = "TVVLCrawler";
+            _article.Title = article.Title;
+            _article.Tags = article.Tags;
+            _article.UpdateBy = "TVVLCrawler";
+            _article.CategoryId = Guid.Empty;
+            _article.IsReviewed = false;
+            _article.IsApproved = false;
+            _article.IsPublished = false;
+            _article.LastUpdate = DateTime.Now;
+
+            return _article;            
         }
 
         public static TVVLArticleView ArticleViewToTVVL(ArticleView article)
         {
-            return new TVVLArticleView()
-            {
-                MasterUrl = article.MasterUrl,
-                Url = article.Url,
-                Title = "TVVLCrawler : " + article.Title,
-                Content = article.Content
-            };
+            TVVLArticleView _view = new TVVLArticleView();
+            _view.MasterUrl = article.MasterUrl;
+            _view.Url = article.Url;
+            _view.Title = article.Title;
+            _view.Summary = article.Summary;
+            _view.Content = article.Content;
+            _view.Tags = article.Tags;
+
+            _view.CreateDate = article.CreateDate;
+            _view.CreateBy = article.CreateBy;
+            _view.UpdateDate = article.UpdateDate;
+            _view.UpdateBy = article.UpdateBy;
+
+            _view.DownloadTime = article.DownloadTime;
+            
+            return _view;            
         }
 
-        public static Article UrlToArticle(string url)
+        public static BIDVArticleView UrlToArticle(string url)
         {
             if (url.Contains("bidv"))
                 return BidvUrlToArticle(url);
@@ -38,7 +93,7 @@ namespace iCrawler.Mappers
                 return null;
         }
 
-        private static Article BidvUrlToArticle(string url)
+        private static BIDVArticleView BidvUrlToArticle(string url)
         {
             string htmlContent = HtmlHelper.GetHtmlPage(url);
 
@@ -52,7 +107,7 @@ namespace iCrawler.Mappers
 
             if (arrEs.Count() < 3) return null;
 
-            Article _article = new Article();
+            BIDVArticleView _article = new BIDVArticleView();
 
             if (arrEs.Count() > 3)
             {

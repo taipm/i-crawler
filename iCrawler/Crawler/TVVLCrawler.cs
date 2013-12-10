@@ -9,15 +9,22 @@ using System.Threading.Tasks;
 using iCrawler.Models;
 using iCrawler.ServiceLayer;
 using iCrawler.Mappers;
+using ChuyenLy = iCrawler.Models.ChuyenLy;
 
 namespace iCrawler
 {
     public class TVVLCrawler
     {        
         private iCrawlerEntities db = new iCrawlerEntities();
+        private ChuyenLy.ChuyenLyEntities _dbLy = new ChuyenLy.ChuyenLyEntities();
+        private iTrackingMvc4Services.iTrackingServices _service = new iTrackingMvc4Services.iTrackingServices();
+
+        public string crawlerName = "tvvl";
+        public string UrlMaster = "http://360.thuvienvatly.com/bai-viet";
+        public string article_row = "article_row";
 
         public bool IsArticleUrl(string url)
-        {            
+        {
             if (url.Contains("/home/images/")) return false;
             if (url.Contains("/add-ons/")) return false;
             if (url.Contains("/templates/")) return false;
@@ -25,29 +32,27 @@ namespace iCrawler
             if (url.Contains("/home/component")) return false;
             if (url.Contains("/home/media/")) return false;
             if (url.Contains("/home/index.php/")) return false;
-            if (url.Contains("/home/plugins/")) return false;
-            if (url == "http://diendantoanhoc.net/") return false;
-                
+            if (url.Contains("/home/plugins/")) return false;            
             return true;
         }
 
         
-        
+
         public void ProcessTVVL(string url)
         {
             string content = HtmlHelper.GetHtmlPage(url);
             List<HtmlNode> _links = new List<HtmlNode>();
-            _links = HtmlHelper.GetLinks(content).Where(c => c.OuterHtml.Contains("http://360.thuvienvatly.com/bai-viet")).ToList();
+            _links = HtmlHelper.GetLinks(content).Where(c => c.OuterHtml.Contains(UrlMaster)).ToList();
 
             List<HtmlNode> _articleNodes = new List<HtmlNode>();
-            _articleNodes = HtmlHelper.GetNodesByDiv("article_row", content).ToList();
+            _articleNodes = HtmlHelper.GetNodesByDiv(article_row, content).ToList();
 
             if (_links != null && _links.Count > 0)
             {
                 foreach (var _node in _links)
                 {
                     string item = _node.OuterHtml;
-                    if (item.Contains("http://360.thuvienvatly.com/bai-viet"))
+                    if (item.Contains(UrlMaster))
                     {
                         bool write = true;
                         write = IsArticleUrl(item);
@@ -66,35 +71,38 @@ namespace iCrawler
                             link.Url = _url;
                             link.CreateBy = "TVVLCrawler";
                             link.CreateDate = DateTime.Now;
+                            db.CurrentLinks.Add(link);
+
                             string _pageContent = HtmlHelper.GetHtmlPage(_url);
 
-                            HtmlNode _nodeFullArticle;
-                            _nodeFullArticle = HtmlHelper.GetNodesByDiv("full-article", _pageContent).FirstOrDefault();
-                            link.HtmlContent = _nodeFullArticle.OuterHtml;
-
-
-
                             TVVLArticleView _article = new TVVLArticleView();
-                            _article.MasterUrl = "http://360.thuvienvatly.com/bai-viet";
+                            _article.MasterUrl = UrlMaster;
                             _article.Url = _url;
-                            _article.Content = _nodeFullArticle.OuterHtml;
-                            _article.DownloadTime = DateTime.Now;
-                            _article.Tags = "";
+                            _article.PageContent = _pageContent;
 
-                            _nodeFullArticle = HtmlHelper.GetNodesByDiv("article-rel-wrapper", _pageContent).FirstOrDefault();
-                            link.Title = _nodeFullArticle.OuterHtml;
-                            _article.Title = HtmlHelper.RemoveHTMLTagsFromString(_nodeFullArticle.OuterHtml);
+                            _article = Mapper.ArticleViewToTVVL(_article.Process());
 
-                            _nodeFullArticle = HtmlHelper.GetNodesByDiv("tag", _pageContent).FirstOrDefault();
-                            _article.Tags = _nodeFullArticle.OuterHtml;
 
-                            db.CurrentLinks.Add(link);
+                            iTrackingMvc4Services.Article _object = new iTrackingMvc4Services.Article();                            
+                            _object.Id = Guid.NewGuid();
+                            _object.Title = _article.Title;
+                            _object.Summary = _article.GetSummary();
+                            _object.Content = _article.Content;
+                            _object.Tags = _article.Tags;
+                            _object.CreateBy = crawlerName;
+                            _object.UpdateBy = crawlerName;
+                            _object.LastUpdate = DateTime.Now;
+                            _object.CreateDate = DateTime.Now;
+                            _object.IsPublished = true;
+
                             try
                             {
                                 db.SaveChanges();
-                                //_article = _article.Process();
-                                _article = Mapper.ArticleViewToTVVL(_article.Process());
+
+                                WebserviceHelper.PostArticle(crawlerName, _object);                                
+
                                 EmailHelper.SendArticleToEmail(_article);                                
+
                             }
                             catch (Exception ex)
                             {
@@ -105,41 +113,6 @@ namespace iCrawler
                 }
             }
 
-        }
-        
-
-        public DateTime GetWebLastUpdate(string html)
-        {            
-            HtmlDocument htmlDoc = new HtmlDocument
-            {
-                OptionAddDebuggingAttributes = false,
-                OptionAutoCloseOnEnd = true,
-                OptionFixNestedTags = true,
-                OptionReadEncoding = true
-            };
-            
-            
-
-            htmlDoc.LoadHtml(html);
-            
-            HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes("//p[@class='publishdate']");
-            // Extract Title
-            if (nodes != null)
-            {
-                string time = nodes[1].InnerHtml.Trim(); //Thứ hai, 29 Tháng 7 2013 11:40"
-                int indexComma = time.IndexOf(",");
-                time = time.Replace(" Tháng ", "/").Remove(0, indexComma + 2); //" 29:7 2013 11:40"
-                int index2Cham = time.LastIndexOf(":");
-                time = time.Remove(index2Cham - 3, 6).Replace(" ","/"); //"29/7/2013"                                
-                string[] strSplits = new string[] { "/"};
-                string[] strArrays = time.Split(strSplits, StringSplitOptions.None);
-
-                return DateTime.Parse(strArrays[2] + "/" + strArrays[1] + "/" + strArrays[0]);
-            }
-            else
-            {
-                return DateTime.Now;
-            }
-        }       
+        }                
     }
 }

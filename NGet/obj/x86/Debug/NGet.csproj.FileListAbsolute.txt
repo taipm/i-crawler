@@ -21,6 +21,5 @@ D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\Autofac.dll
 D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NCrawler.HtmlProcessor.pdb
 D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NCrawler.pdb
 D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\HtmlAgilityPack.pdb
-D:\Projects\GoogleCode\iCrawler\NGet\obj\x86\Debug\NGet.csprojResolveAssemblyReference.cache
 D:\Projects\GoogleCode\iCrawler\NGet\obj\x86\Debug\NGet.exe
 D:\Projects\GoogleCode\iCrawler\NGet\obj\x86\Debug\NGet.pdb

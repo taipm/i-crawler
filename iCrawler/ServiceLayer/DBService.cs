@@ -10,7 +10,7 @@ namespace iCrawler.ServiceLayer
     public class DbHelper
     {
         private iCrawlerEntities db = new iCrawlerEntities();
-
+        
         public Dictionary<string, string> GetContacts(string url, string htmlContent)
         {
             List<int> _contacts = new List<int>();

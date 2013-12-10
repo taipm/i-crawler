@@ -36,16 +36,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -65,7 +69,47 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Crawler\BidvTTVPCrawler.cs" />
+    <Compile Include="Models\ChuyenLy\Article.cs">
+      <DependentUpon>ChuyenLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChuyenLy\ChuyenLy.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChuyenLy.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChuyenLy\ChuyenLy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChuyenLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChuyenLy\ChuyenLy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChuyenLy.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChuyenToan\Article.cs">
+      <DependentUpon>ChuyenToan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChuyenToan\ChuyenToan.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChuyenToan.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChuyenToan\ChuyenToan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChuyenToan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChuyenToan\ChuyenToan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChuyenToan.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\BIDVArticleView.cs" />
+    <Compile Include="ModelViews\TVVLArticleView.cs" />
+    <Compile Include="ModelViews\VMFArticleView.cs" />
     <Compile Include="Mappers\Mapper.cs" />
+    <Compile Include="ServiceLayer\WebserviceHelper.cs" />
     <Compile Include="ServiceLayer\DBService.cs" />
     <Compile Include="ServiceLayer\FilterService.cs" />
     <Compile Include="ServiceLayer\NetworkService.cs" />
@@ -105,7 +149,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>iCrawler.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Article.cs" />
+    <Compile Include="ModelViews\ArticleView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLayer\StringHelper.cs" />
@@ -128,6 +172,11 @@
     <Compile Include="Models\WebContent.cs">
       <DependentUpon>iCrawler.tt</DependentUpon>
     </Compile>
+    <Compile Include="Web References\localhost\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +193,40 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>iCrawler.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Models\ChuyenToan\ChuyenToan.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ChuyenToan.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\ChuyenLy\ChuyenLy.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ChuyenLy.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ChuyenLy\ChuyenLy.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChuyenLy.edmx</DependentUpon>
+      <LastGenOutput>ChuyenLy.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\ChuyenLy\ChuyenLy.edmx.diagram">
+      <DependentUpon>ChuyenLy.edmx</DependentUpon>
+    </None>
+    <None Include="Models\ChuyenLy\ChuyenLy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChuyenLy.edmx</DependentUpon>
+      <LastGenOutput>ChuyenLy.cs</LastGenOutput>
+    </None>
+    <None Include="Models\ChuyenToan\ChuyenToan.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChuyenToan.edmx</DependentUpon>
+      <LastGenOutput>ChuyenToan.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\ChuyenToan\ChuyenToan.edmx.diagram">
+      <DependentUpon>ChuyenToan.edmx</DependentUpon>
+    </None>
+    <None Include="Models\ChuyenToan\ChuyenToan.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChuyenToan.edmx</DependentUpon>
+      <LastGenOutput>ChuyenToan.cs</LastGenOutput>
+    </None>
     <None Include="Models\iCrawler.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>iCrawler.edmx</DependentUpon>
@@ -172,6 +255,14 @@
     </None>
     <None Include="Web References\iTrackingMvc4Services\iTrackingServices.wsdl" />
     <None Include="Web References\iTrackingMvc4Services\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\localhost\Article.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\iTrackingServices.wsdl" />
+    <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -211,6 +302,7 @@
   <ItemGroup>
     <Content Include="Lib\Autofac.dll" />
     <Content Include="Lib\HtmlAgilityPack.dll" />
+    <None Include="Web References\localhost\iTrackingServices.disco" />
     <None Include="Web References\iTrackingMvc4Services\iTrackingServices.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -220,10 +312,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:46428/iTrackingServices.asmx">
+    <WebReferenceUrl Include="http://khosachcu.vn:8080/iTrackingServices.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\iTrackingMvc4Services\</RelPath>
-      <UpdateFromURL>http://localhost:46428/iTrackingServices.asmx</UpdateFromURL>
+      <UpdateFromURL>http://khosachcu.vn:8080/iTrackingServices.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -231,7 +323,19 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>iCrawler_iTrackingMvc4Services_iTrackingServices</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:46428/iTrackingServices.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhost\</RelPath>
+      <UpdateFromURL>http://localhost:46428/iTrackingServices.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>iCrawler_localhost_iTrackingServices</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
