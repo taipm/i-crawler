@@ -16,14 +16,18 @@ namespace iCrawler.Models
         public string Content;
         public string Tags;
         public string CreateBy;
-        public string UpdateBy;
-
+        public string UpdateBy;        
         public string Footer;
         public string Header;        
         public string Authors;
-        
+        public string AvatarImage;
+
         public DateTime CreateDate;
         public DateTime UpdateDate;
-        public DateTime DownloadTime;        
+        public DateTime DownloadTime;
+        public int CountViews;
+
+        public bool isPublished;
+        public bool IsReviewed;
     }       
 }

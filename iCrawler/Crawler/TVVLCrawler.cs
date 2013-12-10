@@ -36,8 +36,7 @@ namespace iCrawler
             return true;
         }
 
-        
-
+    
         public void ProcessTVVL(string url)
         {
             string content = HtmlHelper.GetHtmlPage(url);
@@ -81,25 +80,12 @@ namespace iCrawler
                             _article.PageContent = _pageContent;
 
                             _article = Mapper.ArticleViewToTVVL(_article.Process());
-
-
-                            iTrackingMvc4Services.Article _object = new iTrackingMvc4Services.Article();                            
-                            _object.Id = Guid.NewGuid();
-                            _object.Title = _article.Title;
-                            _object.Summary = _article.GetSummary();
-                            _object.Content = _article.Content;
-                            _object.Tags = _article.Tags;
-                            _object.CreateBy = crawlerName;
-                            _object.UpdateBy = crawlerName;
-                            _object.LastUpdate = DateTime.Now;
-                            _object.CreateDate = DateTime.Now;
-                            _object.IsPublished = true;
-
+                         
                             try
                             {
                                 db.SaveChanges();
 
-                                WebserviceHelper.PostArticle(crawlerName, _object);                                
+                                WebserviceHelper.PostArticle(crawlerName, WebserviceHelper.CrawlerArticleToObject(_article));                                
 
                                 EmailHelper.SendArticleToEmail(_article);                                
 

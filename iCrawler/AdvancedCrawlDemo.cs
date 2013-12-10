@@ -48,7 +48,7 @@ namespace iCrawler.Demo
             {                
                 if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("bidv") && NetworkService.IsConnectedToBIDV())
                 {
-                    new BidvCrawler().ProcessBIDVPortal(propertyBag);
+                    //new BidvCrawler().ProcessBIDVPortal(propertyBag);
                 }
                 else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("thuvienvatly.com"))
                 {

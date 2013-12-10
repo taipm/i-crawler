@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace iCrawler.Models
 {
-    public class BIDVArticleView
-    {
-        public string Url;
-        public string Title;
+    public class BIDVArticleView : ArticleView
+    {        
         public string NoiDung;
         public string NgayPhatHanh;
         public string SoDi;
