@@ -61,6 +61,10 @@ internal class DumperStep : IPipelineStep
             {
                 new TinhTeCrawler().Process();                
             }
+            else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("vnmath"))
+            {
+                new VnMathCrawler().Process();
+            }
             else
             {
                 WebContent page = new WebContent();
