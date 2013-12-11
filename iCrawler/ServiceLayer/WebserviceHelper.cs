@@ -12,6 +12,26 @@ using iCrawler.iTrackingMvc4Services;
 
 public static class WebserviceHelper
 {
+    public static Article CrawlerArticleToObject(TinhTeArticleView _article)
+    {
+        Article _object = new Article();
+        _object.Id = Guid.NewGuid();
+        _object.Title = _article.Title;
+        _object.Summary = _article.Summary;
+        _object.Content = _article.Content;
+        _object.Tags = _article.Tags;
+        _object.CreateBy = _article.CreateBy;
+        _object.UpdateBy = _article.UpdateBy;
+        _object.LastUpdate = DateTime.Now;
+        _object.CreateDate = DateTime.Now;
+        _object.IsPublished = true;
+        _object.IsApproved = true;
+        _object.IsReviewed = true;
+        _object.CountViews = 0;
+
+        return _object;
+    }
+
     public static Article CrawlerArticleToObject(QTMArticleView _article)
     {
         Article _object = new Article();
@@ -75,13 +95,13 @@ public static class WebserviceHelper
     public static bool IsPostArticle(Article _article)
     {
         if (_article == null) return false;
-        if (_article.Title == null) return false;
-        if (_article.Content == null) return false;
+        if (_article.Title == null && _article.Title.Length >= 3) return false;
+        if (_article.Content == null && _article.Content.Length >= 3) return false;
         return true;
 
     }
 
-    public static void PostArticle(string appName, Article _article)
+    public static bool PostArticle(string appName, Article _article)
     {
         if (IsPostArticle(_article))
         {
@@ -92,8 +112,9 @@ public static class WebserviceHelper
                                         _article.UpdateBy,
                                         _article.CreateBy,
                                         _article.Tags, _article.IsPublished.Value,0);
-            
+            if (_object != null) return true;            
         }
+        return false;
     }
 }
 
