@@ -51,17 +51,7 @@ namespace iCrawler.ServiceLayer
             else
             {
                 return text;
-            }
-            //try
-            //{
-                
-            //    string firstWords = Regex.Match(text, @"^(\w+\b.*?){" + n + "}").ToString();
-            //    return firstWords;
-            //}
-            //catch
-            //{
-            //    return text;
-            //}
+            }            
         }
 
 		public string SubString(string text, string fromString, string toString)
