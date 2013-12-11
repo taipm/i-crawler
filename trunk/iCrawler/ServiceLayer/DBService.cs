@@ -10,7 +10,26 @@ namespace iCrawler.ServiceLayer
     public class DbHelper
     {
         private iCrawlerEntities db = new iCrawlerEntities();
-        
+
+        public bool AddCurrentLink(string url, string crawlerName)
+        {
+            CurrentLink link = new CurrentLink();
+            link.Id = Guid.NewGuid();
+            link.Url = url;
+            link.CreateBy = crawlerName;
+            link.CreateDate = DateTime.Now;
+            db.CurrentLinks.Add(link);
+            try
+            {
+                db.SaveChanges();
+                return true;
+            }
+            catch 
+            { 
+                return false; 
+            }
+        }
+
         public Dictionary<string, string> GetContacts(string url, string htmlContent)
         {
             List<int> _contacts = new List<int>();

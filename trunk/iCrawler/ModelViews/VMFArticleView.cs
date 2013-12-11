@@ -57,7 +57,16 @@ namespace iCrawler.Models
         public void GetContent()
         {
             _fullNode = HtmlHelper.GetNodesByDiv("article", PageContent).FirstOrDefault();
-            this.Content = new StringHelper().RemoveToEnd(_fullNode.OuterHtml, "Stickies");         
+            string _content = new StringHelper().RemoveToEnd(_fullNode.OuterHtml, "Stickies");
+            List<string> files = GetFiles();
+            if (files != null && files.Count >= 1)
+            {
+                this.Content += "<br /> Đính kèm : <br />";
+                foreach (var file in files)
+                {
+                    this.Content += file + "<br />";
+                }            
+            }            
         }
 
         public void GetTags()
@@ -69,6 +78,18 @@ namespace iCrawler.Models
         {            
         }
 
+        List<string> Files;
+        public List<string> GetFiles()
+        {
+            Files = new List<string>();
+            List<HtmlNode> _fileLinks = HtmlHelper.GetLinks(this.Content).Where(c => c.OuterHtml.Contains(";module=attach&amp;section=attach&amp;attach_id")).ToList();
+            foreach (var _fileLink in _fileLinks)
+            {
+                this.Files.Add("http://diendantoanhoc.net" + _fileLink.Attributes[0].Value.Replace(";module=attach&amp;section=attach&amp;attach_id", "&module=attach&section=attach&attach_id"));
+            }
+            return this.Files;
+        }
+
         public VMFArticleView Process()
         {
             GetTitle();
@@ -77,6 +98,7 @@ namespace iCrawler.Models
             GetTags();
             ProcessImg();
             GetAvatarImage();
+            GetFiles();
 
             this.DownloadTime = DateTime.Now;
             this.CreateBy = "VMFCrawler";
