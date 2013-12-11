@@ -69,6 +69,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Crawler\BidvTTVPCrawler.cs" />
+    <Compile Include="Crawler\VnMathCrawler.cs" />
     <Compile Include="Crawler\TinhTeCrawler.cs" />
     <Compile Include="Crawler\QTMCrawler.cs" />
     <Compile Include="DumperStep.cs" />
@@ -109,6 +110,7 @@
       <DependentUpon>ChuyenToan.edmx</DependentUpon>
     </Compile>
     <Compile Include="ModelViews\BIDVArticleView.cs" />
+    <Compile Include="ModelViews\VnMathArticleView.cs" />
     <Compile Include="ModelViews\TinhTeArticleView.cs" />
     <Compile Include="ModelViews\QTMArticleView.cs" />
     <Compile Include="ModelViews\TVVLArticleView.cs" />
@@ -206,6 +208,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ChuyenLy.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="bin\Debug\iCrawler.vshost.exe.config" />
+    <None Include="bin\Debug\iCrawler.vshost.exe.manifest" />
     <None Include="Models\ChuyenLy\ChuyenLy.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ChuyenLy.edmx</DependentUpon>
@@ -305,6 +309,31 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Autofac.dll" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\EPocalipse.IFilter.dll" />
+    <Content Include="bin\Debug\EPocalipse.IFilter.pdb" />
+    <Content Include="bin\Debug\HtmlAgilityPack.dll" />
+    <Content Include="bin\Debug\iCrawler.exe" />
+    <Content Include="bin\Debug\iCrawler.pdb" />
+    <Content Include="bin\Debug\iCrawler.vshost.exe" />
+    <Content Include="bin\Debug\itextsharp.dll" />
+    <Content Include="bin\Debug\NCrawler.dll" />
+    <Content Include="bin\Debug\NCrawler.HtmlProcessor.dll" />
+    <Content Include="bin\Debug\NCrawler.HtmlProcessor.pdb" />
+    <Content Include="bin\Debug\NCrawler.IFilterProcessor.dll" />
+    <Content Include="bin\Debug\NCrawler.IFilterProcessor.pdb" />
+    <Content Include="bin\Debug\NCrawler.iTextSharpPdfProcessor.dll" />
+    <Content Include="bin\Debug\NCrawler.iTextSharpPdfProcessor.pdb" />
+    <Content Include="bin\Debug\NCrawler.LanguageDetection.Google.dll" />
+    <Content Include="bin\Debug\NCrawler.LanguageDetection.Google.pdb" />
+    <Content Include="bin\Debug\NCrawler.MP3Processor.dll" />
+    <Content Include="bin\Debug\NCrawler.MP3Processor.pdb" />
+    <Content Include="bin\Debug\NCrawler.pdb" />
+    <Content Include="bin\Debug\UltraID3Lib.dll" />
     <Content Include="Lib\Autofac.dll" />
     <Content Include="Lib\HtmlAgilityPack.dll" />
     <None Include="Web References\localhost\iTrackingServices.disco" />
@@ -340,7 +369,9 @@
       <CachedSettingsPropName>iCrawler_localhost_iTrackingServices</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

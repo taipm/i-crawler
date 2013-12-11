@@ -12,6 +12,25 @@ using iCrawler.iTrackingMvc4Services;
 
 public static class WebserviceHelper
 {
+    public static Article CrawlerArticleToObject(VnMathArticleView _article)
+    {
+        Article _object = new Article();
+        _object.Id = Guid.NewGuid();
+        _object.Title = _article.Title;
+        _object.Summary = _article.Summary;
+        _object.Content = _article.Content;
+        _object.Tags = _article.Tags;
+        _object.CreateBy = _article.CreateBy;
+        _object.UpdateBy = _article.UpdateBy;
+        _object.LastUpdate = DateTime.Now;
+        _object.CreateDate = DateTime.Now;
+        _object.IsPublished = true;
+        _object.IsApproved = true;
+        _object.IsReviewed = true;
+        _object.CountViews = 0;
+
+        return _object;
+    }
     public static Article CrawlerArticleToObject(TinhTeArticleView _article)
     {
         Article _object = new Article();
