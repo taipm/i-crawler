@@ -75,68 +75,8 @@ namespace iCrawler
                             EmailHelper.SendArticleToEmail(_article);  
                         }
                     }                    
-                }
-                
-                //Save to CurrentLink
-
-                //Save to Webservice
-            }
-            
-            //List<HtmlNode> _articleNodes = new List<HtmlNode>();
-            //_articleNodes = HtmlHelper.GetNodesByDiv(article_row, content).ToList();
-
-            //if (_links != null && _links.Count > 0)
-            //{
-            //    foreach (var _node in _links)
-            //    {
-            //        string item = _node.OuterHtml;
-            //        if (item.Contains(UrlMaster))
-            //        {
-            //            bool write = true;
-            //            write = IsArticleUrl(item);
-            //            string _url = "";
-            //            if (_node.Attributes[1].Value.Contains("http://"))
-            //                _url = _node.Attributes[1].Value;
-
-            //            if (_node.Attributes[0].Value.Contains("http://"))
-            //                _url = _node.Attributes[0].Value;
-
-            //            if (_url.Length >=2 &&  write && !new DbHelper().IsExitsUrl(_url))
-            //            {
-                           
-            //                CurrentLink link = new CurrentLink();
-            //                link.Id = Guid.NewGuid();
-            //                link.Url = _url;
-            //                link.CreateBy = "TVVLCrawler";
-            //                link.CreateDate = DateTime.Now;
-            //                db.CurrentLinks.Add(link);
-
-            //                string _pageContent = HtmlHelper.GetHtmlPage(_url);
-
-            //                TVVLArticleView _article = new TVVLArticleView();
-            //                _article.MasterUrl = UrlMaster;
-            //                _article.Url = _url;
-            //                _article.PageContent = _pageContent;
-
-            //                _article = Mapper.ArticleViewToTVVL(_article.Process());
-                         
-            //                try
-            //                {
-            //                    db.SaveChanges();
-
-            //                    WebserviceHelper.PostArticle(crawlerName, WebserviceHelper.CrawlerArticleToObject(_article));                                
-
-            //                    EmailHelper.SendArticleToEmail(_article);                                
-
-            //                }
-            //                catch (Exception ex)
-            //                {
-            //                    Console.WriteLine(ex.Message);
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
+                }                               
+            }                       
 
         }                
     }
