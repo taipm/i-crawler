@@ -37,6 +37,19 @@ using System.Text.RegularExpressions;
             return links;
             
         }
+
+
+        public static List<HtmlNode> GetH1NodesByClass(string className, string html)
+        {
+            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(html);
+
+            List<HtmlNode> links = doc.DocumentNode.SelectNodes("//h1[@class='" + className + "']").ToList<HtmlNode>();
+
+            return links;
+
+        }
+
         public static List<HtmlNode> GetNodesByClass(string className, string html)
         {
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
@@ -47,6 +60,7 @@ using System.Text.RegularExpressions;
             return links;
 
         }
+
         public static List<HtmlNode> GetLinks(string html)
         {            
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();

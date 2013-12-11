@@ -20,6 +20,19 @@ namespace iCrawler.ServiceLayer
 {
 	public class StringHelper
 	{
+        public bool IsNumber(string text)
+        {
+            try
+            {
+                int.Parse(text);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public string Standard(string text)
         {
             while (text.IndexOf("  ") >= 0)    //tim trong chuoi vi tri co 2 khoang trong tro len      

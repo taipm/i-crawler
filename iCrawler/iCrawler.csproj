@@ -69,6 +69,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Crawler\BidvTTVPCrawler.cs" />
+    <Compile Include="Crawler\QTMCrawler.cs" />
     <Compile Include="Models\ChuyenLy\Article.cs">
       <DependentUpon>ChuyenLy.tt</DependentUpon>
     </Compile>
@@ -106,6 +107,7 @@
       <DependentUpon>ChuyenToan.edmx</DependentUpon>
     </Compile>
     <Compile Include="ModelViews\BIDVArticleView.cs" />
+    <Compile Include="ModelViews\QTMArticleView.cs" />
     <Compile Include="ModelViews\TVVLArticleView.cs" />
     <Compile Include="ModelViews\VMFArticleView.cs" />
     <Compile Include="Mappers\Mapper.cs" />

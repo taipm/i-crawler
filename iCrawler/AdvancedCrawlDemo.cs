@@ -58,6 +58,11 @@ namespace iCrawler.Demo
                 {
                     new VMFCrawler().ProcessVMF(propertyBag.ResponseUri.AbsoluteUri);
                 }
+                else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("quantrimang"))
+                {
+                    new QTMCrawler().ProcessQTM();
+                    return;
+                }
                 else
                 {
                     WebContent page = new WebContent();
