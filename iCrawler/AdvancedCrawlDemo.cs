@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Autofac;
 using System.Data;
 using System.Data.Entity;
@@ -21,74 +20,74 @@ namespace iCrawler.Demo
     /// <summary>
     /// 	Custom pipeline step, to dump url to console
     /// </summary>
-    internal class DumperStep : IPipelineStep
-    {
-        iCrawlerEntities db = new iCrawlerEntities();
+    //internal class DumperStep : IPipelineStep
+    //{
+    //    iCrawlerEntities db = new iCrawlerEntities();
 
-        #region IPipelineStep Members
+    //    #region IPipelineStep Members
 
-        /// <summary>
-        /// </summary>
-        /// <param name = "crawler">
-        /// 	The crawler.
-        /// </param>
-        /// <param name = "propertyBag">
-        /// 	The property bag.
-        /// </param>
-        public void Process(Crawler crawler, PropertyBag propertyBag)
-        {
-            CultureInfo contentCulture = (CultureInfo)propertyBag["LanguageCulture"].Value;
-            string cultureDisplayValue = "N/A";
-            if (!contentCulture.IsNull())
-            {
-                cultureDisplayValue = contentCulture.DisplayName;
-            }
+    //    /// <summary>
+    //    /// </summary>
+    //    /// <param name = "crawler">
+    //    /// 	The crawler.
+    //    /// </param>
+    //    /// <param name = "propertyBag">
+    //    /// 	The property bag.
+    //    /// </param>
+    //    public void Process(Crawler crawler, PropertyBag propertyBag)
+    //    {
+    //        CultureInfo contentCulture = (CultureInfo)propertyBag["LanguageCulture"].Value;
+    //        string cultureDisplayValue = "N/A";
+    //        if (!contentCulture.IsNull())
+    //        {
+    //            cultureDisplayValue = contentCulture.DisplayName;
+    //        }
 
-            lock (this)
-            {                
-                if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("bidv") && NetworkService.IsConnectedToBIDV())
-                {
-                    //new BidvCrawler().ProcessBIDVPortal(propertyBag);
-                }
-                else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("thuvienvatly.com"))
-                {
-                    new TVVLCrawler().ProcessTVVL(propertyBag.ResponseUri.AbsoluteUri);
-                }                
-                else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("diendantoanhoc"))
-                {
-                    new VMFCrawler().ProcessVMF(propertyBag.ResponseUri.AbsoluteUri);
-                }
-                else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("quantrimang"))
-                {
-                    new QTMCrawler().ProcessQTM();
-                    return;
-                }
-                else
-                {
-                    WebContent page = new WebContent();
-                    page.Id = Guid.NewGuid();
-                    page.TimeDownloaded = DateTime.Now;
-                    page.Url = propertyBag.Step.Uri.AbsoluteUri;
-                    page.Title = propertyBag.Title;
-                    page.Content = propertyBag.Text;
-                    page.HtmlContent = propertyBag.HtmlContent;
+    //        lock (this)
+    //        {                
+    //            if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("bidv") && NetworkService.IsConnectedToBIDV())
+    //            {
+    //                //new BidvCrawler().ProcessBIDVPortal(propertyBag);
+    //            }
+    //            else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("thuvienvatly.com"))
+    //            {
+    //                new TVVLCrawler().ProcessTVVL(propertyBag.ResponseUri.AbsoluteUri);
+    //            }                
+    //            else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("diendantoanhoc"))
+    //            {
+    //                new VMFCrawler().ProcessVMF(propertyBag.ResponseUri.AbsoluteUri);
+    //            }
+    //            else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("quantrimang"))
+    //            {
+    //                new QTMCrawler().ProcessQTM();
+    //                return;
+    //            }
+    //            else
+    //            {
+    //                WebContent page = new WebContent();
+    //                page.Id = Guid.NewGuid();
+    //                page.TimeDownloaded = DateTime.Now;
+    //                page.Url = propertyBag.Step.Uri.AbsoluteUri;
+    //                page.Title = propertyBag.Title;
+    //                page.Content = propertyBag.Text;
+    //                page.HtmlContent = propertyBag.HtmlContent;
 
 
-                    try
-                    {
-                        db.WebContents.Add(page);
-                        db.SaveChanges();
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Lỗi insert database");
-                    }                    
-                }
-            }
-        }
+    //                try
+    //                {
+    //                    db.WebContents.Add(page);
+    //                    db.SaveChanges();
+    //                }
+    //                catch
+    //                {
+    //                    Console.WriteLine("Lỗi insert database");
+    //                }                    
+    //            }
+    //        }
+    //    }
 
-        #endregion
-    }
+        
+    //}
 
     #endregion
 	/// <summary>
