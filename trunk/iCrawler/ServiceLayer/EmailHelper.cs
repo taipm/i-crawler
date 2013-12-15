@@ -54,19 +54,20 @@ public static class EmailHelper
         _email.Subject = article.Title;
         _email.Body = article.Content + "<br />" + article.Tags;
 
-
-        Dictionary<string, string> _recipients = new Dictionary<string, string>();
-        _recipients = new DbHelper().GetContacts(article.MasterUrl, article.Content);
-
         List<string> _files = new List<string>();
         //_files = db.Documents.Where(c => c.UrlId == link.Id).Select(c => c.FileName).ToList();
 
-        EmailHelper.Send(_email, _recipients, _files);
-
-        foreach (string file in _files)
+        Dictionary<string, string> _recipients = new Dictionary<string, string>();
+        _recipients = new DbHelper().GetContacts(article.MasterUrl, article.Content);
+        if (_recipients.Count > 0)
         {
-            File.Delete(file);
-        }
+            EmailHelper.Send(_email, _recipients, _files);
+
+            foreach (string file in _files)
+            {
+                File.Delete(file);
+            }
+        }                
     }        
 
         public static bool Send(Email email, Dictionary<string, string> recipients, List<string> attachments)

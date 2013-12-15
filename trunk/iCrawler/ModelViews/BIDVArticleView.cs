@@ -16,6 +16,6 @@ namespace iCrawler.Models
         public string NgayKy;
         public string TrichYeu;
         public string DoKhan;
-        public string NoiNhan;
+        public string NoiNhan;        
     }
 }

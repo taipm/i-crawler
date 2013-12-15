@@ -31,8 +31,7 @@ namespace iCrawler.Mappers
             _view.isPublished = article.isPublished;
             _view.IsReviewed = article.IsReviewed;
 
-            _view.DownloadTime = article.DownloadTime;
-            if (article.CountViews == null) _view.CountViews = 0;
+            _view.DownloadTime = article.DownloadTime;            
             _view.CountViews = article.CountViews;
 
             return _view;                  

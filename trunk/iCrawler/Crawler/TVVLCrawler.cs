@@ -43,51 +43,44 @@ namespace iCrawler
             List<HtmlNode> _links = new List<HtmlNode>();
             _links = HtmlHelper.GetLinks(content).Where(c => c.OuterHtml.Contains(UrlMaster)).ToList();
 
-            List<HtmlNode> _articleNodes = new List<HtmlNode>();
-            _articleNodes = HtmlHelper.GetNodesByDiv(article_row, content).ToList();
+            List<HtmlNode> _newLinks = new List<HtmlNode>();
+            _newLinks = HtmlHelper.GetNodesByDiv(article_row, content).ToList();
 
             if (_links != null && _links.Count > 0)
             {
-                foreach (var _node in _links)
+                foreach (var _link in _newLinks)
                 {
-                    string item = _node.OuterHtml;
+                    string item = _link.OuterHtml;
                     if (item.Contains(UrlMaster))
                     {
                         bool write = true;
                         write = IsArticleUrl(item);
-                        string _url = "";
-                        if (_node.Attributes[1].Value.Contains("http://"))
-                            _url = _node.Attributes[1].Value;
+                        string _detailUrl = "";
 
-                        if (_node.Attributes[0].Value.Contains("http://"))
-                            _url = _node.Attributes[0].Value;
+                        if (_link.Attributes[1].Value.Contains("http://"))
+                            _detailUrl = _link.Attributes[1].Value;
 
-                        if (_url.Length >=2 &&  write && !new DbHelper().IsExitsUrl(_url))
+                        if (_link.Attributes[0].Value.Contains("http://"))
+                            _detailUrl = _link.Attributes[0].Value;
+
+                        if (_detailUrl.Length >= 2 && write && !new DbHelper().IsExitsUrl(_detailUrl))
                         {
-                           
-                            CurrentLink link = new CurrentLink();
-                            link.Id = Guid.NewGuid();
-                            link.Url = _url;
-                            link.CreateBy = "TVVLCrawler";
-                            link.CreateDate = DateTime.Now;
-                            db.CurrentLinks.Add(link);
+                            bool _isInserted = new DbHelper().AddCurrentLink(_detailUrl, crawlerName);                            
 
-                            string _pageContent = HtmlHelper.GetHtmlPage(_url);
+                            string _pageContent = HtmlHelper.GetHtmlPage(_detailUrl);
 
                             TVVLArticleView _article = new TVVLArticleView();
                             _article.MasterUrl = UrlMaster;
-                            _article.Url = _url;
+                            _article.Url = _detailUrl;
                             _article.PageContent = _pageContent;
 
                             _article = Mapper.ArticleViewToTVVL(_article.Process());
                          
                             try
-                            {
-                                db.SaveChanges();
-
-                                WebserviceHelper.PostArticle(crawlerName, WebserviceHelper.CrawlerArticleToObject(_article));                                
-
-                                EmailHelper.SendArticleToEmail(_article);                                
+                            {                                
+                                bool _isPosted = WebserviceHelper.PostArticle(crawlerName, WebserviceHelper.CrawlerArticleToObject(_article));                                
+                                if(_isPosted)
+                                    EmailHelper.SendArticleToEmail(_article);                                
 
                             }
                             catch (Exception ex)

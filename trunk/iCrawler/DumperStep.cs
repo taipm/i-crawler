@@ -10,9 +10,7 @@ using System.Data;
 using System.Data.Entity;
 using NCrawler.Extensions;
 using NCrawler.HtmlProcessor;
-using NCrawler.Interfaces;
 using NCrawler.Services;
-using System.Globalization;
 
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
@@ -54,16 +52,24 @@ internal class DumperStep : IPipelineStep
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("quantrimang"))
             {
-                new QTMCrawler().ProcessQTM();
-                return;
+                new QTMCrawler().Process();
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("tinhte"))
             {
-                new TinhTeCrawler().Process();                
+                new TinhTeCrawler().Process();
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("vnmath"))
             {
                 new VnMathCrawler().Process();
+            }
+            else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("vatlyvietnam"))
+            {
+                new VLVNCrawler().Process();
+            }
+            else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("y2graphic"))
+            //if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("y2graphic"))
+            {
+                new Y2GraphicCrawler().Process();
             }
             else
             {

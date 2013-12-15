@@ -12,7 +12,8 @@ namespace iCrawler.Models
     {
         public string ImageSource = "http://www.quantrimang.com.vn/photos/";
         public string PageContent;
-        
+        public string fileConfig = "QuanTriMang.txt";
+
         HtmlNode _fullNode;
 
         public void GetTitle()
@@ -26,8 +27,8 @@ namespace iCrawler.Models
             try
             {                
                 string text = HtmlHelper.RemoveHTMLTagsFromString(this.Content);
-                string strToRemove = new StringHelper().GetFirstWords(text, 30);
-                string summary = new StringHelper().GetFirstWords(text, 200);
+                string strToRemove = StringHelper.GetFirstWords(text, 30);
+                string summary = StringHelper.GetFirstWords(text, 200);
                 this.Summary = summary.Replace(strToRemove, "");
             }
             catch
@@ -79,6 +80,6 @@ namespace iCrawler.Models
             this.isPublished = true;
             this.IsReviewed = true;
             return this;
-        }
+        }        
     }
 }

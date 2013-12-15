@@ -7,17 +7,79 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.IO;
 using System.Text.RegularExpressions;
+using iCrawler.ServiceLayer;
 
-    public static class HtmlHelper
+public static class HtmlHelper
+{
+    public static List<HtmlNode> GetTable(string tableName, string Text)
     {
+        HtmlDocument doc = new HtmlDocument();
+        doc.LoadHtml(Text);
+        HtmlNodeCollection _tables;
+        List<HtmlNode> _selectTables;
+        try
+        {
+            _tables = doc.DocumentNode.SelectNodes("//table");
+            _selectTables = doc.DocumentNode.SelectNodes("//table").Where(c => c.OuterHtml.Contains(tableName)).ToList();
+            return _selectTables;
+        }
+        catch
+        {
+            Console.WriteLine("");
+            return null;
+        }
+    }
+    public static List<HtmlNode> GetRows(string Text)
+    {
+            List<HtmlNode> _rows = new List<HtmlNode>();
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(Text);
+            HtmlNodeCollection _tables;
+            List<HtmlNode> _selectTables;
+            try
+            {
+                _tables = doc.DocumentNode.SelectNodes("//table");
+                _selectTables = doc.DocumentNode.SelectNodes("//table").Where(c => c.OuterHtml.Contains("contentpaneopen")).ToList();
+
+                foreach (var _selectTable in _selectTables)
+                {
+                    List<HtmlNode> _links = HtmlHelper.GetLinks(_selectTable.OuterHtml);
+                    if (_links != null && _links.Count > 0)
+                    {
+                        foreach (var _link in _links)
+                        {
+                            if(_link.OuterHtml.Contains(".htm"))
+                                _rows.Add(_link);
+                        }
+                    }                   
+                }                             
+
+            }
+            catch
+            {
+                Console.WriteLine("");
+            }
+
+            return _rows;
+
+        }
+
         public static bool IsValidUrl(string text)
         {            
             Regex rx = new Regex(@"http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?", RegexOptions.Compiled);
             return rx.IsMatch(text);
         }
 
+        public static string RemoveScripts(string Text)
+        {
+            Regex regxScriptRemoval = new Regex(@"<script(.+?)*</script>");
+            var newHtml = regxScriptRemoval.Replace(Text, "");
+
+            return newHtml; 
+        }
         public static string RemoveHTMLTagsFromString(string Text)
         {
+            //Text = RemoveScripts(Text);
             Text = Text.Replace("\r", " ");
             Text = Text.Replace("\n", " ");
             // Remove sTabs
@@ -66,7 +128,7 @@ using System.Text.RegularExpressions;
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(html);
 
-            List<HtmlNode> links = doc.DocumentNode.SelectNodes("//a[@href]").ToList<HtmlNode>();
+            List<HtmlNode> links = doc.DocumentNode.SelectNodes("//a[@href]").Distinct().ToList<HtmlNode>();
 
             return links;
         }
@@ -92,7 +154,8 @@ using System.Text.RegularExpressions;
             dataStream.Close();
             response.Close();
 
-            return responseFromServer;
+            return responseFromServer;       
         }
-    }
+    
+}
 

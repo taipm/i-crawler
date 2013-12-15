@@ -20,22 +20,25 @@ namespace iCrawler
 
         public string crawlerName = "qtmCrawler";
         public string appName = "chuyentin";
+        public string fileConfig = "QuanTriMang.txt";
 
         public string today = DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
         public string UrlMaster = "http://www.quantrimang.com.vn/daily/";
         public string prefixUrl = "http://www.quantrimang.com.vn";
+
         public bool IsArticleUrl(string url)
         {
             string[] _words = url.Split('-');
-            if (new StringHelper().IsNumber(_words[_words.Length - 1]))
+            if (StringHelper.IsNumber(_words[_words.Length - 1]))
                 return true;
             else
                 return false;
         }
-        
-            
-        public void ProcessQTM()
+
+        public List<HtmlNode> GetNewLinks()
         {
+            List<HtmlNode> _list = new List<HtmlNode>();
+
             //STEP 1 : Get HtmlContent of MasterUrl
             string url = UrlMaster + today + "/index.aspx";
             string masterContent = HtmlHelper.GetHtmlPage(url);
@@ -47,37 +50,46 @@ namespace iCrawler
             //STEP 3 : Select all links what it is news
             List<HtmlNode> _newLinks = new List<HtmlNode>();
             _newLinks = _links.Where(c => (!c.OuterHtml.Contains("timkiem") && !c.OuterHtml.Contains(".aspx")) &&
-                                            (c.OuterHtml.Contains("tintuc/") 
+                                            (c.OuterHtml.Contains("tintuc/")
                                             || c.OuterHtml.Contains("thietbiso/"))).ToList();
-
-            //STEP 4 : for each all link, read and parse to article
-            foreach (HtmlNode _link in _newLinks)
+            foreach(var _link in _newLinks)
             {
                 if(_link != null)
                 {
-                    string _detailUrl = prefixUrl + _link.Attributes[0].Value;
+                    string _detailUrl = prefixUrl + _link.Attributes[0].Value;                
                     if (IsArticleUrl(_detailUrl) && !new DbHelper().IsExitsUrl(_detailUrl))
-                    {
-                        bool _isInserted = new DbHelper().AddCurrentLink(_detailUrl, crawlerName);
-                        if(_isInserted)
-                        {
-                            string _pageContent = HtmlHelper.GetHtmlPage(_detailUrl);
+                        _list.Add(_link);
+                }                
+            }
+            return _list;
+        }
+            
+        public void Process()
+        {
+            List<HtmlNode> _newLinks = new List<HtmlNode>();
+            _newLinks = GetNewLinks();
 
-                            QTMArticleView _article = new QTMArticleView();
-                            _article.MasterUrl = UrlMaster;
-                            _article.Url = _detailUrl;
-                            _article.PageContent = _pageContent;
+            //STEP 4 : for each all link, read and parse to article
+            foreach (HtmlNode _link in _newLinks)
+            {                
+                string _detailUrl = prefixUrl + _link.Attributes[0].Value;                
+                bool _isInserted = new DbHelper().AddCurrentLink(_detailUrl, crawlerName);
+                if(_isInserted)
+                {
+                    string _pageContent = HtmlHelper.GetHtmlPage(_detailUrl);
+                    
+                    ArticleView _object = new ArticleView();
+                    _object.MasterUrl = UrlMaster;
+                    _object.Url = _detailUrl;
+                    _object.PageContent = _pageContent;
+                    _object.FileCofig = fileConfig;
+                    _object = _object.Process();
 
-                            _article = _article.Process(); 
-
-                            WebserviceHelper.PostArticle(appName, WebserviceHelper.CrawlerArticleToObject(_article));
-
-                            EmailHelper.SendArticleToEmail(_article);  
-                        }
-                    }                    
+                    bool isPosted = WebserviceHelper.PostArticle(appName, WebserviceHelper.CrawlerArticleToObject(_object));
+                    if (isPosted) 
+                        EmailHelper.SendArticleToEmail(_object);                                                                          
                 }                               
             }                       
-
         }                
     }
 }
