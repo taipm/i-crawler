@@ -35,6 +35,8 @@ namespace iCrawler.iTrackingMvc4Services {
         
         private System.Threading.SendOrPostCallback UpdateArticleOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DeleteArticleOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CreateArticleOperationCompleted;
         
         private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
@@ -85,6 +87,9 @@ namespace iCrawler.iTrackingMvc4Services {
         
         /// <remarks/>
         public event UpdateArticleCompletedEventHandler UpdateArticleCompleted;
+        
+        /// <remarks/>
+        public event DeleteArticleCompletedEventHandler DeleteArticleCompleted;
         
         /// <remarks/>
         public event CreateArticleCompletedEventHandler CreateArticleCompleted;
@@ -198,6 +203,37 @@ namespace iCrawler.iTrackingMvc4Services {
             if ((this.UpdateArticleCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UpdateArticleCompleted(this, new UpdateArticleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteArticle", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Article DeleteArticle(string appName, string articleId) {
+            object[] results = this.Invoke("DeleteArticle", new object[] {
+                        appName,
+                        articleId});
+            return ((Article)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteArticleAsync(string appName, string articleId) {
+            this.DeleteArticleAsync(appName, articleId, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteArticleAsync(string appName, string articleId, object userState) {
+            if ((this.DeleteArticleOperationCompleted == null)) {
+                this.DeleteArticleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteArticleOperationCompleted);
+            }
+            this.InvokeAsync("DeleteArticle", new object[] {
+                        appName,
+                        articleId}, this.DeleteArticleOperationCompleted, userState);
+        }
+        
+        private void OnDeleteArticleOperationCompleted(object arg) {
+            if ((this.DeleteArticleCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteArticleCompleted(this, new DeleteArticleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -656,6 +692,32 @@ namespace iCrawler.iTrackingMvc4Services {
         private object[] results;
         
         internal UpdateArticleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Article Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Article)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void DeleteArticleCompletedEventHandler(object sender, DeleteArticleCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteArticleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteArticleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

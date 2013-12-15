@@ -28,8 +28,8 @@ namespace iCrawler.Models
                 //_fullNode = HtmlHelper.GetNodesByDiv("full-article", PageContent).FirstOrDefault();
                 //this.Summary = _fullNode.InnerText.Substring(0, 200);
                 string text = HtmlHelper.RemoveHTMLTagsFromString(this.Content).Replace("//document.write('');", "").Trim();
-                string strToRemove = new StringHelper().GetFirstWords(text, 30);
-                string summary = new StringHelper().GetFirstWords(text, 200);
+                string strToRemove = StringHelper.GetFirstWords(text, 30);
+                string summary = StringHelper.GetFirstWords(text, 200);
                 this.Summary = summary.Replace(strToRemove,"");
             }
             catch
@@ -42,7 +42,7 @@ namespace iCrawler.Models
         public void GetContent()
         {  
             _fullNode = HtmlHelper.GetNodesByDiv("full-article", PageContent).FirstOrDefault();
-            this.Content = new StringHelper().RemoveToEnd(_fullNode.OuterHtml, "Nếu thấy thích, hãy Đăng kí để nhận bài viết mới qua email"); 
+            this.Content = StringHelper.RemoveToEnd(_fullNode.OuterHtml, "Nếu thấy thích, hãy Đăng kí để nhận bài viết mới qua email"); 
         }
 
         public void GetTags()

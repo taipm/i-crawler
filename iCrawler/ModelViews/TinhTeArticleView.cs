@@ -5,23 +5,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace iCrawler.Models
 {
     public class TinhTeArticleView : ArticleView
-    {
-        //public string ImageSource = "http://www.quantrimang.com.vn/photos/";
-        public string PageContent;
-        
+    {        
+        public string PageContent;        
         HtmlNode _fullNode;
 
+        public string TitleTag = "titleBar";
+        public string ContentTag = "messageContent";
+        public string TagTag = "xemthem";
+        public string SummaryTag;
+        
         public void GetTitle()
         {
             try
             {
-                _fullNode = HtmlHelper.GetNodesByDiv("titleBar", PageContent).FirstOrDefault();
+                _fullNode = HtmlHelper.GetNodesByDiv(TitleTag, PageContent).FirstOrDefault();
                 string titleText = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml).Trim();
-                this.Title = new StringHelper().RemoveToEnd(titleText, "Thảo luận").Trim();
+                this.Title = StringHelper.RemoveToEnd(titleText, "Thảo luận").Trim();
             }
             catch
             {
@@ -34,8 +38,8 @@ namespace iCrawler.Models
             try
             {                
                 string text = HtmlHelper.RemoveHTMLTagsFromString(this.Content);
-                string strToRemove = new StringHelper().GetFirstWords(text, 30);
-                string summary = new StringHelper().GetFirstWords(text, 200);
+                string strToRemove = StringHelper.GetFirstWords(text, 30);
+                string summary = StringHelper.GetFirstWords(text, 200);
                 this.Summary = summary.Replace(strToRemove, "");
             }
             catch
@@ -49,7 +53,7 @@ namespace iCrawler.Models
         {
             try
             {
-                _fullNode = HtmlHelper.GetNodesByDiv("messageContent", PageContent).FirstOrDefault();
+                _fullNode = HtmlHelper.GetNodesByDiv(ContentTag, PageContent).FirstOrDefault();
                 this.Content = _fullNode.OuterHtml;
             }
             catch
@@ -62,7 +66,7 @@ namespace iCrawler.Models
         {
             try
             {
-                var _fullNode = HtmlHelper.GetNodesByDiv("xemthem", PageContent).FirstOrDefault();
+                var _fullNode = HtmlHelper.GetNodesByDiv(TagTag, PageContent).FirstOrDefault();
                 this.Tags = "tinhte.vn, TinhTeCrawler," + _fullNode.OuterHtml;
             }
             catch
@@ -77,7 +81,7 @@ namespace iCrawler.Models
         }
 
         public TinhTeArticleView Process()
-        {
+        {            
             GetTitle();                        
             GetContent();
             GetSummary();  

@@ -17,7 +17,7 @@ namespace iCrawler
     {
         public string appName = "chuyentin";
         public string crawlerName = "TinhTeCrawler";
-        
+        public string fileConfig = "TinhTe.txt";
 
         private iCrawlerEntities db = new iCrawlerEntities();        
         private iTrackingMvc4Services.iTrackingServices _service = new iTrackingMvc4Services.iTrackingServices();        
@@ -62,18 +62,18 @@ namespace iCrawler
                         if(_isInserted)
                         {
                             string _pageContent = HtmlHelper.GetHtmlPage(_detailUrl);
+                            
+                            ArticleView _object = new ArticleView();
+                            _object.MasterUrl = UrlMaster;
+                            _object.Url = _detailUrl;
+                            _object.PageContent = _pageContent;
+                            _object.FileCofig = fileConfig;
+                            _object = _object.Process();
 
-                            TinhTeArticleView _article = new TinhTeArticleView();
-                            _article.MasterUrl = UrlMaster;
-                            _article.Url = _detailUrl;
-                            _article.PageContent = _pageContent;
-
-                            _article = _article.Process(); 
-
-                            bool isPosted = WebserviceHelper.PostArticle(appName, WebserviceHelper.CrawlerArticleToObject(_article));
-
-                            if(isPosted)
-                                EmailHelper.SendArticleToEmail(_article);  
+                            bool isPosted = WebserviceHelper.PostArticle(appName, WebserviceHelper.CrawlerArticleToObject(_object));
+                            if (isPosted)
+                                EmailHelper.SendArticleToEmail(_object);     
+                           
                         }
                     }                    
                 }                               

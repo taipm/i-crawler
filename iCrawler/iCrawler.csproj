@@ -69,6 +69,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Crawler\BidvTTVPCrawler.cs" />
+    <Compile Include="Crawler\Y2GraphicCrawler.cs" />
+    <Compile Include="Crawler\ICrawler.cs" />
+    <Compile Include="Crawler\VLVNCrawler.cs" />
     <Compile Include="Crawler\VnMathCrawler.cs" />
     <Compile Include="Crawler\TinhTeCrawler.cs" />
     <Compile Include="Crawler\QTMCrawler.cs" />
@@ -110,9 +113,8 @@
       <DependentUpon>ChuyenToan.edmx</DependentUpon>
     </Compile>
     <Compile Include="ModelViews\BIDVArticleView.cs" />
+    <Compile Include="ModelViews\VLVNArticleView.cs" />
     <Compile Include="ModelViews\VnMathArticleView.cs" />
-    <Compile Include="ModelViews\TinhTeArticleView.cs" />
-    <Compile Include="ModelViews\QTMArticleView.cs" />
     <Compile Include="ModelViews\TVVLArticleView.cs" />
     <Compile Include="ModelViews\VMFArticleView.cs" />
     <Compile Include="Mappers\Mapper.cs" />
@@ -334,6 +336,9 @@
     <Content Include="bin\Debug\NCrawler.MP3Processor.pdb" />
     <Content Include="bin\Debug\NCrawler.pdb" />
     <Content Include="bin\Debug\UltraID3Lib.dll" />
+    <Content Include="Config\y2graphic.txt" />
+    <Content Include="Config\QuanTriMang.txt" />
+    <Content Include="Config\TinhTe.txt" />
     <Content Include="Lib\Autofac.dll" />
     <Content Include="Lib\HtmlAgilityPack.dll" />
     <None Include="Web References\localhost\iTrackingServices.disco" />

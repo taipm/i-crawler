@@ -13,12 +13,19 @@ namespace iCrawler.Models
     {
         public string ImageSource;
         public string PageContent;        
-        HtmlNode _fullNode;
-        
+        HtmlNode _fullNode;        
+
         public void GetTitle()
         {
-            _fullNode = HtmlHelper.GetNodesByClass("contentheading", PageContent).FirstOrDefault();
-            this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml);            
+            try
+            {
+                _fullNode = HtmlHelper.GetNodesByClass("contentheading", PageContent).FirstOrDefault();
+                this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml);
+            }
+            catch
+            {
+                this.Title = "";
+            }
         }
 
         public void GetAvatarImage()
@@ -37,27 +44,38 @@ namespace iCrawler.Models
 
         public void GetAuthors()
         {
-            _fullNode = HtmlHelper.GetNodesByDiv("jsn-article-toolbar", PageContent).FirstOrDefault();
-            this.Authors = _fullNode.OuterHtml;
+            try
+            {
+                _fullNode = HtmlHelper.GetNodesByDiv("jsn-article-toolbar", PageContent).FirstOrDefault();
+                this.Authors = _fullNode.OuterHtml;
+            }
+            catch
+            {
+                this.Authors = "";
+            }
         }
 
         public void GetSummary()
         {
-            _fullNode = HtmlHelper.GetNodesByDiv("jsn-article-content", PageContent).FirstOrDefault();
             try
+            {
+                _fullNode = HtmlHelper.GetNodesByDiv("jsn-article-content", PageContent).FirstOrDefault();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            if (_fullNode != null)
             {
                 this.Summary = _fullNode.InnerText.Substring(0, 300) + "...";
             }
-            catch
-            {
-                this.Summary = _fullNode.InnerText;
-            }
+            this.Summary = _fullNode.InnerText;            
         }
 
         public void GetContent()
         {
             _fullNode = HtmlHelper.GetNodesByDiv("article", PageContent).FirstOrDefault();
-            string _content = new StringHelper().RemoveToEnd(_fullNode.OuterHtml, "Stickies");
+            string _content = StringHelper.RemoveToEnd(_fullNode.OuterHtml, "Stickies");
             List<string> files = GetFiles();
             if (files != null && files.Count >= 1)
             {
@@ -82,10 +100,17 @@ namespace iCrawler.Models
         public List<string> GetFiles()
         {
             Files = new List<string>();
-            List<HtmlNode> _fileLinks = HtmlHelper.GetLinks(this.Content).Where(c => c.OuterHtml.Contains(";module=attach&amp;section=attach&amp;attach_id")).ToList();
-            foreach (var _fileLink in _fileLinks)
+            try
             {
-                this.Files.Add("http://diendantoanhoc.net" + _fileLink.Attributes[0].Value.Replace(";module=attach&amp;section=attach&amp;attach_id", "&module=attach&section=attach&attach_id"));
+                List<HtmlNode> _fileLinks = HtmlHelper.GetLinks(this.Content).Where(c => c.OuterHtml.Contains(";module=attach&amp;section=attach&amp;attach_id")).ToList();
+                foreach (var _fileLink in _fileLinks)
+                {
+                    this.Files.Add("http://diendantoanhoc.net" + _fileLink.Attributes[0].Value.Replace(";module=attach&amp;section=attach&amp;attach_id", "&module=attach&section=attach&attach_id"));
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             return this.Files;
         }

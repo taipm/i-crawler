@@ -23,3 +23,4 @@ D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\NCrawler.pdb
 D:\Projects\GoogleCode\iCrawler\NGet\bin\Debug\HtmlAgilityPack.pdb
 D:\Projects\GoogleCode\iCrawler\NGet\obj\x86\Debug\NGet.exe
 D:\Projects\GoogleCode\iCrawler\NGet\obj\x86\Debug\NGet.pdb
+D:\Projects\GoogleCode\iCrawler\NGet\obj\x86\Debug\NGet.csprojResolveAssemblyReference.cache
