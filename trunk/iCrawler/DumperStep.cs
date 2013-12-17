@@ -48,7 +48,7 @@ internal class DumperStep : IPipelineStep
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("diendantoanhoc"))
             {
-                new VMFCrawler().ProcessVMF(propertyBag.ResponseUri.AbsoluteUri);
+                new VMFCrawler().Process(propertyBag.ResponseUri.AbsoluteUri);
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("quantrimang"))
             {

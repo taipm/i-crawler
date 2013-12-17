@@ -11,32 +11,7 @@ using HtmlAgilityPack;
 namespace iCrawler.Mappers
 {
     public static class Mapper
-    {
-      
-        public static VMFArticleView ArticleViewToVMF(ArticleView article)
-        {
-            VMFArticleView _view = new VMFArticleView();
-            _view.MasterUrl = article.MasterUrl;
-            _view.Url = article.Url;
-            _view.Title = article.Title;
-            _view.Summary = article.Summary;
-            _view.Content = article.Content;
-            _view.Tags = article.Tags;
-
-            _view.CreateDate = article.CreateDate;
-            _view.CreateBy = article.CreateBy;
-            _view.UpdateDate = article.UpdateDate;
-            _view.UpdateBy = article.UpdateBy;
-
-            _view.isPublished = article.isPublished;
-            _view.IsReviewed = article.IsReviewed;
-
-            _view.DownloadTime = article.DownloadTime;            
-            _view.CountViews = article.CountViews;
-
-            return _view;                  
-        }
-
+    {      
         public static BIDVArticleView ArticleViewToBIDV(ArticleView article)
         {
             BIDVArticleView _view = new BIDVArticleView();
@@ -55,8 +30,7 @@ namespace iCrawler.Mappers
             _view.isPublished = article.isPublished;
             _view.IsReviewed = article.IsReviewed;
 
-            _view.DownloadTime = article.DownloadTime;
-            if (article.CountViews == null) _view.CountViews = 0;
+            _view.DownloadTime = article.DownloadTime;            
             _view.CountViews = article.CountViews;
 
             return _view;    
@@ -80,9 +54,7 @@ namespace iCrawler.Mappers
             _view.isPublished = article.isPublished;
             _view.IsReviewed = article.IsReviewed;
 
-            _view.DownloadTime = article.DownloadTime;
-
-            if (article.CountViews == null) _view.CountViews = 0;
+            _view.DownloadTime = article.DownloadTime;            
             _view.CountViews = article.CountViews;
             return _view;            
         }

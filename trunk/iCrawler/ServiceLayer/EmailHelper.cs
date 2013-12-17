@@ -22,29 +22,29 @@ public class Email
 
 public static class EmailHelper
 {
-    public static void SendArticleToEmail(VMFArticleView article)
-    {
-        Email _email = new Email();
-        _email.Sender = "taipm.bidv@gmail.com";
-        _email.SenderName = "Phan Minh Tài";
-        _email.Subject = article.Title;
-        _email.Body = article.Content + "<br />" + article.Tags;
+    //public static void SendArticleToEmail(VMFArticleView article)
+    //{
+    //    Email _email = new Email();
+    //    _email.Sender = "taipm.bidv@gmail.com";
+    //    _email.SenderName = "Phan Minh Tài";
+    //    _email.Subject = article.Title;
+    //    _email.Body = article.Content + "<br />" + article.Tags;
 
 
-        Dictionary<string, string> _recipients = new Dictionary<string, string>();
-        _recipients = new DbHelper().GetContacts(article.MasterUrl, article.Content);
-        if (_recipients.Count < 1) return;
+    //    Dictionary<string, string> _recipients = new Dictionary<string, string>();
+    //    _recipients = new DbHelper().GetContacts(article.MasterUrl, article.Content);
+    //    if (_recipients.Count < 1) return;
 
-        List<string> _files = new List<string>();
-        //_files = db.Documents.Where(c => c.UrlId == link.Id).Select(c => c.FileName).ToList();
+    //    List<string> _files = new List<string>();
+    //    //_files = db.Documents.Where(c => c.UrlId == link.Id).Select(c => c.FileName).ToList();
 
-        EmailHelper.Send(_email, _recipients, _files);
+    //    EmailHelper.Send(_email, _recipients, _files);
 
-        foreach (string file in _files)
-        {
-            File.Delete(file);
-        }
-    }
+    //    foreach (string file in _files)
+    //    {
+    //        File.Delete(file);
+    //    }
+    //}
 
     public static void SendArticleToEmail(ArticleView article)
     {

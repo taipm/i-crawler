@@ -101,26 +101,33 @@ public static class HtmlHelper
         }
 
 
-        public static List<HtmlNode> GetH1NodesByClass(string className, string html)
-        {
-            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(html);
+        //public static List<HtmlNode> GetH1NodesByClass(string className, string html)
+        //{
+        //    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+        //    doc.LoadHtml(html);
 
-            List<HtmlNode> links = doc.DocumentNode.SelectNodes("//h1[@class='" + className + "']").ToList<HtmlNode>();
+        //    List<HtmlNode> links = doc.DocumentNode.SelectNodes("//h1[@class='" + className + "']").ToList<HtmlNode>();
 
-            return links;
+        //    return links;
 
-        }
+        //}
 
         public static List<HtmlNode> GetNodesByClass(string className, string html)
         {
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(html);
 
-            List<HtmlNode> links = doc.DocumentNode.SelectNodes("//h2[@class='" + className + "']").ToList<HtmlNode>();
+            List<HtmlNode> links = new List<HtmlNode>();
+            
+            links = doc.DocumentNode.SelectNodes("//h2[@class='" + className + "']").ToList<HtmlNode>();
+
+            if(links.Count < 1)
+                links = doc.DocumentNode.SelectNodes("//h1[@class='" + className + "']").ToList<HtmlNode>();
+
+            if(links.Count < 1)
+                return null;
 
             return links;
-
         }
 
         public static List<HtmlNode> GetLinks(string html)
