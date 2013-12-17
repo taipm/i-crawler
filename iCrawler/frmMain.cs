@@ -59,22 +59,20 @@ namespace iCrawler
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
             ServicePointManager.CheckCertificateRevocationList = true;
             ServicePointManager.EnableDnsRoundRobin = true;
-            if (!NetworkService.IsConnectedToDBServer())
+            if (NetworkService.IsConnectedToDBServer())
             {
-                return;
-            }
-            List<string> urls = new List<string>();
-            iCrawlerEntities _db = new iCrawlerEntities();
-            foreach (var item in _db.Urls)
-            {
-                if (item != null && new TimerHelper().IsInTimes(item.Times, true))
+                List<string> urls = new List<string>();
+                iCrawlerEntities _db = new iCrawlerEntities();
+                foreach (var item in _db.Urls)
                 {
-                    this.lblICrawler.Text = DateTime.Now.ToString();
-                    this.lblUrlRunning.Text = item.Url1;
-                    AdvancedCrawlDemo.Run(item.Url1);                    
+                    if (item != null && new TimerHelper().IsInTimes(item.Times, true))
+                    {
+                        this.lblICrawler.Text = DateTime.Now.ToString();
+                        this.lblUrlRunning.Text = item.Url1;
+                        AdvancedCrawlDemo.Run(item.Url1);
+                    }
                 }
-            }
-            
+            }            
         }
 
         private void btnAutoStart_Click(object sender, EventArgs e)
@@ -108,6 +106,23 @@ namespace iCrawler
                 this.btnAutoStart.Text = "AutoStart";
                 //MessageBox.Show("Auto-start activated successfully !");
             }
+        }
+
+        private void frmMain_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+                this.Hide();
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            this.Show();
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

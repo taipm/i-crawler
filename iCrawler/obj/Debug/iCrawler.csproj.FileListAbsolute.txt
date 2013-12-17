@@ -47,10 +47,8 @@ D:\Projects\GoogleCode\iCrawler\iCrawler\bin\Debug\NCrawler.iTextSharpPdfProcess
 D:\Projects\GoogleCode\iCrawler\iCrawler\bin\Debug\NCrawler.LanguageDetection.Google.pdb
 D:\Projects\GoogleCode\iCrawler\iCrawler\bin\Debug\NCrawler.MP3Processor.pdb
 D:\Projects\GoogleCode\iCrawler\iCrawler\bin\Debug\NCrawler.pdb
-D:\Projects\GoogleCode\iCrawler\iCrawler\bin\Debug\EntityFramework.xml
 D:\Projects\GoogleCode\iCrawler\iCrawler\bin\Debug\EPocalipse.IFilter.pdb
 D:\Projects\GoogleCode\iCrawler\iCrawler\obj\Debug\iCrawler.csprojResolveAssemblyReference.cache
 D:\Projects\GoogleCode\iCrawler\iCrawler\obj\Debug\iCrawler.frmMain.resources
 D:\Projects\GoogleCode\iCrawler\iCrawler\obj\Debug\iCrawler.Properties.Resources.resources
 D:\Projects\GoogleCode\iCrawler\iCrawler\obj\Debug\iCrawler.csproj.GenerateResource.Cache
-D:\Projects\GoogleCode\iCrawler\iCrawler\bin\Debug\EntityFramework.SqlServer.xml

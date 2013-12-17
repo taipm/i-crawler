@@ -18,43 +18,96 @@ namespace iCrawler
         private iCrawlerEntities db = new iCrawlerEntities();
         private ChuyenToan.ChuyenToanEntities _dbToan = new ChuyenToan.ChuyenToanEntities();
         private iTrackingMvc4Services.iTrackingServices _service = new iTrackingMvc4Services.iTrackingServices();
-        public string crawlerName = "vmf";
+        
         public string appName = "chuyentoan";
-        public string masterUrl = "http://diendantoanhoc.net/home";
+        public string UrlMaster = "http://diendantoanhoc.net/home";
 
-        public void ProcessVMF(string url)
+        public string crawlerName = "VMFCrawler";        
+        public string fileConfig = "VMF.txt";
+
+        public string prefixUrl = "http://diendantoanhoc.net/home";
+
+        public bool IsArticleUrl(string url)
         {
-            string content = HtmlHelper.GetHtmlPage(url);
+            string[] strSplits = new string[] { "/" };
+            if (url.Split(strSplits, StringSplitOptions.None).Length >= 3)
+                return true;
+            else
+                return false;                          
+        }
+
+        public List<HtmlNode> GetNewLinks()
+        {
+            List<HtmlNode> _list = new List<HtmlNode>();
+
+            //STEP 1 : Get HtmlContent of MasterUrl
+            string url = UrlMaster;
+            string masterContent = HtmlHelper.GetHtmlPage(url);
+
+            //STEP 2 : Find all link have masterContent            
             List<HtmlNode> _links = new List<HtmlNode>();
-            _links = HtmlHelper.GetLinks(content).Where(c => c.OuterHtml.Contains(masterUrl)).ToList();
+            _links = HtmlHelper.GetLinks(masterContent).ToList();
 
             //STEP 3 : Select all links what it is news
             List<HtmlNode> _newLinks = new List<HtmlNode>();
-            _newLinks = _links.Where(c => c.OuterHtml.Contains("http://diendantoanhoc.net/")).Distinct().ToList();
-
-            foreach (var _link in _newLinks)                
-            {                    
-                string item = _link.OuterHtml;
-                string _detailUrl = masterUrl + _link.Attributes[0].Value;
-
-                if (_detailUrl.Length >= 2 && HtmlHelper.IsValidUrl(_detailUrl) && !new DbHelper().IsExitsUrl(_detailUrl))
-                {                                                                                    
-                    bool _isInserted = new DbHelper().AddCurrentLink(_detailUrl, crawlerName);                            
-                    if (_isInserted)                            
-                    {
-                        string _pageContent = HtmlHelper.GetHtmlPage(_detailUrl);
-                        VMFArticleView _article = new VMFArticleView();
-                        _article.MasterUrl = _detailUrl;
-                        _article.Url = _detailUrl;
-                        _article.PageContent = _pageContent;
-
-                        _article = Mapper.ArticleViewToVMF(_article.Process());
-                        bool isPosted = WebserviceHelper.PostArticle(appName, WebserviceHelper.CrawlerArticleToObject(_article));
-                        if (isPosted)
-                            EmailHelper.SendArticleToEmail(_article);                   
-                     }                                                                                                                             
-                }                
+            _newLinks = _links;
+            foreach (var _link in _newLinks)
+            {
+                if (_link != null)
+                {
+                    string _detailUrl = prefixUrl + _link.Attributes[0].Value;
+                    if (IsArticleUrl(_detailUrl) && !new DbHelper().IsExitsUrl(_detailUrl))
+                        _list.Add(_link);
+                }
             }
+            return _list.Distinct().ToList();
+        }
+
+        public void Process(string url)
+        {
+            List<HtmlNode> _newLinks = new List<HtmlNode>();
+            _newLinks = GetNewLinks();
+
+            //STEP 4 : for each all link, read and parse to article
+            foreach (HtmlNode _link in _newLinks)
+            {
+                string _detailUrl = prefixUrl + _link.Attributes[0].Value;
+                string _pageContent = "";
+                bool _isInserted = false;
+                try
+                {
+                    _pageContent = HtmlHelper.GetHtmlPage(_detailUrl);
+                }
+                catch
+                {
+                    _pageContent = "";
+                }
+
+                if(_pageContent.Length > 1)
+                    _isInserted = new DbHelper().AddCurrentLink(_detailUrl, crawlerName);
+
+                if (_isInserted)
+                {                    
+                    ArticleView _object = new ArticleView();
+                    _object.MasterUrl = UrlMaster;
+                    _object.Url = _detailUrl;
+                    _object.PageContent = _pageContent;
+                    _object.FileCofig = fileConfig;
+
+                    try
+                    {
+                        _object = _object.Process();
+                        bool isPosted = WebserviceHelper.PostArticle(appName, WebserviceHelper.CrawlerArticleToObject(_object));
+                        if (isPosted)
+                            EmailHelper.SendArticleToEmail(_object);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }                      
+            
         }
     }                       
 }

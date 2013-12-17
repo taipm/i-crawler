@@ -65,8 +65,11 @@ namespace iCrawler.Models
         {
             try
             {
-                _fullNode = HtmlHelper.GetH1NodesByClass(this.TagTitle, PageContent).FirstOrDefault();
-                this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml).Trim();
+                _fullNode = HtmlHelper.GetNodesByClass(this.TagTitle, PageContent).FirstOrDefault();
+                if(_fullNode == null)
+                    _fullNode = HtmlHelper.GetNodesByDiv(this.TagTitle, PageContent).FirstOrDefault();
+                if(_fullNode != null)
+                    this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml).Trim();
             }
             catch
             {
@@ -98,6 +101,7 @@ namespace iCrawler.Models
             }
 
         }
+
         public void GetContent()
         {
             try
@@ -131,6 +135,9 @@ namespace iCrawler.Models
 
             this.isPublished = true;
             this.IsReviewed = true;
+
+            this.Content += " <br /> Nguồn : " + this.Url;
+
             return this;
         }
     }       

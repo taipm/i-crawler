@@ -116,7 +116,6 @@
     <Compile Include="ModelViews\VLVNArticleView.cs" />
     <Compile Include="ModelViews\VnMathArticleView.cs" />
     <Compile Include="ModelViews\TVVLArticleView.cs" />
-    <Compile Include="ModelViews\VMFArticleView.cs" />
     <Compile Include="Mappers\Mapper.cs" />
     <Compile Include="ServiceLayer\WebserviceHelper.cs" />
     <Compile Include="ServiceLayer\DBService.cs" />
@@ -336,6 +335,7 @@
     <Content Include="bin\Debug\NCrawler.MP3Processor.pdb" />
     <Content Include="bin\Debug\NCrawler.pdb" />
     <Content Include="bin\Debug\UltraID3Lib.dll" />
+    <Content Include="Config\VMF.txt" />
     <Content Include="Config\y2graphic.txt" />
     <Content Include="Config\QuanTriMang.txt" />
     <Content Include="Config\TinhTe.txt" />

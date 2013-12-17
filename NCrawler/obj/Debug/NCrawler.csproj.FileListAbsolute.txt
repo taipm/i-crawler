@@ -9,3 +9,4 @@ D:\Projects\GoogleCode\iCrawler\NCrawler\bin\Debug\NCrawler.pdb
 D:\Projects\GoogleCode\iCrawler\NCrawler\bin\Debug\Autofac.dll
 D:\Projects\GoogleCode\iCrawler\NCrawler\obj\Debug\NCrawler.dll
 D:\Projects\GoogleCode\iCrawler\NCrawler\obj\Debug\NCrawler.pdb
+D:\Projects\GoogleCode\iCrawler\NCrawler\obj\Debug\NCrawler.csprojResolveAssemblyReference.cache
