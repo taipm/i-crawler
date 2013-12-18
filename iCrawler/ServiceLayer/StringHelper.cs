@@ -20,22 +20,22 @@ namespace iCrawler.ServiceLayer
 {
 	public static class StringHelper
 	{
+        public static string GetSpan(DateTime date)
+        {
+            TimeSpan time = DateTime.Now - date;
 
-        //public static string RemoveInvalidFilenameCharacters(string filename) 
-        //{
-        //    int i;
-        //    if (!string.IsNullOrEmpty(filename)) {
-        //        List invalidchars=new List();
-        //        invalidchars.AddRange(""#%&*/:<>?\{|}~".ToCharArray());
-        //        invalidchars.AddRange(System.IO.Path.GetInvalidPathChars());
-        //        invalidchars.AddRange(System.IO.Path.GetInvalidFileNameChars());
-        //        invalidchars.AddRange(new char[]{System.IO.Path.PathSeparator,System.IO.Path.AltDirectorySeparatorChar});
-        //        for(i=0;i<invalidchars.Count;++i) {
-        //            filename = filename.Replace(invalidchars[i].ToString(), string.Empty);
-        //        }
-        //    }
-        //    return filename;
-        //}
+            if (time.Days > 0)
+            {
+                return time.Days + (time.Days > 1 ? " days " : " day ") + "ago";
+            }
+            else if (time.Hours > 0)
+            {
+                return time.Hours + (time.Hours > 1 ? " hours " : " hour ") + "ago";
+            }
+
+            return time.Minutes + (time.Minutes > 1 ? " minutes " : " minute ") + "ago"; ;
+        }
+        
 
         public static bool IsValidUrl(string url)
         {
@@ -88,6 +88,20 @@ namespace iCrawler.ServiceLayer
             {
                 return text;
             }            
+        }
+
+        public static string GetWordsBy(string text, int n)
+        {
+            text = Standard(text);
+            string[] words = text.Split(' ');
+            if (words.Length > n)
+            {
+                return words[n];
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
 		public static string SubString(string text, string fromString, string toString)

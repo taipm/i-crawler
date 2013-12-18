@@ -54,6 +54,7 @@ public static class WebserviceHelper
         _object.IsApproved = true;
         _object.IsReviewed = true;
         _object.CountViews = 0;
+        _object.AvatarPath = _article.AvatarImage;
 
         return _object;
     }
@@ -72,11 +73,8 @@ public static class WebserviceHelper
         if (IsPostArticle(_article))
         {
             var _object = new iTrackingServices().CreateArticle(appName,
-                                        _article.Title,
-                                        _article.Summary,
-                                        _article.Content,
-                                        _article.UpdateBy,
-                                        _article.CreateBy,
+                                        _article.Title, _article.Summary, _article.Content,
+                                        _article.UpdateBy, _article.CreateBy,
                                         _article.Tags, _article.IsPublished.Value,0);
             if (_object != null) return true;            
         }

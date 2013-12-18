@@ -88,6 +88,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="PublishArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PublishArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PublishArticleResult" type="tns:Article" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="DeleteArticle">
         <s:complexType>
           <s:sequence>
@@ -125,16 +140,839 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
+      <s:element name="GetArticlesByTag">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetArticlesByTagResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArticlesByTagResult" type="tns:ArrayOfArticle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateQuestion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="questionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateQuestionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateQuestionResult" type="tns:Question" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Question">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authors" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LessonId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExamId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourseId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mark" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pỉce" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateQuestion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createby" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateQuestionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateQuestionResult" type="tns:Question" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="questionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuestionResult" type="tns:Question" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteQuestion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="questionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteQuestionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteQuestionResult" type="tns:Question" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuestionsResult" type="tns:ArrayOfQuestion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfQuestion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Question" nillable="true" type="tns:Question" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAnswer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="answerId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnswerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAnswerResult" type="tns:Answer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Answer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuestionId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authors" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCorrect" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAnswerByQuestion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="questionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnswerByQuestionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAnswerByQuestionResult" type="tns:ArrayOfAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Answer" nillable="true" type="tns:Answer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateAnswer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="questionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateby" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAnswerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateAnswerResult" type="tns:Answer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAnswer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="answerId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAnswerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAnswerResult" type="tns:Answer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAnswer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createby" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAnswerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateAnswerResult" type="tns:Answer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="taskId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaskResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Task">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssignTo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectVersionId" nillable="true" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllTaskByProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTaskByProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTaskByProjectResult" type="tns:ArrayOfTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTask">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Task" nillable="true" type="tns:Task" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllTaskByStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="statusId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTaskByStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTaskByStatusResult" type="tns:ArrayOfTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTaskByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateBegin" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateEnd" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTaskByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTaskByDateResult" type="tns:ArrayOfTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsResult" type="tns:ArrayOfProject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Introduction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AvatarPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaderBy" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectResult" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="introduction" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="leaderBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateProjectResult" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteProjectResult" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="introduction" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="leaderBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateProjectResult" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="assginTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="statusId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="categoryId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateTaskResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="taskId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteTaskResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UdateTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="assginTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="statusId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="categoryId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UdateTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UdateTaskResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocuments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentsResult" type="tns:ArrayOfDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Document" nillable="true" type="tns:Document" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Document">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UploadDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UploadBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaskId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArticleId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuestionId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnswerId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LessonId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountDownloads" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentResult" type="tns:Document" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentsByArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentsByArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentsByArticleResult" type="tns:ArrayOfDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="path" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="size" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="filestype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="uploadby" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TaskId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="questionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="answerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lessonId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="price" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="countdowloads" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateDocumentResult" type="tns:Document" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDocumentResult" type="tns:Document" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UploadBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ArticleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LessonId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDocumentResult" type="tns:Document" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCourses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCoursesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCoursesResult" type="tns:ArrayOfCourse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCourse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Course" nillable="true" type="tns:Course" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Course">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Introduction" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourseCategoryId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCourse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCourseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCourseResult" type="tns:Course" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCoure">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="introduction" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateby" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseCat" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCoureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateCoureResult" type="tns:Course" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCourse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCourseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteCourseResult" type="tns:Course" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCourse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="introduction" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateby" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseCategory" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCourseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateCourseResult" type="tns:Course" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCourseArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCourseArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateCourseArticleResult" type="tns:CourseArticle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CourseArticle">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CourseId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArticleId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteCourseArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCourseArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteCourseArticleResult" type="tns:CourseArticle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCourseArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCourseArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateCourseArticleResult" type="tns:CourseArticle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCourseArticles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCourseArticlesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCourseArticlesResult" type="tns:ArrayOfCourseArticle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCourseArticle">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CourseArticle" nillable="true" type="tns:CourseArticle" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCourseByArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCourseByArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCourseByArticleResult" type="tns:ArrayOfCourseArticle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchArticles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keywords" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchArticlesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchArticlesResult" type="tns:ArrayOfArticle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfArticle" nillable="true" type="tns:ArrayOfArticle" />
+      <s:element name="Article" nillable="true" type="tns:Article" />
+      <s:element name="Question" nillable="true" type="tns:Question" />
+      <s:element name="ArrayOfQuestion" nillable="true" type="tns:ArrayOfQuestion" />
+      <s:element name="Answer" nillable="true" type="tns:Answer" />
+      <s:element name="ArrayOfAnswer" nillable="true" type="tns:ArrayOfAnswer" />
+      <s:element name="Task" nillable="true" type="tns:Task" />
+      <s:element name="ArrayOfTask" nillable="true" type="tns:ArrayOfTask" />
+      <s:element name="ArrayOfProject" nillable="true" type="tns:ArrayOfProject" />
+      <s:element name="Project" nillable="true" type="tns:Project" />
+      <s:element name="ArrayOfDocument" nillable="true" type="tns:ArrayOfDocument" />
+      <s:element name="Document" nillable="true" type="tns:Document" />
+      <s:element name="ArrayOfCourse" nillable="true" type="tns:ArrayOfCourse" />
+      <s:element name="Course" nillable="true" type="tns:Course" />
+      <s:element name="CourseArticle" nillable="true" type="tns:CourseArticle" />
+      <s:element name="ArrayOfCourseArticle" nillable="true" type="tns:ArrayOfCourseArticle" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
       <s:simpleType name="guid">
@@ -162,6 +1000,12 @@
   <wsdl:message name="UpdateArticleSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateArticleResponse" />
   </wsdl:message>
+  <wsdl:message name="PublishArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:PublishArticle" />
+  </wsdl:message>
+  <wsdl:message name="PublishArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:PublishArticleResponse" />
+  </wsdl:message>
   <wsdl:message name="DeleteArticleSoapIn">
     <wsdl:part name="parameters" element="tns:DeleteArticle" />
   </wsdl:message>
@@ -174,11 +1018,1065 @@
   <wsdl:message name="CreateArticleSoapOut">
     <wsdl:part name="parameters" element="tns:CreateArticleResponse" />
   </wsdl:message>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  <wsdl:message name="GetArticlesByTagSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArticlesByTag" />
   </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  <wsdl:message name="GetArticlesByTagSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArticlesByTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateQuestionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateQuestion" />
+  </wsdl:message>
+  <wsdl:message name="UpdateQuestionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateQuestionSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateQuestion" />
+  </wsdl:message>
+  <wsdl:message name="CreateQuestionSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetQuestion" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteQuestionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteQuestion" />
+  </wsdl:message>
+  <wsdl:message name="DeleteQuestionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetQuestions" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetQuestionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAnswer" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerByQuestionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAnswerByQuestion" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerByQuestionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAnswerByQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateAnswerSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateAnswer" />
+  </wsdl:message>
+  <wsdl:message name="CreateAnswerSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAnswerSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAnswer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAnswerSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAnswerSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAnswer" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAnswerSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTask" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTaskByProject" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTaskByProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTaskByStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTaskByStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTaskByDate" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTaskByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProject" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateProject" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProject" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateProject" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTask" />
+  </wsdl:message>
+  <wsdl:message name="CreateTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteTask" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="UdateTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:UdateTask" />
+  </wsdl:message>
+  <wsdl:message name="UdateTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:UdateTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocuments" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsByArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentsByArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsByArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentsByArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateDocument" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDocument" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDocument" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoursesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCourses" />
+  </wsdl:message>
+  <wsdl:message name="GetCoursesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCoursesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCourse" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCoureSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCoure" />
+  </wsdl:message>
+  <wsdl:message name="CreateCoureSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCoureResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCourse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCourse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCourseArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="CreateCourseArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCourseArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCourseArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCourseArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseArticlesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCourseArticles" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseArticlesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCourseArticlesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseByArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCourseByArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseByArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCourseByArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchArticlesSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchArticles" />
+  </wsdl:message>
+  <wsdl:message name="SearchArticlesSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchArticlesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPublishedArticlesHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="isPublish" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPublishedArticlesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetViewArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetViewArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="summary" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="tags" type="s:string" />
+    <wsdl:part name="isPublished" type="s:string" />
+    <wsdl:part name="countViews" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="PublishArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PublishArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="DeleteArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="CreateArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="summary" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createby" type="s:string" />
+    <wsdl:part name="tags" type="s:string" />
+    <wsdl:part name="isPublished" type="s:string" />
+    <wsdl:part name="countViews" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="GetArticlesByTagHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="tag" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArticlesByTagHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfArticle" />
+  </wsdl:message>
+  <wsdl:message name="UpdateQuestionHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateQuestionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Question" />
+  </wsdl:message>
+  <wsdl:message name="CreateQuestionHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createby" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateQuestionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Question" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Question" />
+  </wsdl:message>
+  <wsdl:message name="DeleteQuestionHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteQuestionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Question" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionsHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfQuestion" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="answerId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerHttpGetOut">
+    <wsdl:part name="Body" element="tns:Answer" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerByQuestionHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerByQuestionHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAnswer" />
+  </wsdl:message>
+  <wsdl:message name="CreateAnswerHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateby" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateAnswerHttpGetOut">
+    <wsdl:part name="Body" element="tns:Answer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAnswerHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="answerId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAnswerHttpGetOut">
+    <wsdl:part name="Body" element="tns:Answer" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAnswerHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createby" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAnswerHttpGetOut">
+    <wsdl:part name="Body" element="tns:Answer" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="taskId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskHttpGetOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByProjectHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByProjectHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTask" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByStatusHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="statusId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTask" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByDateHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="dateBegin" type="s:string" />
+    <wsdl:part name="dateEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByDateHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTask" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfProject" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectHttpGetOut">
+    <wsdl:part name="Body" element="tns:Project" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="introduction" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="leaderBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectHttpGetOut">
+    <wsdl:part name="Body" element="tns:Project" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectHttpGetOut">
+    <wsdl:part name="Body" element="tns:Project" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="introduction" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="leaderBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectHttpGetOut">
+    <wsdl:part name="Body" element="tns:Project" />
+  </wsdl:message>
+  <wsdl:message name="CreateTaskHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="Title" type="s:string" />
+    <wsdl:part name="Content" type="s:string" />
+    <wsdl:part name="assginTo" type="s:string" />
+    <wsdl:part name="ownerBy" type="s:string" />
+    <wsdl:part name="statusId" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="categoryId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateTaskHttpGetOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="taskId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskHttpGetOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="UdateTaskHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="Title" type="s:string" />
+    <wsdl:part name="Content" type="s:string" />
+    <wsdl:part name="assginTo" type="s:string" />
+    <wsdl:part name="ownerBy" type="s:string" />
+    <wsdl:part name="statusId" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="categoryId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UdateTaskHttpGetOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="docId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentHttpGetOut">
+    <wsdl:part name="Body" element="tns:Document" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsByArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsByArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocument" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocumentHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="path" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="size" type="s:string" />
+    <wsdl:part name="filestype" type="s:string" />
+    <wsdl:part name="uploadby" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="TaskId" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+    <wsdl:part name="answerId" type="s:string" />
+    <wsdl:part name="lessonId" type="s:string" />
+    <wsdl:part name="price" type="s:string" />
+    <wsdl:part name="countdowloads" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocumentHttpGetOut">
+    <wsdl:part name="Body" element="tns:Document" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="docId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentHttpGetOut">
+    <wsdl:part name="Body" element="tns:Document" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="Title" type="s:string" />
+    <wsdl:part name="Description" type="s:string" />
+    <wsdl:part name="UploadBy" type="s:string" />
+    <wsdl:part name="ArticleId" type="s:string" />
+    <wsdl:part name="LessonId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentHttpGetOut">
+    <wsdl:part name="Body" element="tns:Document" />
+  </wsdl:message>
+  <wsdl:message name="GetCoursesHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCoursesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCourse" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseHttpGetOut">
+    <wsdl:part name="Body" element="tns:Course" />
+  </wsdl:message>
+  <wsdl:message name="CreateCoureHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="introduction" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateby" type="s:string" />
+    <wsdl:part name="courseCat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateCoureHttpGetOut">
+    <wsdl:part name="Body" element="tns:Course" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="courseId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseHttpGetOut">
+    <wsdl:part name="Body" element="tns:Course" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="introduction" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateby" type="s:string" />
+    <wsdl:part name="courseCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseHttpGetOut">
+    <wsdl:part name="Body" element="tns:Course" />
+  </wsdl:message>
+  <wsdl:message name="CreateCourseArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="courseId" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateCourseArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:CourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="courseId" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:CourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="courseId" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:CourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseArticlesHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseArticlesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseByArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseByArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="SearchArticlesHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="keywords" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchArticlesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetPublishedArticlesHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="isPublish" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPublishedArticlesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetViewArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetViewArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="summary" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="tags" type="s:string" />
+    <wsdl:part name="isPublished" type="s:string" />
+    <wsdl:part name="countViews" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="PublishArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PublishArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="DeleteArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="CreateArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="summary" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createby" type="s:string" />
+    <wsdl:part name="tags" type="s:string" />
+    <wsdl:part name="isPublished" type="s:string" />
+    <wsdl:part name="countViews" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
+  <wsdl:message name="GetArticlesByTagHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="tag" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArticlesByTagHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfArticle" />
+  </wsdl:message>
+  <wsdl:message name="UpdateQuestionHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateQuestionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Question" />
+  </wsdl:message>
+  <wsdl:message name="CreateQuestionHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createby" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateQuestionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Question" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Question" />
+  </wsdl:message>
+  <wsdl:message name="DeleteQuestionHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteQuestionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Question" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionsHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfQuestion" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="answerId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerHttpPostOut">
+    <wsdl:part name="Body" element="tns:Answer" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerByQuestionHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAnswerByQuestionHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAnswer" />
+  </wsdl:message>
+  <wsdl:message name="CreateAnswerHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateby" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateAnswerHttpPostOut">
+    <wsdl:part name="Body" element="tns:Answer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAnswerHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="answerId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAnswerHttpPostOut">
+    <wsdl:part name="Body" element="tns:Answer" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAnswerHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createby" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAnswerHttpPostOut">
+    <wsdl:part name="Body" element="tns:Answer" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="taskId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskHttpPostOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByProjectHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByProjectHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTask" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByStatusHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="statusId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTask" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByDateHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="dateBegin" type="s:string" />
+    <wsdl:part name="dateEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTaskByDateHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTask" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfProject" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectHttpPostOut">
+    <wsdl:part name="Body" element="tns:Project" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="introduction" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="leaderBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectHttpPostOut">
+    <wsdl:part name="Body" element="tns:Project" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectHttpPostOut">
+    <wsdl:part name="Body" element="tns:Project" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="introduction" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="leaderBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectHttpPostOut">
+    <wsdl:part name="Body" element="tns:Project" />
+  </wsdl:message>
+  <wsdl:message name="CreateTaskHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="Title" type="s:string" />
+    <wsdl:part name="Content" type="s:string" />
+    <wsdl:part name="assginTo" type="s:string" />
+    <wsdl:part name="ownerBy" type="s:string" />
+    <wsdl:part name="statusId" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="categoryId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateTaskHttpPostOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="taskId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskHttpPostOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="UdateTaskHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="Title" type="s:string" />
+    <wsdl:part name="Content" type="s:string" />
+    <wsdl:part name="assginTo" type="s:string" />
+    <wsdl:part name="ownerBy" type="s:string" />
+    <wsdl:part name="statusId" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="categoryId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UdateTaskHttpPostOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="docId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentHttpPostOut">
+    <wsdl:part name="Body" element="tns:Document" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsByArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsByArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocument" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocumentHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="path" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="size" type="s:string" />
+    <wsdl:part name="filestype" type="s:string" />
+    <wsdl:part name="uploadby" type="s:string" />
+    <wsdl:part name="projectId" type="s:string" />
+    <wsdl:part name="TaskId" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+    <wsdl:part name="questionId" type="s:string" />
+    <wsdl:part name="answerId" type="s:string" />
+    <wsdl:part name="lessonId" type="s:string" />
+    <wsdl:part name="price" type="s:string" />
+    <wsdl:part name="countdowloads" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocumentHttpPostOut">
+    <wsdl:part name="Body" element="tns:Document" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="docId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentHttpPostOut">
+    <wsdl:part name="Body" element="tns:Document" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="Title" type="s:string" />
+    <wsdl:part name="Description" type="s:string" />
+    <wsdl:part name="UploadBy" type="s:string" />
+    <wsdl:part name="ArticleId" type="s:string" />
+    <wsdl:part name="LessonId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentHttpPostOut">
+    <wsdl:part name="Body" element="tns:Document" />
+  </wsdl:message>
+  <wsdl:message name="GetCoursesHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCoursesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCourse" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseHttpPostOut">
+    <wsdl:part name="Body" element="tns:Course" />
+  </wsdl:message>
+  <wsdl:message name="CreateCoureHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="introduction" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateby" type="s:string" />
+    <wsdl:part name="courseCat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateCoureHttpPostOut">
+    <wsdl:part name="Body" element="tns:Course" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="courseId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseHttpPostOut">
+    <wsdl:part name="Body" element="tns:Course" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="introduction" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+    <wsdl:part name="updateby" type="s:string" />
+    <wsdl:part name="courseCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseHttpPostOut">
+    <wsdl:part name="Body" element="tns:Course" />
+  </wsdl:message>
+  <wsdl:message name="CreateCourseArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="courseId" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateCourseArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:CourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="courseId" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:CourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="courseId" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+    <wsdl:part name="createBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:CourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseArticlesHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseArticlesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseByArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseByArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCourseArticle" />
+  </wsdl:message>
+  <wsdl:message name="SearchArticlesHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="keywords" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchArticlesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfArticle" />
   </wsdl:message>
   <wsdl:portType name="iTrackingServicesSoap">
     <wsdl:operation name="GetPublishedArticles">
@@ -193,6 +2091,10 @@
       <wsdl:input message="tns:UpdateArticleSoapIn" />
       <wsdl:output message="tns:UpdateArticleSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="PublishArticle">
+      <wsdl:input message="tns:PublishArticleSoapIn" />
+      <wsdl:output message="tns:PublishArticleSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <wsdl:input message="tns:DeleteArticleSoapIn" />
       <wsdl:output message="tns:DeleteArticleSoapOut" />
@@ -201,9 +2103,537 @@
       <wsdl:input message="tns:CreateArticleSoapIn" />
       <wsdl:output message="tns:CreateArticleSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
+    <wsdl:operation name="GetArticlesByTag">
+      <wsdl:input message="tns:GetArticlesByTagSoapIn" />
+      <wsdl:output message="tns:GetArticlesByTagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuestion">
+      <wsdl:input message="tns:UpdateQuestionSoapIn" />
+      <wsdl:output message="tns:UpdateQuestionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateQuestion">
+      <wsdl:input message="tns:CreateQuestionSoapIn" />
+      <wsdl:output message="tns:CreateQuestionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestion">
+      <wsdl:input message="tns:GetQuestionSoapIn" />
+      <wsdl:output message="tns:GetQuestionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuestion">
+      <wsdl:input message="tns:DeleteQuestionSoapIn" />
+      <wsdl:output message="tns:DeleteQuestionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <wsdl:input message="tns:GetQuestionsSoapIn" />
+      <wsdl:output message="tns:GetQuestionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswer">
+      <wsdl:input message="tns:GetAnswerSoapIn" />
+      <wsdl:output message="tns:GetAnswerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswerByQuestion">
+      <wsdl:input message="tns:GetAnswerByQuestionSoapIn" />
+      <wsdl:output message="tns:GetAnswerByQuestionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnswer">
+      <wsdl:input message="tns:CreateAnswerSoapIn" />
+      <wsdl:output message="tns:CreateAnswerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnswer">
+      <wsdl:input message="tns:DeleteAnswerSoapIn" />
+      <wsdl:output message="tns:DeleteAnswerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswer">
+      <wsdl:input message="tns:UpdateAnswerSoapIn" />
+      <wsdl:output message="tns:UpdateAnswerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <wsdl:input message="tns:GetTaskSoapIn" />
+      <wsdl:output message="tns:GetTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByProject">
+      <wsdl:input message="tns:GetAllTaskByProjectSoapIn" />
+      <wsdl:output message="tns:GetAllTaskByProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByStatus">
+      <wsdl:input message="tns:GetAllTaskByStatusSoapIn" />
+      <wsdl:output message="tns:GetAllTaskByStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByDate">
+      <wsdl:input message="tns:GetAllTaskByDateSoapIn" />
+      <wsdl:output message="tns:GetAllTaskByDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <wsdl:input message="tns:GetProjectsSoapIn" />
+      <wsdl:output message="tns:GetProjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <wsdl:input message="tns:GetProjectSoapIn" />
+      <wsdl:output message="tns:GetProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <wsdl:input message="tns:CreateProjectSoapIn" />
+      <wsdl:output message="tns:CreateProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <wsdl:input message="tns:DeleteProjectSoapIn" />
+      <wsdl:output message="tns:DeleteProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <wsdl:input message="tns:UpdateProjectSoapIn" />
+      <wsdl:output message="tns:UpdateProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <wsdl:input message="tns:CreateTaskSoapIn" />
+      <wsdl:output message="tns:CreateTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <wsdl:input message="tns:DeleteTaskSoapIn" />
+      <wsdl:output message="tns:DeleteTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UdateTask">
+      <wsdl:input message="tns:UdateTaskSoapIn" />
+      <wsdl:output message="tns:UdateTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <wsdl:input message="tns:GetDocumentsSoapIn" />
+      <wsdl:output message="tns:GetDocumentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <wsdl:input message="tns:GetDocumentSoapIn" />
+      <wsdl:output message="tns:GetDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentsByArticle">
+      <wsdl:input message="tns:GetDocumentsByArticleSoapIn" />
+      <wsdl:output message="tns:GetDocumentsByArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocument">
+      <wsdl:input message="tns:CreateDocumentSoapIn" />
+      <wsdl:output message="tns:CreateDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <wsdl:input message="tns:DeleteDocumentSoapIn" />
+      <wsdl:output message="tns:DeleteDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocument">
+      <wsdl:input message="tns:UpdateDocumentSoapIn" />
+      <wsdl:output message="tns:UpdateDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <wsdl:input message="tns:GetCoursesSoapIn" />
+      <wsdl:output message="tns:GetCoursesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourse">
+      <wsdl:input message="tns:GetCourseSoapIn" />
+      <wsdl:output message="tns:GetCourseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCoure">
+      <wsdl:input message="tns:CreateCoureSoapIn" />
+      <wsdl:output message="tns:CreateCoureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourse">
+      <wsdl:input message="tns:DeleteCourseSoapIn" />
+      <wsdl:output message="tns:DeleteCourseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourse">
+      <wsdl:input message="tns:UpdateCourseSoapIn" />
+      <wsdl:output message="tns:UpdateCourseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCourseArticle">
+      <wsdl:input message="tns:CreateCourseArticleSoapIn" />
+      <wsdl:output message="tns:CreateCourseArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourseArticle">
+      <wsdl:input message="tns:DeleteCourseArticleSoapIn" />
+      <wsdl:output message="tns:DeleteCourseArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourseArticle">
+      <wsdl:input message="tns:UpdateCourseArticleSoapIn" />
+      <wsdl:output message="tns:UpdateCourseArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseArticles">
+      <wsdl:input message="tns:GetCourseArticlesSoapIn" />
+      <wsdl:output message="tns:GetCourseArticlesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseByArticle">
+      <wsdl:input message="tns:GetCourseByArticleSoapIn" />
+      <wsdl:output message="tns:GetCourseByArticleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchArticles">
+      <wsdl:input message="tns:SearchArticlesSoapIn" />
+      <wsdl:output message="tns:SearchArticlesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="iTrackingServicesHttpGet">
+    <wsdl:operation name="GetPublishedArticles">
+      <wsdl:input message="tns:GetPublishedArticlesHttpGetIn" />
+      <wsdl:output message="tns:GetPublishedArticlesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViewArticle">
+      <wsdl:input message="tns:GetViewArticleHttpGetIn" />
+      <wsdl:output message="tns:GetViewArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArticle">
+      <wsdl:input message="tns:UpdateArticleHttpGetIn" />
+      <wsdl:output message="tns:UpdateArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PublishArticle">
+      <wsdl:input message="tns:PublishArticleHttpGetIn" />
+      <wsdl:output message="tns:PublishArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteArticle">
+      <wsdl:input message="tns:DeleteArticleHttpGetIn" />
+      <wsdl:output message="tns:DeleteArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateArticle">
+      <wsdl:input message="tns:CreateArticleHttpGetIn" />
+      <wsdl:output message="tns:CreateArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticlesByTag">
+      <wsdl:input message="tns:GetArticlesByTagHttpGetIn" />
+      <wsdl:output message="tns:GetArticlesByTagHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuestion">
+      <wsdl:input message="tns:UpdateQuestionHttpGetIn" />
+      <wsdl:output message="tns:UpdateQuestionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateQuestion">
+      <wsdl:input message="tns:CreateQuestionHttpGetIn" />
+      <wsdl:output message="tns:CreateQuestionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestion">
+      <wsdl:input message="tns:GetQuestionHttpGetIn" />
+      <wsdl:output message="tns:GetQuestionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuestion">
+      <wsdl:input message="tns:DeleteQuestionHttpGetIn" />
+      <wsdl:output message="tns:DeleteQuestionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <wsdl:input message="tns:GetQuestionsHttpGetIn" />
+      <wsdl:output message="tns:GetQuestionsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswer">
+      <wsdl:input message="tns:GetAnswerHttpGetIn" />
+      <wsdl:output message="tns:GetAnswerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswerByQuestion">
+      <wsdl:input message="tns:GetAnswerByQuestionHttpGetIn" />
+      <wsdl:output message="tns:GetAnswerByQuestionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnswer">
+      <wsdl:input message="tns:CreateAnswerHttpGetIn" />
+      <wsdl:output message="tns:CreateAnswerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnswer">
+      <wsdl:input message="tns:DeleteAnswerHttpGetIn" />
+      <wsdl:output message="tns:DeleteAnswerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswer">
+      <wsdl:input message="tns:UpdateAnswerHttpGetIn" />
+      <wsdl:output message="tns:UpdateAnswerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <wsdl:input message="tns:GetTaskHttpGetIn" />
+      <wsdl:output message="tns:GetTaskHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByProject">
+      <wsdl:input message="tns:GetAllTaskByProjectHttpGetIn" />
+      <wsdl:output message="tns:GetAllTaskByProjectHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByStatus">
+      <wsdl:input message="tns:GetAllTaskByStatusHttpGetIn" />
+      <wsdl:output message="tns:GetAllTaskByStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByDate">
+      <wsdl:input message="tns:GetAllTaskByDateHttpGetIn" />
+      <wsdl:output message="tns:GetAllTaskByDateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <wsdl:input message="tns:GetProjectsHttpGetIn" />
+      <wsdl:output message="tns:GetProjectsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <wsdl:input message="tns:GetProjectHttpGetIn" />
+      <wsdl:output message="tns:GetProjectHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <wsdl:input message="tns:CreateProjectHttpGetIn" />
+      <wsdl:output message="tns:CreateProjectHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <wsdl:input message="tns:DeleteProjectHttpGetIn" />
+      <wsdl:output message="tns:DeleteProjectHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <wsdl:input message="tns:UpdateProjectHttpGetIn" />
+      <wsdl:output message="tns:UpdateProjectHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <wsdl:input message="tns:CreateTaskHttpGetIn" />
+      <wsdl:output message="tns:CreateTaskHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <wsdl:input message="tns:DeleteTaskHttpGetIn" />
+      <wsdl:output message="tns:DeleteTaskHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UdateTask">
+      <wsdl:input message="tns:UdateTaskHttpGetIn" />
+      <wsdl:output message="tns:UdateTaskHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <wsdl:input message="tns:GetDocumentsHttpGetIn" />
+      <wsdl:output message="tns:GetDocumentsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <wsdl:input message="tns:GetDocumentHttpGetIn" />
+      <wsdl:output message="tns:GetDocumentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentsByArticle">
+      <wsdl:input message="tns:GetDocumentsByArticleHttpGetIn" />
+      <wsdl:output message="tns:GetDocumentsByArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocument">
+      <wsdl:input message="tns:CreateDocumentHttpGetIn" />
+      <wsdl:output message="tns:CreateDocumentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <wsdl:input message="tns:DeleteDocumentHttpGetIn" />
+      <wsdl:output message="tns:DeleteDocumentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocument">
+      <wsdl:input message="tns:UpdateDocumentHttpGetIn" />
+      <wsdl:output message="tns:UpdateDocumentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <wsdl:input message="tns:GetCoursesHttpGetIn" />
+      <wsdl:output message="tns:GetCoursesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourse">
+      <wsdl:input message="tns:GetCourseHttpGetIn" />
+      <wsdl:output message="tns:GetCourseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCoure">
+      <wsdl:input message="tns:CreateCoureHttpGetIn" />
+      <wsdl:output message="tns:CreateCoureHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourse">
+      <wsdl:input message="tns:DeleteCourseHttpGetIn" />
+      <wsdl:output message="tns:DeleteCourseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourse">
+      <wsdl:input message="tns:UpdateCourseHttpGetIn" />
+      <wsdl:output message="tns:UpdateCourseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCourseArticle">
+      <wsdl:input message="tns:CreateCourseArticleHttpGetIn" />
+      <wsdl:output message="tns:CreateCourseArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourseArticle">
+      <wsdl:input message="tns:DeleteCourseArticleHttpGetIn" />
+      <wsdl:output message="tns:DeleteCourseArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourseArticle">
+      <wsdl:input message="tns:UpdateCourseArticleHttpGetIn" />
+      <wsdl:output message="tns:UpdateCourseArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseArticles">
+      <wsdl:input message="tns:GetCourseArticlesHttpGetIn" />
+      <wsdl:output message="tns:GetCourseArticlesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseByArticle">
+      <wsdl:input message="tns:GetCourseByArticleHttpGetIn" />
+      <wsdl:output message="tns:GetCourseByArticleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchArticles">
+      <wsdl:input message="tns:SearchArticlesHttpGetIn" />
+      <wsdl:output message="tns:SearchArticlesHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="iTrackingServicesHttpPost">
+    <wsdl:operation name="GetPublishedArticles">
+      <wsdl:input message="tns:GetPublishedArticlesHttpPostIn" />
+      <wsdl:output message="tns:GetPublishedArticlesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViewArticle">
+      <wsdl:input message="tns:GetViewArticleHttpPostIn" />
+      <wsdl:output message="tns:GetViewArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArticle">
+      <wsdl:input message="tns:UpdateArticleHttpPostIn" />
+      <wsdl:output message="tns:UpdateArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PublishArticle">
+      <wsdl:input message="tns:PublishArticleHttpPostIn" />
+      <wsdl:output message="tns:PublishArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteArticle">
+      <wsdl:input message="tns:DeleteArticleHttpPostIn" />
+      <wsdl:output message="tns:DeleteArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateArticle">
+      <wsdl:input message="tns:CreateArticleHttpPostIn" />
+      <wsdl:output message="tns:CreateArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticlesByTag">
+      <wsdl:input message="tns:GetArticlesByTagHttpPostIn" />
+      <wsdl:output message="tns:GetArticlesByTagHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuestion">
+      <wsdl:input message="tns:UpdateQuestionHttpPostIn" />
+      <wsdl:output message="tns:UpdateQuestionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateQuestion">
+      <wsdl:input message="tns:CreateQuestionHttpPostIn" />
+      <wsdl:output message="tns:CreateQuestionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestion">
+      <wsdl:input message="tns:GetQuestionHttpPostIn" />
+      <wsdl:output message="tns:GetQuestionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuestion">
+      <wsdl:input message="tns:DeleteQuestionHttpPostIn" />
+      <wsdl:output message="tns:DeleteQuestionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <wsdl:input message="tns:GetQuestionsHttpPostIn" />
+      <wsdl:output message="tns:GetQuestionsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswer">
+      <wsdl:input message="tns:GetAnswerHttpPostIn" />
+      <wsdl:output message="tns:GetAnswerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswerByQuestion">
+      <wsdl:input message="tns:GetAnswerByQuestionHttpPostIn" />
+      <wsdl:output message="tns:GetAnswerByQuestionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnswer">
+      <wsdl:input message="tns:CreateAnswerHttpPostIn" />
+      <wsdl:output message="tns:CreateAnswerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnswer">
+      <wsdl:input message="tns:DeleteAnswerHttpPostIn" />
+      <wsdl:output message="tns:DeleteAnswerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswer">
+      <wsdl:input message="tns:UpdateAnswerHttpPostIn" />
+      <wsdl:output message="tns:UpdateAnswerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <wsdl:input message="tns:GetTaskHttpPostIn" />
+      <wsdl:output message="tns:GetTaskHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByProject">
+      <wsdl:input message="tns:GetAllTaskByProjectHttpPostIn" />
+      <wsdl:output message="tns:GetAllTaskByProjectHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByStatus">
+      <wsdl:input message="tns:GetAllTaskByStatusHttpPostIn" />
+      <wsdl:output message="tns:GetAllTaskByStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByDate">
+      <wsdl:input message="tns:GetAllTaskByDateHttpPostIn" />
+      <wsdl:output message="tns:GetAllTaskByDateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <wsdl:input message="tns:GetProjectsHttpPostIn" />
+      <wsdl:output message="tns:GetProjectsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <wsdl:input message="tns:GetProjectHttpPostIn" />
+      <wsdl:output message="tns:GetProjectHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <wsdl:input message="tns:CreateProjectHttpPostIn" />
+      <wsdl:output message="tns:CreateProjectHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <wsdl:input message="tns:DeleteProjectHttpPostIn" />
+      <wsdl:output message="tns:DeleteProjectHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <wsdl:input message="tns:UpdateProjectHttpPostIn" />
+      <wsdl:output message="tns:UpdateProjectHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <wsdl:input message="tns:CreateTaskHttpPostIn" />
+      <wsdl:output message="tns:CreateTaskHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <wsdl:input message="tns:DeleteTaskHttpPostIn" />
+      <wsdl:output message="tns:DeleteTaskHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UdateTask">
+      <wsdl:input message="tns:UdateTaskHttpPostIn" />
+      <wsdl:output message="tns:UdateTaskHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <wsdl:input message="tns:GetDocumentsHttpPostIn" />
+      <wsdl:output message="tns:GetDocumentsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <wsdl:input message="tns:GetDocumentHttpPostIn" />
+      <wsdl:output message="tns:GetDocumentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentsByArticle">
+      <wsdl:input message="tns:GetDocumentsByArticleHttpPostIn" />
+      <wsdl:output message="tns:GetDocumentsByArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocument">
+      <wsdl:input message="tns:CreateDocumentHttpPostIn" />
+      <wsdl:output message="tns:CreateDocumentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <wsdl:input message="tns:DeleteDocumentHttpPostIn" />
+      <wsdl:output message="tns:DeleteDocumentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocument">
+      <wsdl:input message="tns:UpdateDocumentHttpPostIn" />
+      <wsdl:output message="tns:UpdateDocumentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <wsdl:input message="tns:GetCoursesHttpPostIn" />
+      <wsdl:output message="tns:GetCoursesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourse">
+      <wsdl:input message="tns:GetCourseHttpPostIn" />
+      <wsdl:output message="tns:GetCourseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCoure">
+      <wsdl:input message="tns:CreateCoureHttpPostIn" />
+      <wsdl:output message="tns:CreateCoureHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourse">
+      <wsdl:input message="tns:DeleteCourseHttpPostIn" />
+      <wsdl:output message="tns:DeleteCourseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourse">
+      <wsdl:input message="tns:UpdateCourseHttpPostIn" />
+      <wsdl:output message="tns:UpdateCourseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCourseArticle">
+      <wsdl:input message="tns:CreateCourseArticleHttpPostIn" />
+      <wsdl:output message="tns:CreateCourseArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourseArticle">
+      <wsdl:input message="tns:DeleteCourseArticleHttpPostIn" />
+      <wsdl:output message="tns:DeleteCourseArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourseArticle">
+      <wsdl:input message="tns:UpdateCourseArticleHttpPostIn" />
+      <wsdl:output message="tns:UpdateCourseArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseArticles">
+      <wsdl:input message="tns:GetCourseArticlesHttpPostIn" />
+      <wsdl:output message="tns:GetCourseArticlesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseByArticle">
+      <wsdl:input message="tns:GetCourseByArticleHttpPostIn" />
+      <wsdl:output message="tns:GetCourseByArticleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchArticles">
+      <wsdl:input message="tns:SearchArticlesHttpPostIn" />
+      <wsdl:output message="tns:SearchArticlesHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="iTrackingServicesSoap" type="tns:iTrackingServicesSoap">
@@ -235,6 +2665,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="PublishArticle">
+      <soap:operation soapAction="http://tempuri.org/PublishArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <soap:operation soapAction="http://tempuri.org/DeleteArticle" style="document" />
       <wsdl:input>
@@ -253,8 +2692,359 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+    <wsdl:operation name="GetArticlesByTag">
+      <soap:operation soapAction="http://tempuri.org/GetArticlesByTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuestion">
+      <soap:operation soapAction="http://tempuri.org/UpdateQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateQuestion">
+      <soap:operation soapAction="http://tempuri.org/CreateQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestion">
+      <soap:operation soapAction="http://tempuri.org/GetQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuestion">
+      <soap:operation soapAction="http://tempuri.org/DeleteQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <soap:operation soapAction="http://tempuri.org/GetQuestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswer">
+      <soap:operation soapAction="http://tempuri.org/GetAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswerByQuestion">
+      <soap:operation soapAction="http://tempuri.org/GetAnswerByQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnswer">
+      <soap:operation soapAction="http://tempuri.org/CreateAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnswer">
+      <soap:operation soapAction="http://tempuri.org/DeleteAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswer">
+      <soap:operation soapAction="http://tempuri.org/UpdateAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <soap:operation soapAction="http://tempuri.org/GetTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByProject">
+      <soap:operation soapAction="http://tempuri.org/GetAllTaskByProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByStatus">
+      <soap:operation soapAction="http://tempuri.org/GetAllTaskByStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByDate">
+      <soap:operation soapAction="http://tempuri.org/GetAllTaskByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <soap:operation soapAction="http://tempuri.org/GetProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <soap:operation soapAction="http://tempuri.org/GetProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <soap:operation soapAction="http://tempuri.org/CreateProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <soap:operation soapAction="http://tempuri.org/DeleteProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <soap:operation soapAction="http://tempuri.org/UpdateProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <soap:operation soapAction="http://tempuri.org/CreateTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <soap:operation soapAction="http://tempuri.org/DeleteTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UdateTask">
+      <soap:operation soapAction="http://tempuri.org/UdateTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <soap:operation soapAction="http://tempuri.org/GetDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <soap:operation soapAction="http://tempuri.org/GetDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentsByArticle">
+      <soap:operation soapAction="http://tempuri.org/GetDocumentsByArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocument">
+      <soap:operation soapAction="http://tempuri.org/CreateDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <soap:operation soapAction="http://tempuri.org/DeleteDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocument">
+      <soap:operation soapAction="http://tempuri.org/UpdateDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <soap:operation soapAction="http://tempuri.org/GetCourses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourse">
+      <soap:operation soapAction="http://tempuri.org/GetCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCoure">
+      <soap:operation soapAction="http://tempuri.org/CreateCoure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourse">
+      <soap:operation soapAction="http://tempuri.org/DeleteCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourse">
+      <soap:operation soapAction="http://tempuri.org/UpdateCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCourseArticle">
+      <soap:operation soapAction="http://tempuri.org/CreateCourseArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourseArticle">
+      <soap:operation soapAction="http://tempuri.org/DeleteCourseArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourseArticle">
+      <soap:operation soapAction="http://tempuri.org/UpdateCourseArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseArticles">
+      <soap:operation soapAction="http://tempuri.org/GetCourseArticles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseByArticle">
+      <soap:operation soapAction="http://tempuri.org/GetCourseByArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchArticles">
+      <soap:operation soapAction="http://tempuri.org/SearchArticles" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -292,6 +3082,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="PublishArticle">
+      <soap12:operation soapAction="http://tempuri.org/PublishArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <soap12:operation soapAction="http://tempuri.org/DeleteArticle" style="document" />
       <wsdl:input>
@@ -310,13 +3109,1198 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+    <wsdl:operation name="GetArticlesByTag">
+      <soap12:operation soapAction="http://tempuri.org/GetArticlesByTag" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuestion">
+      <soap12:operation soapAction="http://tempuri.org/UpdateQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateQuestion">
+      <soap12:operation soapAction="http://tempuri.org/CreateQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestion">
+      <soap12:operation soapAction="http://tempuri.org/GetQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuestion">
+      <soap12:operation soapAction="http://tempuri.org/DeleteQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <soap12:operation soapAction="http://tempuri.org/GetQuestions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswer">
+      <soap12:operation soapAction="http://tempuri.org/GetAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswerByQuestion">
+      <soap12:operation soapAction="http://tempuri.org/GetAnswerByQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnswer">
+      <soap12:operation soapAction="http://tempuri.org/CreateAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnswer">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswer">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <soap12:operation soapAction="http://tempuri.org/GetTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByProject">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTaskByProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTaskByStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByDate">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTaskByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <soap12:operation soapAction="http://tempuri.org/GetProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <soap12:operation soapAction="http://tempuri.org/GetProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <soap12:operation soapAction="http://tempuri.org/CreateProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <soap12:operation soapAction="http://tempuri.org/DeleteProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <soap12:operation soapAction="http://tempuri.org/UpdateProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <soap12:operation soapAction="http://tempuri.org/CreateTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <soap12:operation soapAction="http://tempuri.org/DeleteTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UdateTask">
+      <soap12:operation soapAction="http://tempuri.org/UdateTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <soap12:operation soapAction="http://tempuri.org/GetDocuments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <soap12:operation soapAction="http://tempuri.org/GetDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentsByArticle">
+      <soap12:operation soapAction="http://tempuri.org/GetDocumentsByArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocument">
+      <soap12:operation soapAction="http://tempuri.org/CreateDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <soap12:operation soapAction="http://tempuri.org/DeleteDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocument">
+      <soap12:operation soapAction="http://tempuri.org/UpdateDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <soap12:operation soapAction="http://tempuri.org/GetCourses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourse">
+      <soap12:operation soapAction="http://tempuri.org/GetCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCoure">
+      <soap12:operation soapAction="http://tempuri.org/CreateCoure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourse">
+      <soap12:operation soapAction="http://tempuri.org/DeleteCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourse">
+      <soap12:operation soapAction="http://tempuri.org/UpdateCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCourseArticle">
+      <soap12:operation soapAction="http://tempuri.org/CreateCourseArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourseArticle">
+      <soap12:operation soapAction="http://tempuri.org/DeleteCourseArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourseArticle">
+      <soap12:operation soapAction="http://tempuri.org/UpdateCourseArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseArticles">
+      <soap12:operation soapAction="http://tempuri.org/GetCourseArticles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseByArticle">
+      <soap12:operation soapAction="http://tempuri.org/GetCourseByArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchArticles">
+      <soap12:operation soapAction="http://tempuri.org/SearchArticles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="iTrackingServicesHttpGet" type="tns:iTrackingServicesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetPublishedArticles">
+      <http:operation location="/GetPublishedArticles" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewArticle">
+      <http:operation location="/GetViewArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArticle">
+      <http:operation location="/UpdateArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PublishArticle">
+      <http:operation location="/PublishArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteArticle">
+      <http:operation location="/DeleteArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateArticle">
+      <http:operation location="/CreateArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticlesByTag">
+      <http:operation location="/GetArticlesByTag" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuestion">
+      <http:operation location="/UpdateQuestion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateQuestion">
+      <http:operation location="/CreateQuestion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestion">
+      <http:operation location="/GetQuestion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuestion">
+      <http:operation location="/DeleteQuestion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <http:operation location="/GetQuestions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswer">
+      <http:operation location="/GetAnswer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswerByQuestion">
+      <http:operation location="/GetAnswerByQuestion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnswer">
+      <http:operation location="/CreateAnswer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnswer">
+      <http:operation location="/DeleteAnswer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswer">
+      <http:operation location="/UpdateAnswer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <http:operation location="/GetTask" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByProject">
+      <http:operation location="/GetAllTaskByProject" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByStatus">
+      <http:operation location="/GetAllTaskByStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByDate">
+      <http:operation location="/GetAllTaskByDate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <http:operation location="/GetProjects" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <http:operation location="/GetProject" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <http:operation location="/CreateProject" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <http:operation location="/DeleteProject" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <http:operation location="/UpdateProject" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <http:operation location="/CreateTask" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <http:operation location="/DeleteTask" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UdateTask">
+      <http:operation location="/UdateTask" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <http:operation location="/GetDocuments" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <http:operation location="/GetDocument" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentsByArticle">
+      <http:operation location="/GetDocumentsByArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocument">
+      <http:operation location="/CreateDocument" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <http:operation location="/DeleteDocument" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocument">
+      <http:operation location="/UpdateDocument" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <http:operation location="/GetCourses" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourse">
+      <http:operation location="/GetCourse" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCoure">
+      <http:operation location="/CreateCoure" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourse">
+      <http:operation location="/DeleteCourse" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourse">
+      <http:operation location="/UpdateCourse" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCourseArticle">
+      <http:operation location="/CreateCourseArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourseArticle">
+      <http:operation location="/DeleteCourseArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourseArticle">
+      <http:operation location="/UpdateCourseArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseArticles">
+      <http:operation location="/GetCourseArticles" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseByArticle">
+      <http:operation location="/GetCourseByArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchArticles">
+      <http:operation location="/SearchArticles" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="iTrackingServicesHttpPost" type="tns:iTrackingServicesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetPublishedArticles">
+      <http:operation location="/GetPublishedArticles" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewArticle">
+      <http:operation location="/GetViewArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArticle">
+      <http:operation location="/UpdateArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PublishArticle">
+      <http:operation location="/PublishArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteArticle">
+      <http:operation location="/DeleteArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateArticle">
+      <http:operation location="/CreateArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticlesByTag">
+      <http:operation location="/GetArticlesByTag" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuestion">
+      <http:operation location="/UpdateQuestion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateQuestion">
+      <http:operation location="/CreateQuestion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestion">
+      <http:operation location="/GetQuestion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuestion">
+      <http:operation location="/DeleteQuestion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <http:operation location="/GetQuestions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswer">
+      <http:operation location="/GetAnswer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswerByQuestion">
+      <http:operation location="/GetAnswerByQuestion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnswer">
+      <http:operation location="/CreateAnswer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnswer">
+      <http:operation location="/DeleteAnswer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswer">
+      <http:operation location="/UpdateAnswer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <http:operation location="/GetTask" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByProject">
+      <http:operation location="/GetAllTaskByProject" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByStatus">
+      <http:operation location="/GetAllTaskByStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTaskByDate">
+      <http:operation location="/GetAllTaskByDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <http:operation location="/GetProjects" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <http:operation location="/GetProject" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <http:operation location="/CreateProject" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <http:operation location="/DeleteProject" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <http:operation location="/UpdateProject" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <http:operation location="/CreateTask" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <http:operation location="/DeleteTask" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UdateTask">
+      <http:operation location="/UdateTask" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <http:operation location="/GetDocuments" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <http:operation location="/GetDocument" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentsByArticle">
+      <http:operation location="/GetDocumentsByArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDocument">
+      <http:operation location="/CreateDocument" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <http:operation location="/DeleteDocument" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocument">
+      <http:operation location="/UpdateDocument" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <http:operation location="/GetCourses" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourse">
+      <http:operation location="/GetCourse" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCoure">
+      <http:operation location="/CreateCoure" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourse">
+      <http:operation location="/DeleteCourse" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourse">
+      <http:operation location="/UpdateCourse" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCourseArticle">
+      <http:operation location="/CreateCourseArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourseArticle">
+      <http:operation location="/DeleteCourseArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCourseArticle">
+      <http:operation location="/UpdateCourseArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseArticles">
+      <http:operation location="/GetCourseArticles" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseByArticle">
+      <http:operation location="/GetCourseByArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchArticles">
+      <http:operation location="/SearchArticles" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
@@ -326,6 +4310,12 @@
     </wsdl:port>
     <wsdl:port name="iTrackingServicesSoap12" binding="tns:iTrackingServicesSoap12">
       <soap12:address location="http://khosachcu.vn:8080/iTrackingServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="iTrackingServicesHttpGet" binding="tns:iTrackingServicesHttpGet">
+      <http:address location="http://khosachcu.vn:8080/iTrackingServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="iTrackingServicesHttpPost" binding="tns:iTrackingServicesHttpPost">
+      <http:address location="http://khosachcu.vn:8080/iTrackingServices.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

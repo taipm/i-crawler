@@ -63,22 +63,44 @@ namespace iCrawler.Models
 
         public void GetTitle()
         {
+            int _first = this.TagTitle.IndexOf('|');
+            int _last = this.TagTitle.LastIndexOf('|');            
+            string _begin = this.TagTitle.Substring(_first+1,_last-_first-1);            
+            string _end = this.TagTitle.Remove(0, this.TagTitle.LastIndexOf('|')+1);
+            this.TagTitle = this.TagTitle.Substring(0, _first);
+
             try
             {
                 _fullNode = HtmlHelper.GetNodesByClass(this.TagTitle, PageContent).FirstOrDefault();
-                if(_fullNode == null)
-                    _fullNode = HtmlHelper.GetNodesByDiv(this.TagTitle, PageContent).FirstOrDefault();
-                if(_fullNode != null)
-                    this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml).Trim();
+                this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml).Trim();
+                if (_begin == " ") _begin = StringHelper.GetFirstWords(this.Title, 1);
+                this.Title = StringHelper.SubString(this.Title, _begin, _end).Replace(_end, "").Trim();
+                return;
             }
-            catch
+            catch(Exception ex)
             {
-                this.Title = "";
+                Console.WriteLine(ex.Message);
             }
+
+            try
+            {                
+                _fullNode = HtmlHelper.GetNodesByDiv(this.TagTitle, PageContent).FirstOrDefault();
+                this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml).Trim();
+                if (_begin == " ") _begin = StringHelper.GetFirstWords(this.Title, 1);
+                this.Title = StringHelper.SubString(this.Title, _begin, _end).Replace(_end,"").Trim();
+                return;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            this.Title = "";
         }
 
         public void GetSummary() 
-        {
+        {            
+
             try
             {
                 _fullNode = HtmlHelper.GetNodesByDiv(this.TagSummary, PageContent).FirstOrDefault();
@@ -86,12 +108,12 @@ namespace iCrawler.Models
             }
             catch
             {
-                if (this.Content.Length > 200)
+                if (this.Content.Length > 100)
                 {
-                    string text = HtmlHelper.RemoveHTMLTagsFromString(this.Content);
-                    string strToRemove = StringHelper.GetFirstWords(text, 30);
-                    string summary = StringHelper.GetFirstWords(text, 200);
-                    this.Summary = summary.Replace(strToRemove, "");
+                    string text = HtmlHelper.RemoveHTMLTagsFromString(this.Content).Trim();
+                    string _firstWord = StringHelper.GetWordsBy(text, 0);
+                    string _endWord = StringHelper.GetWordsBy(text, 100);
+                    this.Summary = StringHelper.SubString(text, _firstWord, _endWord);
                 }
                 else
                 {
@@ -117,7 +139,17 @@ namespace iCrawler.Models
 
         public void GetTags() { }
         public void ProcessImg() { }
-
+        public void GetAvatarImg()
+        {
+            try
+            {
+                this.AvatarImage = HtmlHelper.GetImages(this.Content).FirstOrDefault();
+            }
+            catch
+            {
+                this.AvatarImage = string.Empty;
+            }
+        }
         public ArticleView Process()
         {
             GetParams(FileCofig);
@@ -126,6 +158,7 @@ namespace iCrawler.Models
             GetSummary();
             GetTags();
             ProcessImg();
+            GetAvatarImg();
 
             this.DownloadTime = DateTime.Now;
             this.CreateBy = "iCrawler";

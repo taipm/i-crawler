@@ -11,6 +11,21 @@ using iCrawler.ServiceLayer;
 
 public static class HtmlHelper
 {
+    public static List<string> GetImages(string Text)
+    {
+        List<string> images = new List<string>();
+        string pattern = @"<(img)\b[^>]*>";
+
+        Regex rgx = new Regex(pattern, RegexOptions.IgnoreCase);
+        MatchCollection matches = rgx.Matches(Text);
+
+        for (int i = 0, l = matches.Count; i < l; i++)
+        {
+            images.Add(matches[i].Value);
+        }
+
+        return images;        
+    }
     public static List<HtmlNode> GetTable(string tableName, string Text)
     {
         HtmlDocument doc = new HtmlDocument();
@@ -99,34 +114,35 @@ public static class HtmlHelper
             return links;
             
         }
-
-
-        //public static List<HtmlNode> GetH1NodesByClass(string className, string html)
-        //{
-        //    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-        //    doc.LoadHtml(html);
-
-        //    List<HtmlNode> links = doc.DocumentNode.SelectNodes("//h1[@class='" + className + "']").ToList<HtmlNode>();
-
-        //    return links;
-
-        //}
-
+        
         public static List<HtmlNode> GetNodesByClass(string className, string html)
         {
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(html);
 
             List<HtmlNode> links = new List<HtmlNode>();
-            
-            links = doc.DocumentNode.SelectNodes("//h2[@class='" + className + "']").ToList<HtmlNode>();
+            try
+            {
+                links = doc.DocumentNode.SelectNodes("//h2[@class='" + className + "']").ToList<HtmlNode>();
+                return links;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
-            if(links.Count < 1)
+            try
+            {
                 links = doc.DocumentNode.SelectNodes("//h1[@class='" + className + "']").ToList<HtmlNode>();
-
+                return links;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
             if(links.Count < 1)
                 return null;
-
             return links;
         }
 

@@ -34,10 +34,10 @@ namespace iCrawler
             //    return false;
             return true;
         }
-        
-            
-        public void Process()
+        public List<HtmlNode> GetNewLinks()
         {
+            List<HtmlNode> _list = new List<HtmlNode>();
+
             //STEP 1 : Get HtmlContent of MasterUrl
             string url = UrlMaster;
             string masterContent = HtmlHelper.GetHtmlPage(url);
@@ -48,37 +48,64 @@ namespace iCrawler
 
             //STEP 3 : Select all links what it is news
             List<HtmlNode> _newLinks = new List<HtmlNode>();
-            _newLinks = _links.Where(c => c.OuterHtml.Contains("/threads/") && !c.OuterHtml.Contains("/noi-quy-dien-dan.20/")).Distinct().ToList();
+            _newLinks = _links.Where(c => c.OuterHtml.Contains("/threads/") && !c.OuterHtml.Contains("/noi-quy-dien-dan.20/")).Distinct().ToList(); ;
+            foreach (var _link in _newLinks)
+            {
+                if (_link != null)
+                {
+                    string _detailUrl = prefixUrl + _link.Attributes[0].Value;
+                    if (IsArticleUrl(_detailUrl) && !new DbHelper().IsExitsUrl(_detailUrl))
+                        _list.Add(_link);
+                }
+            }
+            return _list.Distinct().ToList();
+        }
+
+        public void Process()
+        {
+            List<HtmlNode> _newLinks = new List<HtmlNode>();
+            _newLinks = GetNewLinks();
 
             //STEP 4 : for each all link, read and parse to article
             foreach (HtmlNode _link in _newLinks)
             {
-                if(_link != null)
+                string _detailUrl = "";
+                string _pageContent = "";
+                bool _isInserted = false;                
+                _detailUrl = _link.Attributes[0].Value;                
+                try
                 {
-                    string _detailUrl = _link.Attributes[0].Value;
-                    if (IsArticleUrl(_detailUrl) && !new DbHelper().IsExitsUrl(_detailUrl))
+                    _pageContent = HtmlHelper.GetHtmlPage(_detailUrl);
+                }
+                catch
+                {
+                    _pageContent = "";
+                }
+
+                if (_pageContent.Length > 1 && !new DbHelper().IsExitsUrl(_detailUrl))
+                    _isInserted = new DbHelper().AddCurrentLink(_detailUrl, crawlerName);
+
+                if (_isInserted)
+                {
+                    ArticleView _object = new ArticleView();
+                    _object.MasterUrl = UrlMaster;
+                    _object.Url = _detailUrl;
+                    _object.PageContent = _pageContent;
+                    _object.FileCofig = fileConfig;
+
+                    try
                     {
-                        bool _isInserted = new DbHelper().AddCurrentLink(_detailUrl, crawlerName);
-                        if(_isInserted)
-                        {
-                            string _pageContent = HtmlHelper.GetHtmlPage(_detailUrl);
-                            
-                            ArticleView _object = new ArticleView();
-                            _object.MasterUrl = UrlMaster;
-                            _object.Url = _detailUrl;
-                            _object.PageContent = _pageContent;
-                            _object.FileCofig = fileConfig;
-                            _object = _object.Process();
-
-                            bool isPosted = WebserviceHelper.PostArticle(appName, WebserviceHelper.CrawlerArticleToObject(_object));
-                            if (isPosted)
-                                EmailHelper.SendArticleToEmail(_object);     
-                           
-                        }
-                    }                    
-                }                               
-            }                       
-
+                        _object = _object.Process();
+                        bool isPosted = WebserviceHelper.PostArticle(appName, WebserviceHelper.CrawlerArticleToObject(_object));
+                        if (isPosted)
+                            EmailHelper.SendArticleToEmail(_object);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
         }                
     }
 }
