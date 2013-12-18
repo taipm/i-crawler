@@ -83,7 +83,7 @@ namespace iCrawler
                     _pageContent = "";
                 }
 
-                if(_pageContent.Length > 1)
+                if (_pageContent.Length > 1 && !new DbHelper().IsExitsUrl(_detailUrl))
                     _isInserted = new DbHelper().AddCurrentLink(_detailUrl, crawlerName);
 
                 if (_isInserted)
