@@ -68,14 +68,26 @@ public static class WebserviceHelper
 
     }
 
-    public static bool PostArticle(string appName, Article _article)
-    {
-        if (IsPostArticle(_article))
-        {
-            var _object = new iTrackingServices().CreateArticle(appName,
-                                        _article.Title, _article.Summary, _article.Content,
-                                        _article.UpdateBy, _article.CreateBy,
-                                        _article.Tags, _article.IsPublished.Value,0);
+    public static bool PostArticle(string appName, Article article)
+    {        
+        //article.CreateDate = DateTime.Now;        
+        //article.LastUpdate = DateTime.Now;        
+        article.ApprovedBy = article.CreateBy;
+        article.CountViews = 0;
+        article.IsSent = false;
+        article.IsReviewed = false;
+        article.IsApproved = false;
+        article.IsPublished = false;
+        article.IsReturned = false;
+        article.Tags = "";
+        article.CategoryId = article.Id;
+
+        if (IsPostArticle(article))
+        {            
+            var _object = new iTrackingServices().CreateArticle(appName, article.Title, article.Summary, article.Content, article.CreateBy, article.UpdateBy,
+                                                            article.CategoryId.Value.ToString(), article.IsSent.Value, article.IsReviewed.Value, 
+                                                            article.IsApproved.Value, article.IsReturned.Value,
+                                                            article.ApprovedBy, article.AvatarPath, article.Tags, article.IsPublished.Value, article.CountViews.Value);
             if (_object != null) return true;            
         }
         return false;

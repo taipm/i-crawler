@@ -48,7 +48,7 @@ internal class DumperStep : IPipelineStep
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("diendantoanhoc"))
             {
-                //new VMFCrawler().Process(propertyBag.ResponseUri.AbsoluteUri);
+                new VMFCrawler().Process(propertyBag.ResponseUri.AbsoluteUri);
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("quantrimang"))
             {
@@ -56,11 +56,11 @@ internal class DumperStep : IPipelineStep
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("tinhte"))
             {
-                new TinhTeCrawler().Process();
+                //new TinhTeCrawler().Process();
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("vnmath"))
             {
-                //new VnMathCrawler().Process();
+                new VnMathCrawler().Process();
             }
             else if (propertyBag.ResponseUri.AbsoluteUri.ToLower().Contains("vatlyvietnam"))
             {

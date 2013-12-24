@@ -37,11 +37,15 @@ namespace iCrawler.iTrackingMvc4Services {
         
         private System.Threading.SendOrPostCallback PublishArticleOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SentArticleOperationCompleted;
+        
         private System.Threading.SendOrPostCallback DeleteArticleOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateArticleOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetArticlesByTagOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetArticleOperationCompleted;
         
         private System.Threading.SendOrPostCallback UpdateQuestionOperationCompleted;
         
@@ -172,6 +176,9 @@ namespace iCrawler.iTrackingMvc4Services {
         public event PublishArticleCompletedEventHandler PublishArticleCompleted;
         
         /// <remarks/>
+        public event SentArticleCompletedEventHandler SentArticleCompleted;
+        
+        /// <remarks/>
         public event DeleteArticleCompletedEventHandler DeleteArticleCompleted;
         
         /// <remarks/>
@@ -179,6 +186,9 @@ namespace iCrawler.iTrackingMvc4Services {
         
         /// <remarks/>
         public event GetArticlesByTagCompletedEventHandler GetArticlesByTagCompleted;
+        
+        /// <remarks/>
+        public event GetArticleCompletedEventHandler GetArticleCompleted;
         
         /// <remarks/>
         public event UpdateQuestionCompletedEventHandler UpdateQuestionCompleted;
@@ -361,15 +371,39 @@ namespace iCrawler.iTrackingMvc4Services {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateArticle", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Article UpdateArticle(string appName, string articleId, string title, string summary, string content, string author, string updateBy, string tags, bool isPublished, int countViews) {
+        public Article UpdateArticle(
+                    string appName, 
+                    string articleId, 
+                    string title, 
+                    string summary, 
+                    string content, 
+                    string createby, 
+                    string updateBy, 
+                    string categoryId, 
+                    bool isSent, 
+                    bool isReviewed, 
+                    bool isApproved, 
+                    bool isReturned, 
+                    string approveBy, 
+                    string avataPath, 
+                    string tags, 
+                    bool isPublished, 
+                    int countViews) {
             object[] results = this.Invoke("UpdateArticle", new object[] {
                         appName,
                         articleId,
                         title,
                         summary,
                         content,
-                        author,
+                        createby,
                         updateBy,
+                        categoryId,
+                        isSent,
+                        isReviewed,
+                        isApproved,
+                        isReturned,
+                        approveBy,
+                        avataPath,
                         tags,
                         isPublished,
                         countViews});
@@ -377,12 +411,47 @@ namespace iCrawler.iTrackingMvc4Services {
         }
         
         /// <remarks/>
-        public void UpdateArticleAsync(string appName, string articleId, string title, string summary, string content, string author, string updateBy, string tags, bool isPublished, int countViews) {
-            this.UpdateArticleAsync(appName, articleId, title, summary, content, author, updateBy, tags, isPublished, countViews, null);
+        public void UpdateArticleAsync(
+                    string appName, 
+                    string articleId, 
+                    string title, 
+                    string summary, 
+                    string content, 
+                    string createby, 
+                    string updateBy, 
+                    string categoryId, 
+                    bool isSent, 
+                    bool isReviewed, 
+                    bool isApproved, 
+                    bool isReturned, 
+                    string approveBy, 
+                    string avataPath, 
+                    string tags, 
+                    bool isPublished, 
+                    int countViews) {
+            this.UpdateArticleAsync(appName, articleId, title, summary, content, createby, updateBy, categoryId, isSent, isReviewed, isApproved, isReturned, approveBy, avataPath, tags, isPublished, countViews, null);
         }
         
         /// <remarks/>
-        public void UpdateArticleAsync(string appName, string articleId, string title, string summary, string content, string author, string updateBy, string tags, bool isPublished, int countViews, object userState) {
+        public void UpdateArticleAsync(
+                    string appName, 
+                    string articleId, 
+                    string title, 
+                    string summary, 
+                    string content, 
+                    string createby, 
+                    string updateBy, 
+                    string categoryId, 
+                    bool isSent, 
+                    bool isReviewed, 
+                    bool isApproved, 
+                    bool isReturned, 
+                    string approveBy, 
+                    string avataPath, 
+                    string tags, 
+                    bool isPublished, 
+                    int countViews, 
+                    object userState) {
             if ((this.UpdateArticleOperationCompleted == null)) {
                 this.UpdateArticleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateArticleOperationCompleted);
             }
@@ -392,8 +461,15 @@ namespace iCrawler.iTrackingMvc4Services {
                         title,
                         summary,
                         content,
-                        author,
+                        createby,
                         updateBy,
+                        categoryId,
+                        isSent,
+                        isReviewed,
+                        isApproved,
+                        isReturned,
+                        approveBy,
+                        avataPath,
                         tags,
                         isPublished,
                         countViews}, this.UpdateArticleOperationCompleted, userState);
@@ -438,6 +514,37 @@ namespace iCrawler.iTrackingMvc4Services {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SentArticle", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Article SentArticle(string appName, string articleId) {
+            object[] results = this.Invoke("SentArticle", new object[] {
+                        appName,
+                        articleId});
+            return ((Article)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SentArticleAsync(string appName, string articleId) {
+            this.SentArticleAsync(appName, articleId, null);
+        }
+        
+        /// <remarks/>
+        public void SentArticleAsync(string appName, string articleId, object userState) {
+            if ((this.SentArticleOperationCompleted == null)) {
+                this.SentArticleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSentArticleOperationCompleted);
+            }
+            this.InvokeAsync("SentArticle", new object[] {
+                        appName,
+                        articleId}, this.SentArticleOperationCompleted, userState);
+        }
+        
+        private void OnSentArticleOperationCompleted(object arg) {
+            if ((this.SentArticleCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SentArticleCompleted(this, new SentArticleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteArticle", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Article DeleteArticle(string appName, string articleId) {
             object[] results = this.Invoke("DeleteArticle", new object[] {
@@ -470,14 +577,37 @@ namespace iCrawler.iTrackingMvc4Services {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CreateArticle", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Article CreateArticle(string appName, string title, string summary, string content, string author, string createby, string tags, bool isPublished, int countViews) {
+        public Article CreateArticle(
+                    string appName, 
+                    string title, 
+                    string summary, 
+                    string content, 
+                    string createby, 
+                    string updateBy, 
+                    string categoryId, 
+                    bool isSent, 
+                    bool isReviewed, 
+                    bool isApproved, 
+                    bool isReturned, 
+                    string approveBy, 
+                    string avataPath, 
+                    string tags, 
+                    bool isPublished, 
+                    int countViews) {
             object[] results = this.Invoke("CreateArticle", new object[] {
                         appName,
                         title,
                         summary,
                         content,
-                        author,
                         createby,
+                        updateBy,
+                        categoryId,
+                        isSent,
+                        isReviewed,
+                        isApproved,
+                        isReturned,
+                        approveBy,
+                        avataPath,
                         tags,
                         isPublished,
                         countViews});
@@ -485,12 +615,45 @@ namespace iCrawler.iTrackingMvc4Services {
         }
         
         /// <remarks/>
-        public void CreateArticleAsync(string appName, string title, string summary, string content, string author, string createby, string tags, bool isPublished, int countViews) {
-            this.CreateArticleAsync(appName, title, summary, content, author, createby, tags, isPublished, countViews, null);
+        public void CreateArticleAsync(
+                    string appName, 
+                    string title, 
+                    string summary, 
+                    string content, 
+                    string createby, 
+                    string updateBy, 
+                    string categoryId, 
+                    bool isSent, 
+                    bool isReviewed, 
+                    bool isApproved, 
+                    bool isReturned, 
+                    string approveBy, 
+                    string avataPath, 
+                    string tags, 
+                    bool isPublished, 
+                    int countViews) {
+            this.CreateArticleAsync(appName, title, summary, content, createby, updateBy, categoryId, isSent, isReviewed, isApproved, isReturned, approveBy, avataPath, tags, isPublished, countViews, null);
         }
         
         /// <remarks/>
-        public void CreateArticleAsync(string appName, string title, string summary, string content, string author, string createby, string tags, bool isPublished, int countViews, object userState) {
+        public void CreateArticleAsync(
+                    string appName, 
+                    string title, 
+                    string summary, 
+                    string content, 
+                    string createby, 
+                    string updateBy, 
+                    string categoryId, 
+                    bool isSent, 
+                    bool isReviewed, 
+                    bool isApproved, 
+                    bool isReturned, 
+                    string approveBy, 
+                    string avataPath, 
+                    string tags, 
+                    bool isPublished, 
+                    int countViews, 
+                    object userState) {
             if ((this.CreateArticleOperationCompleted == null)) {
                 this.CreateArticleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateArticleOperationCompleted);
             }
@@ -499,8 +662,15 @@ namespace iCrawler.iTrackingMvc4Services {
                         title,
                         summary,
                         content,
-                        author,
                         createby,
+                        updateBy,
+                        categoryId,
+                        isSent,
+                        isReviewed,
+                        isApproved,
+                        isReturned,
+                        approveBy,
+                        avataPath,
                         tags,
                         isPublished,
                         countViews}, this.CreateArticleOperationCompleted, userState);
@@ -541,6 +711,37 @@ namespace iCrawler.iTrackingMvc4Services {
             if ((this.GetArticlesByTagCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetArticlesByTagCompleted(this, new GetArticlesByTagCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetArticle", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Article GetArticle(string appName, string articleId) {
+            object[] results = this.Invoke("GetArticle", new object[] {
+                        appName,
+                        articleId});
+            return ((Article)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetArticleAsync(string appName, string articleId) {
+            this.GetArticleAsync(appName, articleId, null);
+        }
+        
+        /// <remarks/>
+        public void GetArticleAsync(string appName, string articleId, object userState) {
+            if ((this.GetArticleOperationCompleted == null)) {
+                this.GetArticleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetArticleOperationCompleted);
+            }
+            this.InvokeAsync("GetArticle", new object[] {
+                        appName,
+                        articleId}, this.GetArticleOperationCompleted, userState);
+        }
+        
+        private void OnGetArticleOperationCompleted(object arg) {
+            if ((this.GetArticleCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetArticleCompleted(this, new GetArticleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3410,6 +3611,32 @@ namespace iCrawler.iTrackingMvc4Services {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void SentArticleCompletedEventHandler(object sender, SentArticleCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SentArticleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SentArticleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Article Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Article)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     public delegate void DeleteArticleCompletedEventHandler(object sender, DeleteArticleCompletedEventArgs e);
     
     /// <remarks/>
@@ -3482,6 +3709,32 @@ namespace iCrawler.iTrackingMvc4Services {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Article[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetArticleCompletedEventHandler(object sender, GetArticleCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetArticleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetArticleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Article Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Article)(this.results[0]));
             }
         }
     }
