@@ -73,8 +73,15 @@
             <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="summary" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createby" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="updateBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="categoryId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isSent" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isReviewed" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isApproved" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isReturned" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="approveBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="avataPath" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="tags" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="isPublished" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="countViews" type="s:int" />
@@ -103,6 +110,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SentArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SentArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SentArticleResult" type="tns:Article" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="DeleteArticle">
         <s:complexType>
           <s:sequence>
@@ -125,8 +147,15 @@
             <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="summary" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="createby" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updateBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="categoryId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isSent" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isReviewed" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isApproved" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isReturned" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="approveBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="avataPath" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="tags" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="isPublished" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="countViews" type="s:int" />
@@ -152,6 +181,21 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetArticlesByTagResult" type="tns:ArrayOfArticle" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArticleResult" type="tns:Article" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1006,6 +1050,12 @@
   <wsdl:message name="PublishArticleSoapOut">
     <wsdl:part name="parameters" element="tns:PublishArticleResponse" />
   </wsdl:message>
+  <wsdl:message name="SentArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:SentArticle" />
+  </wsdl:message>
+  <wsdl:message name="SentArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:SentArticleResponse" />
+  </wsdl:message>
   <wsdl:message name="DeleteArticleSoapIn">
     <wsdl:part name="parameters" element="tns:DeleteArticle" />
   </wsdl:message>
@@ -1023,6 +1073,12 @@
   </wsdl:message>
   <wsdl:message name="GetArticlesByTagSoapOut">
     <wsdl:part name="parameters" element="tns:GetArticlesByTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArticleResponse" />
   </wsdl:message>
   <wsdl:message name="UpdateQuestionSoapIn">
     <wsdl:part name="parameters" element="tns:UpdateQuestion" />
@@ -1278,8 +1334,15 @@
     <wsdl:part name="title" type="s:string" />
     <wsdl:part name="summary" type="s:string" />
     <wsdl:part name="content" type="s:string" />
-    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createby" type="s:string" />
     <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="categoryId" type="s:string" />
+    <wsdl:part name="isSent" type="s:string" />
+    <wsdl:part name="isReviewed" type="s:string" />
+    <wsdl:part name="isApproved" type="s:string" />
+    <wsdl:part name="isReturned" type="s:string" />
+    <wsdl:part name="approveBy" type="s:string" />
+    <wsdl:part name="avataPath" type="s:string" />
     <wsdl:part name="tags" type="s:string" />
     <wsdl:part name="isPublished" type="s:string" />
     <wsdl:part name="countViews" type="s:string" />
@@ -1294,6 +1357,13 @@
   <wsdl:message name="PublishArticleHttpGetOut">
     <wsdl:part name="Body" element="tns:Article" />
   </wsdl:message>
+  <wsdl:message name="SentArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SentArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
   <wsdl:message name="DeleteArticleHttpGetIn">
     <wsdl:part name="appName" type="s:string" />
     <wsdl:part name="articleId" type="s:string" />
@@ -1306,8 +1376,15 @@
     <wsdl:part name="title" type="s:string" />
     <wsdl:part name="summary" type="s:string" />
     <wsdl:part name="content" type="s:string" />
-    <wsdl:part name="author" type="s:string" />
     <wsdl:part name="createby" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="categoryId" type="s:string" />
+    <wsdl:part name="isSent" type="s:string" />
+    <wsdl:part name="isReviewed" type="s:string" />
+    <wsdl:part name="isApproved" type="s:string" />
+    <wsdl:part name="isReturned" type="s:string" />
+    <wsdl:part name="approveBy" type="s:string" />
+    <wsdl:part name="avataPath" type="s:string" />
     <wsdl:part name="tags" type="s:string" />
     <wsdl:part name="isPublished" type="s:string" />
     <wsdl:part name="countViews" type="s:string" />
@@ -1321,6 +1398,13 @@
   </wsdl:message>
   <wsdl:message name="GetArticlesByTagHttpGetOut">
     <wsdl:part name="Body" element="tns:ArrayOfArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleHttpGetIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleHttpGetOut">
+    <wsdl:part name="Body" element="tns:Article" />
   </wsdl:message>
   <wsdl:message name="UpdateQuestionHttpGetIn">
     <wsdl:part name="appName" type="s:string" />
@@ -1688,8 +1772,15 @@
     <wsdl:part name="title" type="s:string" />
     <wsdl:part name="summary" type="s:string" />
     <wsdl:part name="content" type="s:string" />
-    <wsdl:part name="author" type="s:string" />
+    <wsdl:part name="createby" type="s:string" />
     <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="categoryId" type="s:string" />
+    <wsdl:part name="isSent" type="s:string" />
+    <wsdl:part name="isReviewed" type="s:string" />
+    <wsdl:part name="isApproved" type="s:string" />
+    <wsdl:part name="isReturned" type="s:string" />
+    <wsdl:part name="approveBy" type="s:string" />
+    <wsdl:part name="avataPath" type="s:string" />
     <wsdl:part name="tags" type="s:string" />
     <wsdl:part name="isPublished" type="s:string" />
     <wsdl:part name="countViews" type="s:string" />
@@ -1704,6 +1795,13 @@
   <wsdl:message name="PublishArticleHttpPostOut">
     <wsdl:part name="Body" element="tns:Article" />
   </wsdl:message>
+  <wsdl:message name="SentArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SentArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:Article" />
+  </wsdl:message>
   <wsdl:message name="DeleteArticleHttpPostIn">
     <wsdl:part name="appName" type="s:string" />
     <wsdl:part name="articleId" type="s:string" />
@@ -1716,8 +1814,15 @@
     <wsdl:part name="title" type="s:string" />
     <wsdl:part name="summary" type="s:string" />
     <wsdl:part name="content" type="s:string" />
-    <wsdl:part name="author" type="s:string" />
     <wsdl:part name="createby" type="s:string" />
+    <wsdl:part name="updateBy" type="s:string" />
+    <wsdl:part name="categoryId" type="s:string" />
+    <wsdl:part name="isSent" type="s:string" />
+    <wsdl:part name="isReviewed" type="s:string" />
+    <wsdl:part name="isApproved" type="s:string" />
+    <wsdl:part name="isReturned" type="s:string" />
+    <wsdl:part name="approveBy" type="s:string" />
+    <wsdl:part name="avataPath" type="s:string" />
     <wsdl:part name="tags" type="s:string" />
     <wsdl:part name="isPublished" type="s:string" />
     <wsdl:part name="countViews" type="s:string" />
@@ -1731,6 +1836,13 @@
   </wsdl:message>
   <wsdl:message name="GetArticlesByTagHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfArticle" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleHttpPostIn">
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="articleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleHttpPostOut">
+    <wsdl:part name="Body" element="tns:Article" />
   </wsdl:message>
   <wsdl:message name="UpdateQuestionHttpPostIn">
     <wsdl:part name="appName" type="s:string" />
@@ -2095,6 +2207,10 @@
       <wsdl:input message="tns:PublishArticleSoapIn" />
       <wsdl:output message="tns:PublishArticleSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="SentArticle">
+      <wsdl:input message="tns:SentArticleSoapIn" />
+      <wsdl:output message="tns:SentArticleSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <wsdl:input message="tns:DeleteArticleSoapIn" />
       <wsdl:output message="tns:DeleteArticleSoapOut" />
@@ -2106,6 +2222,10 @@
     <wsdl:operation name="GetArticlesByTag">
       <wsdl:input message="tns:GetArticlesByTagSoapIn" />
       <wsdl:output message="tns:GetArticlesByTagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <wsdl:input message="tns:GetArticleSoapIn" />
+      <wsdl:output message="tns:GetArticleSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateQuestion">
       <wsdl:input message="tns:UpdateQuestionSoapIn" />
@@ -2281,6 +2401,10 @@
       <wsdl:input message="tns:PublishArticleHttpGetIn" />
       <wsdl:output message="tns:PublishArticleHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="SentArticle">
+      <wsdl:input message="tns:SentArticleHttpGetIn" />
+      <wsdl:output message="tns:SentArticleHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <wsdl:input message="tns:DeleteArticleHttpGetIn" />
       <wsdl:output message="tns:DeleteArticleHttpGetOut" />
@@ -2292,6 +2416,10 @@
     <wsdl:operation name="GetArticlesByTag">
       <wsdl:input message="tns:GetArticlesByTagHttpGetIn" />
       <wsdl:output message="tns:GetArticlesByTagHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <wsdl:input message="tns:GetArticleHttpGetIn" />
+      <wsdl:output message="tns:GetArticleHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateQuestion">
       <wsdl:input message="tns:UpdateQuestionHttpGetIn" />
@@ -2467,6 +2595,10 @@
       <wsdl:input message="tns:PublishArticleHttpPostIn" />
       <wsdl:output message="tns:PublishArticleHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="SentArticle">
+      <wsdl:input message="tns:SentArticleHttpPostIn" />
+      <wsdl:output message="tns:SentArticleHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <wsdl:input message="tns:DeleteArticleHttpPostIn" />
       <wsdl:output message="tns:DeleteArticleHttpPostOut" />
@@ -2478,6 +2610,10 @@
     <wsdl:operation name="GetArticlesByTag">
       <wsdl:input message="tns:GetArticlesByTagHttpPostIn" />
       <wsdl:output message="tns:GetArticlesByTagHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <wsdl:input message="tns:GetArticleHttpPostIn" />
+      <wsdl:output message="tns:GetArticleHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateQuestion">
       <wsdl:input message="tns:UpdateQuestionHttpPostIn" />
@@ -2674,6 +2810,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SentArticle">
+      <soap:operation soapAction="http://tempuri.org/SentArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <soap:operation soapAction="http://tempuri.org/DeleteArticle" style="document" />
       <wsdl:input>
@@ -2694,6 +2839,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetArticlesByTag">
       <soap:operation soapAction="http://tempuri.org/GetArticlesByTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <soap:operation soapAction="http://tempuri.org/GetArticle" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3091,6 +3245,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SentArticle">
+      <soap12:operation soapAction="http://tempuri.org/SentArticle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <soap12:operation soapAction="http://tempuri.org/DeleteArticle" style="document" />
       <wsdl:input>
@@ -3111,6 +3274,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetArticlesByTag">
       <soap12:operation soapAction="http://tempuri.org/GetArticlesByTag" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <soap12:operation soapAction="http://tempuri.org/GetArticle" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3508,6 +3680,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SentArticle">
+      <http:operation location="/SentArticle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <http:operation location="/DeleteArticle" />
       <wsdl:input>
@@ -3528,6 +3709,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetArticlesByTag">
       <http:operation location="/GetArticlesByTag" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <http:operation location="/GetArticle" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -3925,6 +4115,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SentArticle">
+      <http:operation location="/SentArticle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteArticle">
       <http:operation location="/DeleteArticle" />
       <wsdl:input>
@@ -3945,6 +4144,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetArticlesByTag">
       <http:operation location="/GetArticlesByTag" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticle">
+      <http:operation location="/GetArticle" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

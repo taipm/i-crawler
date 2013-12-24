@@ -81,6 +81,7 @@ namespace iCrawler
                     ArticleView _object = new ArticleView();
                     _object.MasterUrl = UrlMaster;
                     _object.Url = _detailUrl;
+                    _object.PrefixUrl = prefixUrl;
                     _object.PageContent = _pageContent;
                     _object.FileCofig = fileConfig;
                     _object = _object.Process();

@@ -25,6 +25,7 @@ namespace iCrawler.Models
 
         public string MasterUrl;
         public string Url;
+        public string PrefixUrl;
         public string Title;
         public string Summary;
         public string Content;
@@ -73,8 +74,11 @@ namespace iCrawler.Models
             {
                 _fullNode = HtmlHelper.GetNodesByClass(this.TagTitle, PageContent).FirstOrDefault();
                 this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml).Trim();
-                if (_begin == " ") _begin = StringHelper.GetFirstWords(this.Title, 1);
-                this.Title = StringHelper.SubString(this.Title, _begin, _end).Replace(_end, "").Trim();
+                //if (_begin == " ") _begin = StringHelper.GetFirstWords(this.Title, 1);
+                //if (_end== " ") _begin = StringHelper.GetWordsBy(this.Title, this.Title.LastIndexOf(_end));
+                //if (_begin == " " && _end == " ") return;
+                //if(this.Title.Contains(_begin)&&this.Title.Contains(_end))
+                //    this.Title = StringHelper.SubString(this.Title, _begin, _end).Replace(_end, "").Trim();
                 return;
             }
             catch(Exception ex)
@@ -86,8 +90,9 @@ namespace iCrawler.Models
             {                
                 _fullNode = HtmlHelper.GetNodesByDiv(this.TagTitle, PageContent).FirstOrDefault();
                 this.Title = HtmlHelper.RemoveHTMLTagsFromString(_fullNode.OuterHtml).Trim();
-                if (_begin == " ") _begin = StringHelper.GetFirstWords(this.Title, 1);
-                this.Title = StringHelper.SubString(this.Title, _begin, _end).Replace(_end,"").Trim();
+                //if (_begin == " ") _begin = StringHelper.GetFirstWords(this.Title, 1);
+                //if (this.Title.Contains(_begin) && this.Title.Contains(_end))
+                //    this.Title = StringHelper.SubString(this.Title, _begin, _end).Replace(_end, "").Trim();
                 return;
             }
             catch(Exception ex)
@@ -149,7 +154,13 @@ namespace iCrawler.Models
             {
                 this.AvatarImage = string.Empty;
             }
+
+            if (!String.IsNullOrEmpty(this.PrefixUrl))
+            {
+                this.AvatarImage = this.PrefixUrl + this.AvatarImage;
+            }
         }
+
         public ArticleView Process()
         {
             GetParams(FileCofig);
